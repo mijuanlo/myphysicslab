@@ -719,11 +719,53 @@ MultipleCollisionApp.de_strings = {
   MASS: 'Masse'
 };
 
+/**
+@private
+@type {MultipleCollisionApp.i18n_strings}
+*/
+MultipleCollisionApp.es_strings = {
+  FORMATION: 'Formación',
+  ONE_HITS_THREE: 'uno golpea tres',
+  ONE_HITS_TWO: 'uno golpea dos',
+  TWO_HIT_ONE: 'dos golpean uno',
+  ONE_HITS_ONE_ON_WALL: 'uno golpea uno en el muro',
+  ONE_HITS_TWO_ON_WALL: 'uno golpea dos en el muro',
+  ONE_HITS_TWO_SEPARATE: 'uno golpea dos separados',
+  TWO_HIT_ONE_ASYMMETRIC: 'dos golpean uno asimétricamente',
+  ONE_HITS_ONE: 'uno golpea uno',
+  ONE_HITS_ONE_ASYMMETRIC: 'uno golpea uno asimétricamente',
+  ONE_HITS_WALL: 'uno golpea en el muro',
+  ONE_HITS_CHAIN: 'uno golpea en cadena',
+  ONE_HITS_CHAIN_PLUS_ONE: 'uno golpea en cadena más otro',
+  TWO_IN_BOX: 'dos en caja',
+  ONE_HITS_TWO_IN_BOX: 'uno golpea dos en caja',
+  TWO_ON_WALL: 'dos en muro',
+  ANGLE: 'Ángulo',
+  SHAPE: 'Forma',
+  CIRCLE: 'Círculo',
+  SQUARE: 'Cuadrado',
+  OFFSET: 'Desplazamiento',
+  PUCK_TYPE: 'Tipo de disco',
+  SPEED: 'Velocidad',
+  MASS: 'Masa'
+};
+
 /** Set of internationalized strings.
 @type {MultipleCollisionApp.i18n_strings}
 */
-MultipleCollisionApp.i18n = goog.LOCALE === 'de' ? MultipleCollisionApp.de_strings :
-    MultipleCollisionApp.en;
+MultipleCollisionApp.i18n = MultipleCollisionApp.en;
+
+switch(goog.LOCALE) {
+  case 'de':
+    MultipleCollisionApp.i18n = MultipleCollisionApp.de_strings;
+    break;
+  case 'es':
+    MultipleCollisionApp.i18n = MultipleCollisionApp.es_strings;
+    break;
+  default:
+    MultipleCollisionApp.i18n = MultipleCollisionApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

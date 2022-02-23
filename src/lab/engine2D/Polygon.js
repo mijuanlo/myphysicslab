@@ -1298,11 +1298,33 @@ Polygon.de_strings = {
   VELOCITY: 'Geschwindigkeit'
 };
 
+/**
+@private
+@type {Polygon.i18n_strings}
+*/
+Polygon.es_strings = {
+  POLYGON: 'Poligono',
+  ANGLE: 'Ángulo',
+  ANGULAR_VELOCITY: 'Velocidad angular',
+  POSITION: 'Posición',
+  VELOCITY: 'Velocidad'
+};
+
 /** Set of internationalized strings.
 @type {Polygon.i18n_strings}
 */
-Polygon.i18n = goog.LOCALE === 'de' ? Polygon.de_strings :
-    Polygon.en;
+Polygon.i18n = Polygon.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Polygon.i18n = Polygon.de_strings;
+    break;
+  case 'es':
+    Polygon.i18n = Polygon.es_strings;
+    break;
+  default:
+    Polygon.i18n = Polygon.en;
+    break;
+};
 
 /** Counter used for naming Polygons.
 * @type {number}

@@ -557,9 +557,38 @@ DoublePendulumSim.de_strings = {
 };
 
 /** Set of internationalized strings.
+@private
 @type {DoublePendulumSim.i18n_strings}
 */
-DoublePendulumSim.i18n = goog.LOCALE === 'de' ? DoublePendulumSim.de_strings :
-    DoublePendulumSim.en;
+DoublePendulumSim.es_strings = {
+  ACCELERATION_1: 'Aceleración-1',
+  ACCELERATION_2: 'Aceleración-2',
+  ANGLE_1: 'Ángulo-1',
+  ANGLE_1_VELOCITY: 'Velocidad Ángulo-1',
+  ANGLE_2: 'Ángulo-2',
+  ANGLE_2_VELOCITY: 'Velocidad Ángulo-2',
+  GRAVITY: 'Gravedad',
+  MASS_1: 'Masa-1',
+  MASS_2: 'Masa-2',
+  ROD_1_LENGTH: 'Longitud Palo-1',
+  ROD_2_LENGTH: 'Longitud Palo-2'
+};
+
+/**
+@type {DoublePendulumSim.i18n_strings}
+*/
+DoublePendulumSim.i18n = DoublePendulumSim.en;
+
+switch(goog.LOCALE) {
+  case 'de':
+    DoublePendulumSim.i18n = DoublePendulumSim.de_strings;
+    break;
+  case 'es':
+    DoublePendulumSim.i18n = DoublePendulumSim.es_strings;
+    break;
+  default:
+    DoublePendulumSim.i18n = DoublePendulumSim.en;
+    break;
+};
 
 exports = DoublePendulumSim;

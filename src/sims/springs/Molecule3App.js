@@ -544,11 +544,35 @@ Molecule3App.de_strings = {
   NUM_ATOMS: 'zahl Masse'
 };
 
+/**
+@private
+@type {Molecule3App.i18n_strings}
+*/
+Molecule3App.es_strings = {
+  MASS: 'Masa',
+  MASS_SPECIAL: 'Masa roja',
+  LENGTH: 'Longitud del muelle',
+  LENGTH_SPECIAL: 'Longitud del muelle rojo',
+  STIFFNESS: 'Rigidez',
+  STIFFNESS_SPECIAL: 'Rigidez del muelle rojo',
+  NUM_ATOMS: 'número de átomos'
+};
+
 /** Set of internationalized strings.
 @type {Molecule3App.i18n_strings}
 */
-Molecule3App.i18n = goog.LOCALE === 'de' ? Molecule3App.de_strings :
-    Molecule3App.en;
+Molecule3App.i18n = Molecule3App.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Molecule3App.i18n = Molecule3App.de_strings;
+    break;
+  case 'es':
+    Molecule3App.i18n = Molecule3App.es_strings;
+    break;
+  default:
+    Molecule3App.i18n = Molecule3App.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

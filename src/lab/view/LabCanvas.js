@@ -649,10 +649,31 @@ LabCanvas.de_strings = {
   BACKGROUND: 'Hintergrund'
 };
 
+/**
+@private
+@type {LabCanvas.i18n_strings}
+*/
+LabCanvas.es_strings = {
+  WIDTH: 'Ancho',
+  HEIGHT: 'Alto',
+  ALPHA: 'transparencia',
+  BACKGROUND: 'Fondo'
+};
+
 /** Set of internationalized strings.
 @type {LabCanvas.i18n_strings}
 */
-LabCanvas.i18n = goog.LOCALE === 'de' ? LabCanvas.de_strings :
-    LabCanvas.en;
+LabCanvas.i18n = LabCanvas.en;
+switch(goog.LOCALE) {
+  case 'de':
+    LabCanvas.i18n = LabCanvas.de_strings;
+    break;
+  case 'es':
+    LabCanvas.i18n = LabCanvas.es_strings;
+    break;
+  default:
+    LabCanvas.i18n = LabCanvas.en;
+    break;
+};
 
 exports = LabCanvas;

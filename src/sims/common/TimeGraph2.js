@@ -263,10 +263,29 @@ TimeGraph2.de_strings = {
   RED: 'rot'
 };
 
+/**
+@private
+@type {TimeGraph2.i18n_strings}
+*/
+TimeGraph2.es_strings = {
+  LIME: 'lima',
+  RED: 'rojo'
+};
+
 /** Set of internationalized strings.
 @type {TimeGraph2.i18n_strings}
 */
-TimeGraph2.i18n = goog.LOCALE === 'de' ? TimeGraph2.de_strings :
-    TimeGraph2.en;
+TimeGraph2.i18n = TimeGraph2.en;
+switch(goog.LOCALE) {
+  case 'de':
+    TimeGraph2.i18n = TimeGraph2.de_strings;
+    break;
+  case 'es':
+    TimeGraph2.i18n = TimeGraph2.es_strings;
+    break;
+  default:
+    TimeGraph2.i18n = TimeGraph2.en;
+    break;
+};
 
 exports = TimeGraph2;

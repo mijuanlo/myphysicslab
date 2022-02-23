@@ -258,10 +258,27 @@ AdaptiveStepSolver.de_strings = {
   NAME: 'Adaptiert Schritt'
 };
 
+/**
+@private
+@type {AdaptiveStepSolver.i18n_strings}
+*/
+AdaptiveStepSolver.es_strings = {
+  NAME: 'Paso adaptativo'
+};
+
 /** Set of internationalized strings.
 @type {AdaptiveStepSolver.i18n_strings}
 */
-AdaptiveStepSolver.i18n = goog.LOCALE === 'de' ? AdaptiveStepSolver.de_strings :
-    AdaptiveStepSolver.en;
-
+AdaptiveStepSolver.i18n = AdaptiveStepSolver.en;
+switch(goog.LOCALE) {
+  case 'de':
+    AdaptiveStepSolver.i18n = AdaptiveStepSolver.de_strings;
+    break;
+  case 'es':
+    AdaptiveStepSolver.i18n = AdaptiveStepSolver.es_strings;
+    break;
+  default:
+    AdaptiveStepSolver.i18n = AdaptiveStepSolver.en;
+    break;
+};
 exports = AdaptiveStepSolver;

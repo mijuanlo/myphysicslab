@@ -1001,10 +1001,46 @@ RollerFlightSim.de_strings = {
   Y_VELOCITY: 'y Geschwindigkeit'
 };
 
+/**
+@private
+@type {RollerFlightSim.i18n_strings}
+*/
+RollerFlightSim.es_strings = {
+  ANCHOR_X: 'Ancla X',
+  ANCHOR_Y: 'Ancla Y',
+  DAMPING: 'Amortiguación',
+  ELASTICITY: 'Elasticidad',
+  GRAVITY: 'Gravedad',
+  MASS: 'Masa',
+  POSITION: 'Posición',
+  SPRING_DAMPING: 'Amortiguación del muelle',
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  STICKINESS: 'Pegajosidad',
+  TRACK_MODE: 'Modo de pista',
+  TRACK_POSITION: 'Posición de pista',
+  TRACK_VELOCITY: 'Velocidad de pista',
+  VELOCITY: 'Velocidad',
+  X_POSITION: 'Posición x',
+  X_VELOCITY: 'Velocidad x',
+  Y_POSITION: 'Posición y',
+  Y_VELOCITY: 'Velocidad y'
+};
+
 /** Set of internationalized strings.
 @type {RollerFlightSim.i18n_strings}
 */
-RollerFlightSim.i18n = goog.LOCALE === 'de' ? RollerFlightSim.de_strings :
-    RollerFlightSim.en;
+RollerFlightSim.i18n = RollerFlightSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RollerFlightSim.i18n = RollerFlightSim.de_strings;
+    break;
+  case 'es':
+    RollerFlightSim.i18n = RollerFlightSim.es_strings;
+    break;
+  default:
+    RollerFlightSim.i18n = RollerFlightSim.en;
+    break;
+};
 
 exports = RollerFlightSim;

@@ -960,10 +960,33 @@ EnergyBarGraph.de_strings = {
   TOTAL: 'gesamt'
 };
 
+/**
+@private
+@type {EnergyBarGraph.i18n_strings}
+*/
+EnergyBarGraph.es_strings = {
+  SHOW_ENERGY: 'Mostrar energía',
+  POTENTIAL_ENERGY: 'potencial',
+  TRANSLATIONAL_ENERGY: 'translacional',
+  KINETIC_ENERGY: 'cinética',
+  ROTATIONAL_ENERGY: 'rotación',
+  TOTAL: 'total'
+};
+
 /** Set of internationalized strings.
 @type {EnergyBarGraph.i18n_strings}
 */
-EnergyBarGraph.i18n = goog.LOCALE === 'de' ? EnergyBarGraph.de_strings :
-    EnergyBarGraph.en;
+EnergyBarGraph.i18n = EnergyBarGraph.en;
+switch(goog.LOCALE) {
+  case 'de':
+    EnergyBarGraph.i18n = EnergyBarGraph.de_strings;
+    break;
+  case 'es':
+    EnergyBarGraph.i18n = EnergyBarGraph.es_strings;
+    break;
+  default:
+    EnergyBarGraph.i18n = EnergyBarGraph.en;
+    break;
+};
 
 exports = EnergyBarGraph;

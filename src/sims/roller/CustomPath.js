@@ -151,10 +151,28 @@ CustomPath.de_strings = {
   NAME: 'Spezial'
 };
 
+/**
+@private
+@type {CustomPath.i18n_strings}
+*/
+CustomPath.es_strings = {
+  NAME: 'Personalizado'
+};
+
 /** Set of internationalized strings.
 @type {CustomPath.i18n_strings}
 */
-CustomPath.i18n = goog.LOCALE === 'de' ? CustomPath.de_strings :
-    CustomPath.en;
+CustomPath.i18n = CustomPath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CustomPath.i18n = CustomPath.de_strings;
+    break;
+  case 'es':
+    CustomPath.i18n = CustomPath.es_strings;
+    break;
+  default:
+    CustomPath.i18n = CustomPath.en;
+    break;
+};
 
 exports = CustomPath;

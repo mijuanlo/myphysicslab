@@ -301,11 +301,32 @@ RollerSingleApp.de_strings = {
   FINISH_T_VALUE: 'ende-t'
 };
 
+/**
+@private
+@type {RollerSingleApp.i18n_strings}
+*/
+RollerSingleApp.es_strings = {
+  EQUATION_X: 'Ecuación X',
+  EQUATION_Y: 'Ecuación Y',
+  START_T_VALUE: 'inicio-t',
+  FINISH_T_VALUE: 'final-t'
+};
+
 /** Set of internationalized strings.
 @type {RollerSingleApp.i18n_strings}
 */
-RollerSingleApp.i18n = goog.LOCALE === 'de' ? RollerSingleApp.de_strings :
-    RollerSingleApp.en;
+RollerSingleApp.i18n = RollerSingleApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RollerSingleApp.i18n = RollerSingleApp.de_strings;
+    break;
+  case 'es':
+    RollerSingleApp.i18n = RollerSingleApp.es_strings;
+    break;
+  default:
+    RollerSingleApp.i18n = RollerSingleApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

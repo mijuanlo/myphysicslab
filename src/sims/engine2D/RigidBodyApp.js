@@ -405,11 +405,34 @@ RigidBodyApp.de_strings = {
   MASS1: 'Masse von Block1'
 };
 
+/**
+@private
+@type {RigidBodyApp.i18n_strings}
+*/
+RigidBodyApp.es_strings = {
+  NUM_BODIES: 'Número de objetos',
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  THRUST: 'Empuje',
+  BLOCK: 'Bloque',
+  MASS1: 'Masa del bloque 1'
+};
+
 /** Set of internationalized strings.
 @type {RigidBodyApp.i18n_strings}
 */
-RigidBodyApp.i18n = goog.LOCALE === 'de' ? RigidBodyApp.de_strings :
-    RigidBodyApp.en;
+RigidBodyApp.i18n = RigidBodyApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RigidBodyApp.i18n = RigidBodyApp.de_strings;
+    break;
+  case 'es':
+    RigidBodyApp.i18n = RigidBodyApp.es_strings;
+    break;
+  default:
+    RigidBodyApp.i18n = RigidBodyApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

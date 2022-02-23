@@ -328,11 +328,34 @@ BilliardsApp.de_strings = {
   BALL: 'Ball'
 };
 
+/**
+@private
+@type {BilliardsApp.i18n_strings}
+*/
+BilliardsApp.es_strings = {
+  FORMATION: 'Formación',
+  ONE_HITS_THREE: 'uno golpea tres',
+  ONE_HITS_SIX: 'uno golpea seis',
+  OFFSET: 'Desplazamiento',
+  SPEED: 'Velocidad',
+  BALL: 'Bola'
+};
+
 /** Set of internationalized strings.
 @type {BilliardsApp.i18n_strings}
 */
-BilliardsApp.i18n = goog.LOCALE === 'de' ? BilliardsApp.de_strings :
-    BilliardsApp.en;
+BilliardsApp.i18n = BilliardsApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    BilliardsApp.i18n = BilliardsApp.de_strings;
+    break;
+  case 'es':
+    BilliardsApp.i18n = BilliardsApp.es_strings;
+    break;
+  default:
+    BilliardsApp.i18n = BilliardsApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

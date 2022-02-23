@@ -325,11 +325,33 @@ CartPendulum2App.de_strings = {
   PENDULUM: 'Pendel'
 };
 
+/**
+@private
+@type {CartPendulum2App.i18n_strings}
+*/
+CartPendulum2App.es_strings = {
+  LENGTH: 'Longitud del muelle',
+  SPRING_DAMPING: 'Amortiguación del muelle',
+  STIFFNESS: 'Rigidez del muelle',
+  CART: 'Carro',
+  PENDULUM: 'Pendulo'
+};
+
 /** Set of internationalized strings.
 @type {CartPendulum2App.i18n_strings}
 */
-CartPendulum2App.i18n = goog.LOCALE === 'de' ? CartPendulum2App.de_strings :
-    CartPendulum2App.en;
+CartPendulum2App.i18n = CartPendulum2App.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CartPendulum2App.i18n = CartPendulum2App.de_strings;
+    break;
+  case 'es':
+    CartPendulum2App.i18n = CartPendulum2App.es_strings;
+    break;
+  default:
+    CartPendulum2App.i18n = CartPendulum2App.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

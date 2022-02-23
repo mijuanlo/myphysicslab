@@ -93,10 +93,34 @@ EnergySystem.de_strings = {
   PE_OFFSET: 'Potenzielle Energie Ausgleich'
 };
 
+/**
+@private
+@type {EnergySystem.i18n_strings}
+*/
+EnergySystem.es_strings = {
+  POTENTIAL_ENERGY: 'Energía potencial',
+  TRANSLATIONAL_ENERGY: 'Energía translacional',
+  KINETIC_ENERGY: 'Energía cinética',
+  ROTATIONAL_ENERGY: 'Energía rotacional',
+  TOTAL: 'total',
+  TOTAL_ENERGY: 'Energía total',
+  PE_OFFSET: 'Desplazamiento del energía potencial'
+};
+
 /** Set of internationalized strings.
 @type {EnergySystem.i18n_strings}
 */
-EnergySystem.i18n = goog.LOCALE === 'de' ? EnergySystem.de_strings :
-    EnergySystem.en;
+EnergySystem.i18n = EnergySystem.en;
+switch(goog.LOCALE) {
+  case 'de':
+    EnergySystem.i18n = EnergySystem.de_strings;
+    break;
+  case 'es':
+    EnergySystem.i18n = EnergySystem.es_strings;
+    break;
+  default:
+    EnergySystem.i18n = EnergySystem.en;
+    break;
+};
 
 exports = EnergySystem;

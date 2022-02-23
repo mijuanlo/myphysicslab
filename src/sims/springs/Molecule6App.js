@@ -923,11 +923,42 @@ Molecule6App.de_strings = {
   SPRING_TYPE: 'FederTyp'
 };
 
+/**
+@private
+@type {Molecule6App.i18n_strings}
+*/
+Molecule6App.es_strings = {
+  MASS: 'Masa',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidez',
+  NUM_ATOMS: 'número de átomos',
+  SHOW_SPRINGS: 'mostrar muelles',
+  KE_HIGH_PCT: 'mayor percentil cinético',
+  SHOW_KE_HIGH: 'mostrar mayor percentil cinético',
+  SHOW_NAMES: 'mostrat nombres',
+  ATTRACT_FORCE: 'fuerza de atracción',
+  WALL_SIZE: 'Tamaño del muro',
+  LINEAR: 'lineal',
+  NON_LINEAR: 'no lineal',
+  PSEUDO_GRAVITY: 'pseudo-gravedad',
+  SPRING_TYPE: 'tipo de muelle'
+};
+
 /** Set of internationalized strings.
 @type {Molecule6App.i18n_strings}
 */
-Molecule6App.i18n = goog.LOCALE === 'de' ? Molecule6App.de_strings :
-    Molecule6App.en;
+Molecule6App.i18n = Molecule6App.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Molecule6App.i18n = Molecule6App.de_strings;
+    break;
+  case 'es':
+    Molecule6App.i18n = Molecule6App.es_strings;
+    break;
+  default:
+    Molecule6App.i18n = Molecule6App.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

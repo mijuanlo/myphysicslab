@@ -156,10 +156,28 @@ PathSelector.de_strings = {
   PATH: 'Pfad'
 };
 
+/**
+@private
+@type {PathSelector.i18n_strings}
+*/
+PathSelector.es_strings = {
+  PATH: 'Recorrido'
+};
+
 /** Set of internationalized strings.
 @type {PathSelector.i18n_strings}
 */
-PathSelector.i18n = goog.LOCALE === 'de' ? PathSelector.de_strings :
-    PathSelector.en;
+PathSelector.i18n = PathSelector.en;
+switch(goog.LOCALE) {
+  case 'de':
+    PathSelector.i18n = PathSelector.de_strings;
+    break;
+  case 'es':
+    PathSelector.i18n = PathSelector.es_strings;
+    break;
+  default:
+    PathSelector.i18n = PathSelector.en;
+    break;
+};
 
 exports = PathSelector;

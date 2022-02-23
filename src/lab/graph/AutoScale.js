@@ -625,10 +625,30 @@ AutoScale.de_strings = {
   ENABLED: 'ermöglichte'
 };
 
+/**
+@private
+@type {AutoScale.i18n_strings}
+*/
+AutoScale.es_strings = {
+  AXIS: 'Eje',
+  TIME_WINDOW: 'Ventana de tiempo',
+  ACTIVE: 'activo',
+  ENABLED: 'activado'
+};
+
 /** Set of internationalized strings.
 @type {AutoScale.i18n_strings}
 */
-AutoScale.i18n = goog.LOCALE === 'de' ? AutoScale.de_strings :
-    AutoScale.en;
-
+AutoScale.i18n = AutoScale.en;
+switch(goog.LOCALE) {
+  case 'de':
+    AutoScale.i18n = AutoScale.de_strings;
+    break;
+  case 'es':
+    AutoScale.i18n = AutoScale.es_strings;
+    break;
+  default:
+    AutoScale.i18n = AutoScale.en;
+    break;
+};
 exports = AutoScale;

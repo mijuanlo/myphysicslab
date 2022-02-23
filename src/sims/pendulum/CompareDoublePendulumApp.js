@@ -605,11 +605,30 @@ CompareDoublePendulumApp.de_strings = {
   SHOW_ENERGY_2: 'Energieanzeige 2'
 };
 
+/**
+@private
+@type {CompareDoublePendulumApp.i18n_strings}
+*/
+CompareDoublePendulumApp.es_strings = {
+  SEPARATION: 'Separación',
+  SHOW_ENERGY_2: 'Mostrar energía 2'
+};
+
 /** Set of internationalized strings.
 @type {CompareDoublePendulumApp.i18n_strings}
 */
-CompareDoublePendulumApp.i18n = goog.LOCALE === 'de' ? CompareDoublePendulumApp.de_strings :
-    CompareDoublePendulumApp.en;
+CompareDoublePendulumApp.i18n = CompareDoublePendulumApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CompareDoublePendulumApp.i18n = CompareDoublePendulumApp.de_strings;
+    break;
+  case 'es':
+    CompareDoublePendulumApp.i18n = CompareDoublePendulumApp.es_strings;
+    break;
+  default:
+    CompareDoublePendulumApp.i18n = CompareDoublePendulumApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

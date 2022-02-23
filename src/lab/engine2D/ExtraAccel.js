@@ -162,10 +162,32 @@ ExtraAccel.de_strings = {
   VELOCITY_AND_DISTANCE_JOINTS: 'Geschwindigkeit+Entfernung (auch Verbindungsglied)'
 };
 
+/**
+@private
+@type {ExtraAccel.i18n_strings}
+*/
+ExtraAccel.es_strings = {
+  NONE: 'ninguno',
+  VELOCITY: 'Velocidad',
+  VELOCITY_AND_DISTANCE: 'Velocidad y distancia',
+  VELOCITY_JOINTS: 'Velocidad (tambien articulaciones)',
+  VELOCITY_AND_DISTANCE_JOINTS: 'Velocidad y distancia (tambien articulaciones)'
+};
+
 /** Set of internationalized strings.
 @type {ExtraAccel.i18n_strings}
 */
-ExtraAccel.i18n = goog.LOCALE === 'de' ? ExtraAccel.de_strings :
-    ExtraAccel.en;
+ExtraAccel.i18n = ExtraAccel.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ExtraAccel.i18n = ExtraAccel.de_strings;
+    break;
+  case 'es':
+    ExtraAccel.i18n = ExtraAccel.es_strings;
+    break;
+  default:
+    ExtraAccel.i18n = ExtraAccel.en;
+    break;
+};
 
 exports = ExtraAccel;

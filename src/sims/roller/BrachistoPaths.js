@@ -257,10 +257,33 @@ BrachistoPaths.de_strings = {
   PARABOLA_UP: 'Parabola-auf'
 };
 
+/**
+@private
+@type {BrachistoPaths.i18n_strings}
+*/
+BrachistoPaths.es_strings = {
+  BRACH_PATH: 'braquistócrona',
+  BRACH_SQUARED: 'braquistócrona cuadrada',
+  CIRCLE_ARC: 'Círculo',
+  LINEAR_PATH: 'Lineal',
+  PARABOLA_DOWN: 'Parábola-inferior',
+  PARABOLA_UP: 'Parábola-superior'
+};
+
 /** Set of internationalized strings.
 @type {BrachistoPaths.i18n_strings}
 */
-BrachistoPaths.i18n = goog.LOCALE === 'de' ? BrachistoPaths.de_strings :
-    BrachistoPaths.en;
+BrachistoPaths.i18n = BrachistoPaths.en;
+switch(goog.LOCALE) {
+  case 'de':
+    BrachistoPaths.i18n = BrachistoPaths.de_strings;
+    break;
+  case 'es':
+    BrachistoPaths.i18n = BrachistoPaths.es_strings;
+    break;
+  default:
+    BrachistoPaths.i18n = BrachistoPaths.en;
+    break;
+};
 
 exports = BrachistoPaths;

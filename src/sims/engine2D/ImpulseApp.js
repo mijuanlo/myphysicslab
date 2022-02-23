@@ -298,11 +298,32 @@ ImpulseApp.de_strings = {
   MASS1: 'Masse von Block1'
 };
 
+/**
+@private
+@type {ImpulseApp.i18n_strings}
+*/
+ImpulseApp.es_strings = {
+  NUM_BODIES: 'Número de objetos',
+  THRUST: 'Empuje',
+  BLOCK: 'Bloque',
+  MASS1: 'Masa del bloque1'
+};
+
 /** Set of internationalized strings.
 @type {ImpulseApp.i18n_strings}
 */
-ImpulseApp.i18n = goog.LOCALE === 'de' ? ImpulseApp.de_strings :
-    ImpulseApp.en;
+ImpulseApp.i18n = ImpulseApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ImpulseApp.i18n = ImpulseApp.de_strings;
+    break;
+  case 'es':
+    ImpulseApp.i18n = ImpulseApp.es_strings;
+    break;
+  default:
+    ImpulseApp.i18n = ImpulseApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

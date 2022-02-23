@@ -481,10 +481,36 @@ SingleSpringSim.de_strings = {
   FIXED_POINT: 'Festpunkt'
 };
 
+/**
+@private
+@type {SingleSpringSim.i18n_strings}
+*/
+SingleSpringSim.es_strings = {
+  ACCELERATION: 'Aceleración',
+  DAMPING: 'Amortiguación',
+  MASS: 'Masa',
+  POSITION: 'Posición',
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  VELOCITY: 'Velocidad',
+  WORK_FROM_DAMPING: 'Trabajo de amortiguación',
+  FIXED_POINT: 'Punto fijo'
+};
+
 /** Set of internationalized strings.
 @type {SingleSpringSim.i18n_strings}
 */
-SingleSpringSim.i18n = goog.LOCALE === 'de' ? SingleSpringSim.de_strings :
-    SingleSpringSim.en;
+SingleSpringSim.i18n = SingleSpringSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    SingleSpringSim.i18n = SingleSpringSim.de_strings;
+    break;
+  case 'es':
+    SingleSpringSim.i18n = SingleSpringSim.es_strings;
+    break;
+  default:
+    SingleSpringSim.i18n = SingleSpringSim.en;
+    break;
+};
 
 exports = SingleSpringSim;

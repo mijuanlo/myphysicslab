@@ -284,11 +284,32 @@ PendulumSpringApp.de_strings = {
   PENDULUM: 'Pendel'
 };
 
+/**
+@private
+@type {PendulumSpringApp.i18n_strings}
+*/
+PendulumSpringApp.es_strings = {
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  BLOCK: 'Bloque',
+  PENDULUM: 'Péndulo'
+};
+
 /** Set of internationalized strings.
 @type {PendulumSpringApp.i18n_strings}
 */
-PendulumSpringApp.i18n = goog.LOCALE === 'de' ? PendulumSpringApp.de_strings :
-    PendulumSpringApp.en;
+PendulumSpringApp.i18n = PendulumSpringApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    PendulumSpringApp.i18n = PendulumSpringApp.de_strings;
+    break;
+  case 'es':
+    PendulumSpringApp.i18n = PendulumSpringApp.es_strings;
+    break;
+  default:
+    PendulumSpringApp.i18n = PendulumSpringApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

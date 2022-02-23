@@ -670,10 +670,37 @@ SimRunner.de_strings = {
   STUCK: 'Simulation hat sich aufgehängt; drücken Sie Neustart und Weiter um fort zu fahren.'
 };
 
+/**
+@private
+@type {SimRunner.i18n_strings}
+*/
+SimRunner.es_strings = {
+  TIME_STEP: 'Paso de tiempo',
+  DISPLAY_PERIOD: 'Periodo de refresco',
+  RESTART: 'Reiniciar',
+  RUNNING: 'en marcha',
+  FIRING: 'disparando',
+  PAUSE: 'pausa',
+  RESUME: 'continuar',
+  NON_STOP: 'no parar',
+  STEP: 'paso',
+  STUCK: 'La simulación está atrancada; presiona Reset y Play para continuar.'
+};
+
 /** Set of internationalized strings.
 @type {SimRunner.i18n_strings}
 */
-SimRunner.i18n = goog.LOCALE === 'de' ? SimRunner.de_strings :
-    SimRunner.en;
+SimRunner.i18n = SimRunner.en;
+switch(goog.LOCALE) {
+  case 'de':
+    SimRunner.i18n = SimRunner.de_strings;
+    break;
+  case 'es':
+    SimRunner.i18n = SimRunner.es_strings;
+    break;
+  default:
+    SimRunner.i18n = SimRunner.en;
+    break;
+};
 
 exports = SimRunner;

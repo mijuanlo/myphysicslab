@@ -237,11 +237,30 @@ MutualAttractApp.de_strings = {
   OBJECTS: 'Körpern'
 };
 
+/**
+@private
+@type {MutualAttractApp.i18n_strings}
+*/
+MutualAttractApp.es_strings = {
+  NUMBER_BODIES: 'Número de cuerpos',
+  OBJECTS: 'Cuerpos'
+};
+
 /** Set of internationalized strings.
 @type {MutualAttractApp.i18n_strings}
 */
-MutualAttractApp.i18n = goog.LOCALE === 'de' ? MutualAttractApp.de_strings :
-    MutualAttractApp.en;
+MutualAttractApp.i18n = MutualAttractApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    MutualAttractApp.i18n = MutualAttractApp.de_strings;
+    break;
+  case 'es':
+    MutualAttractApp.i18n = MutualAttractApp.es_strings;
+    break;
+  default:
+    MutualAttractApp.i18n = MutualAttractApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

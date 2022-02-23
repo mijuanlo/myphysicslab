@@ -160,10 +160,32 @@ GearsConfig.de_strings = {
   TWO_GEARS: 'zwei Zahnräder'
 };
 
+/**
+@private
+@type {GearsConfig.i18n_strings}
+*/
+GearsConfig.es_strings = {
+  LEFT_GEAR: 'Engranaje izquierdo',
+  RIGHT_GEAR: 'Engranaje derecho',
+  PINNED_GEARS: 'Engranajes fijos',
+  TURNING_FORCE: 'Fuerza de giro',
+  TWO_GEARS: 'dos engranajes'
+};
+
 /** Set of internationalized strings.
 @type {GearsConfig.i18n_strings}
 */
-GearsConfig.i18n = goog.LOCALE === 'de' ? GearsConfig.de_strings :
-    GearsConfig.en;
+GearsConfig.i18n = GearsConfig.en;
+switch(goog.LOCALE) {
+  case 'de':
+    GearsConfig.i18n = GearsConfig.de_strings;
+    break;
+  case 'es':
+    GearsConfig.i18n = GearsConfig.es_strings;
+    break;
+  default:
+    GearsConfig.i18n = GearsConfig.en;
+    break;
+};
 
 exports = GearsConfig;

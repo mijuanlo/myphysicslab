@@ -985,10 +985,32 @@ TabLayout.de_strings = {
   SHOW_TERMINAL: 'zeige Terminal'
 };
 
+/**
+@private
+@type {TabLayout.i18n_strings}
+*/
+TabLayout.es_strings = {
+  SIM_WIDTH: 'Ancho del simulador',
+  GRAPH_WIDTH: 'Ancho del gráfico',
+  TIME_GRAPH_WIDTH: 'Ancho del gráfico de tiempo',
+  LAYOUT: 'disposición',
+  SHOW_TERMINAL: 'mostrar terminal'
+};
+
 /** Set of internationalized strings.
 @type {TabLayout.i18n_strings}
 */
-TabLayout.i18n = goog.LOCALE === 'de' ? TabLayout.de_strings :
-    TabLayout.en;
+TabLayout.i18n = TabLayout.en;
+switch(goog.LOCALE) {
+  case 'de':
+    TabLayout.i18n = TabLayout.de_strings;
+    break;
+  case 'es':
+    TabLayout.i18n = TabLayout.es_strings;
+    break;
+  default:
+    TabLayout.i18n = TabLayout.en;
+    break;
+};
 
 exports = TabLayout;

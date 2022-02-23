@@ -307,10 +307,34 @@ StringShapes.de_strings = {
   TRIANGLE_PULSE: 'Dreieck Puls'
 };
 
+/**
+@private
+@type {StringShapes.i18n_strings}
+*/
+StringShapes.es_strings = {
+  FLAT: 'Plano',
+  MULTI_SINE: 'Seno múltiple',
+  HALF_SINE_PULSE: 'Pulso medio seno',
+  SINE_PULSE: 'Pulso seno',
+  SQUARE_PULSE: 'Pulso cuadrado',
+  TRIANGLE: 'Trianguar',
+  TRIANGLE_PULSE: 'Pulso triangular'
+};
+
 /** Set of internationalized strings.
 @type {StringShapes.i18n_strings}
 */
-StringShapes.i18n = goog.LOCALE === 'de' ? StringShapes.de_strings :
-    StringShapes.en;
+StringShapes.i18n = StringShapes.en;
+switch(goog.LOCALE) {
+  case 'de':
+    StringShapes.i18n = StringShapes.de_strings;
+    break;
+  case 'es':
+    StringShapes.i18n = StringShapes.es_strings;
+    break;
+  default:
+    StringShapes.i18n = StringShapes.en;
+    break;
+};
 
 exports = StringShapes;

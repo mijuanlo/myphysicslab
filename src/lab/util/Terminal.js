@@ -1566,11 +1566,29 @@ Terminal.de_strings = {
   FORGET: 'vergessen'
 };
 
+/**
+@private
+@type {Terminal.i18n_strings}
+*/
+Terminal.es_strings = {
+  REMEMBER: 'recordar',
+  FORGET: 'olvidar'
+};
+
 /** Set of internationalized strings.
 @type {Terminal.i18n_strings}
 */
-Terminal.i18n = goog.LOCALE === 'de' ?
-    Terminal.de_strings :
-    Terminal.en;
+Terminal.i18n = Terminal.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Terminal.i18n = Terminal.de_strings;
+    break;
+  case 'es':
+    Terminal.i18n = Terminal.es_strings;
+    break;
+  default:
+    Terminal.i18n = Terminal.en;
+    break;
+};
 
 exports = Terminal;

@@ -747,11 +747,37 @@ Molecule5App.de_strings = {
   SHOW_NAMES: 'zeige Namen'
 };
 
+/**
+@private
+@type {Molecule5App.i18n_strings}
+*/
+Molecule5App.es_strings = {
+  MASS: 'Masa',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidez del muelle',
+  NUM_ATOMS: 'número de átomos',
+  SHOW_SPRINGS: 'mostrar muelles',
+  NON_LINEAR_SPRINGS: 'muelles no lineales',
+  KE_HIGH_PCT: 'Mayor percentil cinético',
+  SHOW_KE_HIGH: 'mostrar mayor percentil cinético',
+  SHOW_NAMES: 'mostrar nombres'
+};
+
 /** Set of internationalized strings.
 @type {Molecule5App.i18n_strings}
 */
-Molecule5App.i18n = goog.LOCALE === 'de' ? Molecule5App.de_strings :
-    Molecule5App.en;
+Molecule5App.i18n = Molecule5App.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Molecule5App.i18n = Molecule5App.de_strings;
+    break;
+  case 'es':
+    Molecule5App.i18n = Molecule5App.es_strings;
+    break;
+  default:
+    Molecule5App.i18n = Molecule5App.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

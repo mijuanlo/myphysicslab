@@ -290,10 +290,34 @@ PendulumClockConfig.de_strings = {
   GEAR: 'Zahnrad'
 };
 
+/**
+@private
+@type {PendulumClockConfig.i18n_strings}
+*/
+PendulumClockConfig.es_strings = {
+  ANCHOR: 'Ancla',
+  ESCAPE_WHEEL: 'Engranaje de escape',
+  EXTRA_BODY: 'cuerpo adicional',
+  PENDULUM_LENGTH: 'Longitud del péndulo',
+  TURNING_FORCE: 'Fuerza de giro',
+  WITH_GEARS: 'con engranajes',
+  GEAR: 'Engranaje'
+};
+
 /** Set of internationalized strings.
 @type {PendulumClockConfig.i18n_strings}
 */
-PendulumClockConfig.i18n = goog.LOCALE === 'de' ? PendulumClockConfig.de_strings :
-    PendulumClockConfig.en;
+PendulumClockConfig.i18n = PendulumClockConfig.en;
+switch(goog.LOCALE) {
+  case 'de':
+    PendulumClockConfig.i18n = PendulumClockConfig.de_strings;
+    break;
+  case 'es':
+    PendulumClockConfig.i18n = PendulumClockConfig.es_strings;
+    break;
+  default:
+    PendulumClockConfig.i18n = PendulumClockConfig.en;
+    break;
+};
 
 exports = PendulumClockConfig;

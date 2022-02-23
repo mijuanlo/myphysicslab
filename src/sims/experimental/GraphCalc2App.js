@@ -390,11 +390,29 @@ GraphCalc2App.de_strings = {
   B_PARAM: 'b'
 };
 
+/**
+@private
+@type {GraphCalc2App.i18n_strings}
+*/
+GraphCalc2App.es_strings = {
+  B_PARAM: 'b'
+};
+
 /** Set of internationalized strings.
 @type {GraphCalc2App.i18n_strings}
 */
-GraphCalc2App.i18n = goog.LOCALE === 'de' ? GraphCalc2App.de_strings :
-    GraphCalc2App.en;
+GraphCalc2App.i18n = GraphCalc2App.en;
+switch(goog.LOCALE) {
+  case 'de':
+    GraphCalc2App.i18n = GraphCalc2App.de_strings;
+    break;
+  case 'es':
+    GraphCalc2App.i18n = GraphCalc2App.es_strings;
+    break;
+  default:
+    GraphCalc2App.i18n = GraphCalc2App.en;
+    break;
+};
 
 /**
 * @param {!GraphCalc2App.elementIds} elem_ids

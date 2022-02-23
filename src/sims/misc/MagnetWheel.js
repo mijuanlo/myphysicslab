@@ -362,10 +362,28 @@ MagnetWheel.de_strings = {
   MAGNET_WHEEL: 'MagnetRad'
 };
 
+/**
+@private
+@type {MagnetWheel.i18n_strings}
+*/
+MagnetWheel.es_strings = {
+  MAGNET_WHEEL: 'Rueda Magnética'
+};
+
 /** Set of internationalized strings.
 @type {MagnetWheel.i18n_strings}
 */
-MagnetWheel.i18n = goog.LOCALE === 'de' ? MagnetWheel.de_strings :
-    MagnetWheel.en;
+MagnetWheel.i18n = MagnetWheel.en;
+switch(goog.LOCALE) {
+  case 'de':
+    MagnetWheel.i18n = MagnetWheel.de_strings;
+    break;
+  case 'es':
+    MagnetWheel.i18n = MagnetWheel.es_strings;
+    break;
+  default:
+    MagnetWheel.i18n = MagnetWheel.en;
+    break;
+};
 
 exports = MagnetWheel;

@@ -656,10 +656,35 @@ SimView.de_strings = {
   ASPECT_RATIO: 'Querschnittsverhältnis'
 };
 
+/**
+@private
+@type {SimView.i18n_strings}
+*/
+SimView.es_strings = {
+  SCALE_TOGETHER: 'Escalar X-Y juntos',
+  WIDTH: 'Ancho',
+  HEIGHT: 'Alto',
+  CENTER_X: 'Centrado en X',
+  CENTER_Y: 'Centrado en Y',
+  VERTICAL_ALIGN: 'Alineamiento vertical',
+  HORIZONTAL_ALIGN: 'Alineamiento horizontal',
+  ASPECT_RATIO: 'Relación de aspecto'
+};
+
 /** Set of internationalized strings.
 @type {SimView.i18n_strings}
 */
-SimView.i18n = goog.LOCALE === 'de' ? SimView.de_strings :
-    SimView.en;
+SimView.i18n = SimView.en;
+switch(goog.LOCALE) {
+  case 'de':
+    SimView.i18n = SimView.de_strings;
+    break;
+  case 'es':
+    SimView.i18n = SimView.es_strings;
+    break;
+  default:
+    SimView.i18n = SimView.en;
+    break;
+};
 
 exports = SimView;

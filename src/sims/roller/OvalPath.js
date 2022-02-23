@@ -155,10 +155,28 @@ OvalPath.de_strings = {
   NAME: 'Oval'
 };
 
+/**
+@private
+@type {OvalPath.i18n_strings}
+*/
+OvalPath.es_strings = {
+  NAME: 'Oval'
+};
+
 /** Set of internationalized strings.
 @type {OvalPath.i18n_strings}
 */
-OvalPath.i18n = goog.LOCALE === 'de' ? OvalPath.de_strings :
-    OvalPath.en;
+OvalPath.i18n = OvalPath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    OvalPath.i18n = OvalPath.de_strings;
+    break;
+  case 'es':
+    OvalPath.i18n = OvalPath.es_strings;
+    break;
+  default:
+    OvalPath.i18n = OvalPath.en;
+    break;
+};
 
 exports = OvalPath;

@@ -145,10 +145,31 @@ Walls.de_strings = {
   WALL_TOP: 'Wand oben'
 };
 
+/**
+@private
+@type {Walls.i18n_strings}
+*/
+Walls.es_strings = {
+  WALL_BOTTOM: 'Fondo del muro',
+  WALL_RIGHT: 'Derecha del muro',
+  WALL_LEFT: 'Izquierda del muro',
+  WALL_TOP: 'Cabecera del muro'
+};
+
 /** Set of internationalized strings.
 @type {Walls.i18n_strings}
 */
-Walls.i18n = goog.LOCALE === 'de' ? Walls.de_strings :
-    Walls.en;
+Walls.i18n = Walls.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Walls.i18n = Walls.de_strings;
+    break;
+  case 'es':
+    Walls.i18n = Walls.es_strings;
+    break;
+  default:
+    Walls.i18n = Walls.en;
+    break;
+};
 
 exports = Walls;

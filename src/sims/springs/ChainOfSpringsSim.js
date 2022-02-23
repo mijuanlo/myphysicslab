@@ -631,10 +631,45 @@ ChainOfSpringsSim.de_strings = {
   ATTACH_RIGHT: 'rechts festmachen'
 };
 
+/**
+@private
+@type {ChainOfSpringsSim.i18n_strings}
+*/
+ChainOfSpringsSim.es_strings = {
+  BALL: 'Bola',
+  ANCHOR1_X: 'Ancla1 X',
+  ANCHOR1_Y: 'Ancla1 Y',
+  ANCHOR2_X: 'Ancla2 X',
+  ANCHOR2_Y: 'Ancla2 Y',
+  NUM_LINKS: 'Número enlaces',
+  X_POSITION: 'Posición X',
+  Y_POSITION: 'Posición Y',
+  X_VELOCITY: 'Velocidad X',
+  Y_VELOCITY: 'Velocidad Y',
+  DAMPING: 'Amortiguación',
+  SPRING_DAMPING: 'Amortiguación del muelle',
+  GRAVITY: 'Gravedad',
+  MASS: 'Massa',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidez',
+  STRAIGHT_LINE: 'Línea recta',
+  ATTACH_RIGHT: 'Adjuntar a la derecha'
+};
+
 /** Set of internationalized strings.
 @type {ChainOfSpringsSim.i18n_strings}
 */
-ChainOfSpringsSim.i18n = goog.LOCALE === 'de' ? ChainOfSpringsSim.de_strings :
-    ChainOfSpringsSim.en;
+ChainOfSpringsSim.i18n = ChainOfSpringsSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ChainOfSpringsSim.i18n = ChainOfSpringsSim.de_strings;
+    break;
+  case 'es':
+    ChainOfSpringsSim.i18n = ChainOfSpringsSim.es_strings;
+    break;
+  default:
+    ChainOfSpringsSim.i18n = ChainOfSpringsSim.en;
+    break;
+};
 
 exports = ChainOfSpringsSim;

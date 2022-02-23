@@ -185,7 +185,7 @@ endif
 
 # if LOCALE is not specified, then build all locale versions
 ifndef LOCALE
-    LOCALE := en de
+    LOCALE := en de es
 endif
 
 biketimer: $(foreach loc,$(LOCALE),$(BUILD_DIR)/sims/experimental/BikeTimerApp-$(loc).html )
@@ -619,6 +619,10 @@ apps_js_de := $(addsuffix -de.js,$(bld_apps)) $(addsuffix -de.js,$(bld_combos))
 $(apps_js_de): $(BUILD_DIR)/%-de.js : src/%.js
 	./compile_js.sh $< $@ $(GOOG_DEBUG) $(UTIL_DEBUG) $(COMPILE_LEVEL)
 
+apps_js_es := $(addsuffix -es.js,$(bld_apps)) $(addsuffix -es.js,$(bld_combos))
+$(apps_js_es): $(BUILD_DIR)/%-es.js : src/%.js
+	./compile_js.sh $< $@ $(GOOG_DEBUG) $(UTIL_DEBUG) $(COMPILE_LEVEL)
+
 # Extra requirements for UnitTest
 $(BUILD_DIR)/test/UnitTest*.js : src/sims/roller/test/*.js \
 src/sims/springs/test/*.js \
@@ -641,6 +645,9 @@ $(BUILD_DIR)/%-en.html : src/%.html src/index_order.txt $(macros_req) | settings
 	./prep_html.pl $< $@ src/index_order.txt $(COMPILE_LEVEL)
 
 $(BUILD_DIR)/%-de.html : src/%.html src/index_order.txt $(macros_req) | settings $(BUILD_DIR)/deps.js $(build_images) $(bld_css)
+	./prep_html.pl $< $@ src/index_order.txt $(COMPILE_LEVEL)
+
+$(BUILD_DIR)/%-es.html : src/%.html src/index_order.txt $(macros_req) | settings $(BUILD_DIR)/deps.js $(build_images) $(bld_css)
 	./prep_html.pl $< $@ src/index_order.txt $(COMPILE_LEVEL)
 
 else
@@ -675,9 +682,12 @@ $(BUILD_DIR)/%-en.html : src/%.html src/index_order.txt $(macros_req) | settings
 
 $(BUILD_DIR)/%-de.html : src/%.html src/index_order.txt $(macros_req) | settings $(BUILD_DIR)/%-de.js $(build_images) $(bld_css)
 	./prep_html.pl $< $@ src/index_order.txt $(COMPILE_LEVEL)
+
+$(BUILD_DIR)/%-es.html : src/%.html src/index_order.txt $(macros_req) | settings $(BUILD_DIR)/%-es.js $(build_images) $(bld_css)
+	./prep_html.pl $< $@ src/index_order.txt $(COMPILE_LEVEL)
 endif
 
-index_files := $(BUILD_DIR)/index-en.html $(BUILD_DIR)/index-de.html
+index_files := $(BUILD_DIR)/index-en.html $(BUILD_DIR)/index-de.html $(BUILD_DIR)/index-es.html
 $(index_files): $(BUILD_DIR)/index-%.html : src/index.html src/macros.html
 	@mkdir -v -p $(dir $@)
 	./prep_html.pl $< $@ "" $(COMPILE_LEVEL)
@@ -743,9 +753,11 @@ apps-en: $(BUILD_DIR)/index-en.html $(addsuffix -en.html,$(bld_apps))
 
 apps-de: $(BUILD_DIR)/index-de.html $(addsuffix -de.html,$(bld_apps))
 
-apps: apps-en apps-de
+apps-es: $(BUILD_DIR)/index-es.html $(addsuffix -es.html,$(bld_apps))
 
-combos: $(addsuffix -en.js,$(bld_combos)) $(addsuffix -de.js,$(bld_combos))
+apps: apps-en apps-de apps-es
+
+combos: $(addsuffix -en.js,$(bld_combos)) $(addsuffix -de.js,$(bld_combos)) $(addsuffix -es.js,$(bld_combos))
 
 deps: $(BUILD_DIR)/deps.js
 
@@ -765,6 +777,7 @@ help:
 	@echo "apps        Make all applications, tests"
 	@echo "apps-de     Make German versions of apps"
 	@echo "apps-en     Make English versions of apps"
+	@echo "apps-es     Make Spanish versions of apps"
 	@echo "clean       Deletes build directory"
 	@echo "compiler    Shows options for closure compiler"
 	@echo "deps        Calculate dependencies needed for running uncompiled"

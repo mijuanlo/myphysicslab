@@ -327,11 +327,34 @@ CurvedTestApp.de_strings = {
   FIX_BLOCK: 'Festblock'
 };
 
+/**
+@private
+@type {CurvedTestApp.i18n_strings}
+*/
+CurvedTestApp.es_strings = {
+  NUM_BODIES: 'Número de objetos',
+  THRUST: 'Empuje',
+  BALL: 'Bola',
+  BLOCK: 'Bloque',
+  FIX_BALL: 'Bola fija',
+  FIX_BLOCK: 'Bloque fijo'
+};
+
 /** Set of internationalized strings.
 @type {CurvedTestApp.i18n_strings}
 */
-CurvedTestApp.i18n = goog.LOCALE === 'de' ? CurvedTestApp.de_strings :
-    CurvedTestApp.en;
+CurvedTestApp.i18n = CurvedTestApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CurvedTestApp.i18n = CurvedTestApp.de_strings;
+    break;
+  case 'es':
+    CurvedTestApp.i18n = CurvedTestApp.es_strings;
+    break;
+  default:
+    CurvedTestApp.i18n = CurvedTestApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

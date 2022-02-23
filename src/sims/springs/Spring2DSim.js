@@ -497,10 +497,39 @@ Spring2DSim.de_strings = {
   REST_STATE: 'ruhe Zustand'
 };
 
+/**
+@private
+@type {Spring2DSim.i18n_strings}
+*/
+Spring2DSim.es_strings = {
+  ANCHOR_X: 'Ancla X',
+  ANCHOR_Y: 'Ancla Y',
+  X_POSITION: 'Posición X',
+  Y_POSITION: 'Posición Y',
+  X_VELOCITY: 'Velocidad X',
+  Y_VELOCITY: 'Velocidad Y',
+  DAMPING: 'Amortiguación',
+  GRAVITY: 'Gravedad',
+  MASS: 'Masa',
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  REST_STATE: 'estado de reposo'
+};
+
 /** Set of internationalized strings.
 @type {Spring2DSim.i18n_strings}
 */
-Spring2DSim.i18n = goog.LOCALE === 'de' ? Spring2DSim.de_strings :
-    Spring2DSim.en;
+Spring2DSim.i18n = Spring2DSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Spring2DSim.i18n = Spring2DSim.de_strings;
+    break;
+  case 'es':
+    Spring2DSim.i18n = Spring2DSim.es_strings;
+    break;
+  default:
+    Spring2DSim.i18n = Spring2DSim.en;
+    break;
+};
 
 exports = Spring2DSim;

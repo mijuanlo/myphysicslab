@@ -75,10 +75,28 @@ FlatPath.de_strings = {
   NAME: 'Horizontale'
 };
 
+/**
+@private
+@type {FlatPath.i18n_strings}
+*/
+FlatPath.es_strings = {
+  NAME: 'Horizontal'
+};
+
 /** Set of internationalized strings.
 @type {FlatPath.i18n_strings}
 */
-FlatPath.i18n = goog.LOCALE === 'de' ? FlatPath.de_strings :
-    FlatPath.en;
+FlatPath.i18n = FlatPath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    FlatPath.i18n = FlatPath.de_strings;
+    break;
+  case 'es':
+    FlatPath.i18n = FlatPath.es_strings;
+    break;
+  default:
+    FlatPath.i18n = FlatPath.en;
+    break;
+};
 
 exports = FlatPath;

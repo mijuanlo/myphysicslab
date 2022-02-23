@@ -319,11 +319,28 @@ Gravity2Law.de_strings = {
   GRAVITY: 'Gravitation'
 };
 
+/**
+@private
+@type {Gravity2Law.i18n_strings}
+*/
+Gravity2Law.es_strings = {
+  GRAVITY: 'Gravedad'
+};
+
 /** Set of internationalized strings.
 @type {Gravity2Law.i18n_strings}
 */
-Gravity2Law.i18n = goog.LOCALE === 'de' ?
-    Gravity2Law.de_strings :
-    Gravity2Law.en;
+Gravity2Law.i18n = Gravity2Law.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Gravity2Law.i18n = Gravity2Law.de_strings;
+    break;
+  case 'es':
+    Gravity2Law.i18n = Gravity2Law.es_strings;
+    break;
+  default:
+    Gravity2Law.i18n = Gravity2Law.en;
+    break;
+};
 
 exports = Gravity2Law;

@@ -308,11 +308,32 @@ ContactApp.de_strings = {
   MASS1: 'Masse von Block1'
 };
 
+/**
+@private
+@type {ContactApp.i18n_strings}
+*/
+ContactApp.es_strings = {
+  NUM_BODIES: 'Número de objetos',
+  THRUST: 'Empuje',
+  BLOCK: 'Bloque',
+  MASS1: 'Masa del bloque 1'
+};
+
 /** Set of internationalized strings.
 @type {ContactApp.i18n_strings}
 */
-ContactApp.i18n = goog.LOCALE === 'de' ? ContactApp.de_strings :
-    ContactApp.en;
+ContactApp.i18n = ContactApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ContactApp.i18n = ContactApp.de_strings;
+    break;
+  case 'es':
+    ContactApp.i18n = ContactApp.es_strings;
+    break;
+  default:
+    ContactApp.i18n = ContactApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

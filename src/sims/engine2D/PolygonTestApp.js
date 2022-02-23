@@ -327,11 +327,38 @@ PolygonTestApp.de_strings = {
   BALL_IN_BOX: 'Ball im Hohlblock'
 };
 
+/**
+@private
+@type {PolygonTestApp.i18n_strings}
+*/
+PolygonTestApp.es_strings = {
+  NUM_BODIES: 'Número de cuerpos',
+  THRUST: 'Empuje',
+  ROUND_CORNER: 'Esquina redondeada',
+  PIE_WEDGE: 'Cuña de pastel',
+  HEXAGON: 'Hexágono',
+  L_SHAPE: 'Forma-L',
+  BALL: 'Bola',
+  BLOCK: 'Bloque',
+  HOLLOW_BOX: 'Caja hueca',
+  BALL_IN_BOX: 'Bola en caja'
+};
+
 /** Set of internationalized strings.
 @type {PolygonTestApp.i18n_strings}
 */
-PolygonTestApp.i18n = goog.LOCALE === 'de' ? PolygonTestApp.de_strings :
-    PolygonTestApp.en;
+PolygonTestApp.i18n = PolygonTestApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    PolygonTestApp.i18n = PolygonTestApp.de_strings;
+    break;
+  case 'es':
+    PolygonTestApp.i18n = PolygonTestApp.es_strings;
+    break;
+  default:
+    PolygonTestApp.i18n = PolygonTestApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

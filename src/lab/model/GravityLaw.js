@@ -272,10 +272,29 @@ GravityLaw.de_strings = {
   ZERO_ENERGY: 'Null-Energie Level'
 };
 
+/**
+@private
+@type {GravityLaw.i18n_strings}
+*/
+GravityLaw.es_strings = {
+  GRAVITY: 'Gravedad',
+  ZERO_ENERGY: 'Nivel de energía nula'
+};
+
 /** Set of internationalized strings.
 @type {GravityLaw.i18n_strings}
 */
-GravityLaw.i18n = goog.LOCALE === 'de' ? GravityLaw.de_strings :
-    GravityLaw.en;
+GravityLaw.i18n = GravityLaw.en;
+switch(goog.LOCALE) {
+  case 'de':
+    GravityLaw.i18n = GravityLaw.de_strings;
+    break;
+  case 'es':
+    GravityLaw.i18n = GravityLaw.es_strings;
+    break;
+  default:
+    GravityLaw.i18n = GravityLaw.en;
+    break;
+};
 
 exports = GravityLaw;

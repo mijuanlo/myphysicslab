@@ -632,10 +632,39 @@ PendulumSim.de_strings = {
   TIME: 'Zeit'
 };
 
+/**
+@private
+@type {PendulumSim.i18n_strings}
+*/
+PendulumSim.es_strings = {
+  DRIVE_AMPLITUDE: 'Amplitud del accionamiento',
+  ANGLE: 'Ángulo',
+  ANGULAR_ACCEL: 'Aceleración angular',
+  ANGULAR_VELOCITY: 'Velocidad angular',
+  DAMPING: 'Amortiguación',
+  DRIVE_FREQUENCY: 'Frecuencia del accionamiento',
+  GRAVITY: 'Gravedad',
+  LENGTH: 'Longitud',
+  LIMIT_ANGLE: 'Ángulo límite',
+  MASS: 'Masa',
+  TIME: 'Tiempo'
+};
+
 /** Set of internationalized strings.
 @type {PendulumSim.i18n_strings}
 */
-PendulumSim.i18n = goog.LOCALE === 'de' ? PendulumSim.de_strings :
-    PendulumSim.en;
+PendulumSim.i18n = PendulumSim.en;
+
+switch(goog.LOCALE) {
+  case 'de':
+    PendulumSim.i18n = PendulumSim.de_strings;
+    break;
+  case 'es':
+    PendulumSim.i18n = PendulumSim.es_strings;
+    break;
+  default:
+    PendulumSim.i18n = PendulumSim.en;
+    break;
+};
 
 exports = PendulumSim;

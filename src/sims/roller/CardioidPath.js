@@ -107,10 +107,28 @@ CardioidPath.de_strings = {
   NAME: 'Cardioid'
 };
 
+/**
+@private
+@type {CardioidPath.i18n_strings}
+*/
+CardioidPath.es_strings = {
+  NAME: 'Cardioide'
+};
+
 /** Set of internationalized strings.
 @type {CardioidPath.i18n_strings}
 */
-CardioidPath.i18n = goog.LOCALE === 'de' ? CardioidPath.de_strings :
-    CardioidPath.en;
+CardioidPath.i18n = CardioidPath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CardioidPath.i18n = CardioidPath.de_strings;
+    break;
+  case 'es':
+    CardioidPath.i18n = CardioidPath.es_strings;
+    break;
+  default:
+    CardioidPath.i18n = CardioidPath.en;
+    break;
+};
 
 exports = CardioidPath;

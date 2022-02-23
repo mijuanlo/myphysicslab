@@ -275,10 +275,29 @@ DampingLaw.de_strings = {
   ROTATE_RATIO: 'Drehquotient'
 };
 
+/**
+@private
+@type {DampingLaw.i18n_strings}
+*/
+DampingLaw.es_strings = {
+  DAMPING: 'Amortiguamiento',
+  ROTATE_RATIO: 'Relación de rotación'
+};
+
 /** Set of internationalized strings.
 @type {DampingLaw.i18n_strings}
 */
-DampingLaw.i18n = goog.LOCALE === 'de' ? DampingLaw.de_strings :
-    DampingLaw.en;
+DampingLaw.i18n = DampingLaw.en;
+switch(goog.LOCALE) {
+  case 'de':
+    DampingLaw.i18n = DampingLaw.de_strings;
+    break;
+  case 'es':
+    DampingLaw.i18n = DampingLaw.es_strings;
+    break;
+  default:
+    DampingLaw.i18n = DampingLaw.en;
+    break;
+};
 
 exports = DampingLaw;

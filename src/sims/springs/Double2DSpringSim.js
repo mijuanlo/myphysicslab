@@ -583,10 +583,40 @@ Double2DSpringSim.de_strings = {
   REST_STATE: 'ruhe Zustand'
 };
 
+/**
+@private
+@type {Double2DSpringSim.i18n_strings}
+*/
+Double2DSpringSim.es_strings = {
+  ANCHOR_X: 'Ancla X',
+  ANCHOR_Y: 'Ancla Y',
+  X_POSITION: 'Posición X',
+  Y_POSITION: 'Posición Y',
+  X_VELOCITY: 'Velocidad X',
+  Y_VELOCITY: 'Velocidad Y',
+  DAMPING: 'Amortiguación',
+  GRAVITY: 'Gravedad',
+  MASS1: 'Masa 1',
+  MASS2: 'Masa 2',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidez',
+  REST_STATE: 'estado de reposo'
+};
+
 /** Set of internationalized strings.
 @type {Double2DSpringSim.i18n_strings}
 */
-Double2DSpringSim.i18n = goog.LOCALE === 'de' ? Double2DSpringSim.de_strings :
-    Double2DSpringSim.en;
+Double2DSpringSim.i18n = Double2DSpringSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Double2DSpringSim.i18n = Double2DSpringSim.de_strings;
+    break;
+  case 'es':
+    Double2DSpringSim.i18n = Double2DSpringSim.es_strings;
+    break;
+  default:
+    Double2DSpringSim.i18n = Double2DSpringSim.en;
+    break;
+};
 
 exports = Double2DSpringSim;

@@ -834,10 +834,45 @@ MoveableDoublePendulumSim.de_strings = {
   ANCHOR_Y_VELOCITY: 'Anker Y Geschwindigkeit'
 };
 
+/**
+@private
+@type {MoveableDoublePendulumSim.i18n_strings}
+*/
+MoveableDoublePendulumSim.es_strings = {
+  DRIVE_AMPLITUDE: 'Amplitud de accionamiento',
+  ANGLE_1: 'Ángulo 1',
+  ANGULAR_VELOCITY_1: 'Velocidad ángular 1',
+  ANGLE_2: 'Ángulo 2',
+  ANGULAR_VELOCITY_2: 'Velocidad ángular 2',
+  DAMPING: 'Amortiguación',
+  DRIVE_FREQUENCY: 'Frecuencia de accionamiento',
+  GRAVITY: 'Gravedad',
+  LENGTH_1: 'Longitud 1',
+  LENGTH_2: 'Longitud 2',
+  MASS_1: 'Masa 1',
+  MASS_2: 'Masa 2',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  ANCHOR_DAMPING: 'Amortiguación del ancla',
+  ANCHOR_X: 'Ancla X',
+  ANCHOR_X_VELOCITY: 'Velocidad ancla X',
+  ANCHOR_Y: 'Ancla Y',
+  ANCHOR_Y_VELOCITY: 'Velocidad ancla Y'
+};
+
 /** Set of internationalized strings.
 @type {MoveableDoublePendulumSim.i18n_strings}
 */
-MoveableDoublePendulumSim.i18n = goog.LOCALE === 'de' ?
-    MoveableDoublePendulumSim.de_strings : MoveableDoublePendulumSim.en;
+MoveableDoublePendulumSim.i18n = MoveableDoublePendulumSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    MoveableDoublePendulumSim.i18n = MoveableDoublePendulumSim.de_strings;
+    break;
+  case 'es':
+    MoveableDoublePendulumSim.i18n = MoveableDoublePendulumSim.es_strings;
+    break;
+  default:
+    MoveableDoublePendulumSim.i18n = MoveableDoublePendulumSim.en;
+    break;
+};
 
 exports = MoveableDoublePendulumSim;

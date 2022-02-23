@@ -506,10 +506,35 @@ CommonControls.de_strings = {
   BLACK_WITH_LONG_TRAILS: 'schwarz mit lange Pfade'
 };
 
+/**
+@private
+@type {CommonControls.i18n_strings}
+*/
+CommonControls.es_strings = {
+  PAN_ZOOM: 'panorama zoom',
+  BACKGROUND: 'Fondo',
+  WHITE: 'blanco',
+  BLACK: 'negro',
+  WHITE_WITH_TRAILS: 'blanco con trazas',
+  BLACK_WITH_TRAILS: 'negro con trazas',
+  WHITE_WITH_LONG_TRAILS: 'blanco con trazas largas',
+  BLACK_WITH_LONG_TRAILS: 'negro con trazas largas'
+};
+
 /** Set of internationalized strings.
 @type {CommonControls.i18n_strings}
 */
-CommonControls.i18n = goog.LOCALE === 'de' ? CommonControls.de_strings :
-    CommonControls.en;
+CommonControls.i18n = CommonControls.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CommonControls.i18n = CommonControls.de_strings;
+    break;
+  case 'es':
+    CommonControls.i18n = CommonControls.es_strings;
+    break;
+  default:
+    CommonControls.i18n = CommonControls.en;
+    break;
+};
 
 exports = CommonControls;

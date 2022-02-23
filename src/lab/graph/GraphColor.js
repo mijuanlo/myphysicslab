@@ -167,10 +167,43 @@ GraphColor.de_strings = {
   YELLOW: 'Gelb'
 };
 
+/**
+@private
+@type {GraphColor.i18n_strings}
+*/
+GraphColor.es_strings = {
+  AQUA: 'Aguamarina',
+  BLACK: 'Negro',
+  BLUE: 'Azul',
+  FUCHSIA: 'Fucsia',
+  GRAY: 'Gris',
+  GREEN: 'Verde',
+  LIME: 'Lima',
+  MAROON: 'Granate',
+  NAVY: 'Azul marino',
+  OLIVE: 'Oliva',
+  PURPLE: 'Purpura',
+  RED: 'Rojo',
+  SILVER: 'Plata',
+  TEAL: 'Verde azulado',
+  WHITE: 'Blanco',
+  YELLOW: 'Amarillo'
+};
+
 /** Set of internationalized strings.
 @type {GraphColor.i18n_strings}
 */
-GraphColor.i18n = goog.LOCALE === 'de' ? GraphColor.de_strings :
-    GraphColor.en;
+GraphColor.i18n = GraphColor.en;
+switch(goog.LOCALE) {
+  case 'de':
+    GraphColor.i18n = GraphColor.de_strings;
+    break;
+  case 'es':
+    GraphColor.i18n = GraphColor.es_strings;
+    break;
+  default:
+    GraphColor.i18n = GraphColor.en;
+    break;
+};
 
 exports = GraphColor;

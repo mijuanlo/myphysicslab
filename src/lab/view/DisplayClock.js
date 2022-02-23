@@ -408,10 +408,28 @@ DisplayClock.de_strings = {
   SHOW_CLOCK: 'Zeit anzeigen'
 };
 
+/**
+@private
+@type {DisplayClock.i18n_strings}
+*/
+DisplayClock.es_strings = {
+  SHOW_CLOCK: 'Mostrar reloj'
+};
+
 /** Set of internationalized strings.
 @type {DisplayClock.i18n_strings}
 */
-DisplayClock.i18n = goog.LOCALE === 'de' ? DisplayClock.de_strings :
-    DisplayClock.en;
+DisplayClock.i18n = DisplayClock.en;
+switch(goog.LOCALE) {
+  case 'de':
+    DisplayClock.i18n = DisplayClock.de_strings;
+    break;
+  case 'es':
+    DisplayClock.i18n = DisplayClock.es_strings;
+    break;
+  default:
+    DisplayClock.i18n = DisplayClock.en;
+    break;
+};
 
 exports = DisplayClock;

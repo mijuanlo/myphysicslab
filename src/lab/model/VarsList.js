@@ -600,10 +600,28 @@ VarsList.de_strings = {
   TIME: 'Zeit'
 };
 
+/**
+@private
+@type {VarsList.i18n_strings}
+*/
+VarsList.es_strings = {
+  TIME: 'Tiempo'
+};
+
 /** Set of internationalized strings.
 @type {VarsList.i18n_strings}
 */
-VarsList.i18n = goog.LOCALE === 'de' ? VarsList.de_strings :
-    VarsList.en;
+VarsList.i18n = VarsList.en;
+switch(goog.LOCALE) {
+  case 'de':
+    VarsList.i18n = VarsList.de_strings;
+    break;
+  case 'es':
+    VarsList.i18n = VarsList.es_strings;
+    break;
+  default:
+    VarsList.i18n = VarsList.en;
+    break;
+};
 
 exports = VarsList;

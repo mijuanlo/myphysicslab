@@ -605,10 +605,37 @@ DoubleSpringSim.de_strings = {
   THIRD_SPRING: 'dritte Feder'
 };
 
+/**
+@private
+@type {DoubleSpringSim.i18n_strings}
+*/
+DoubleSpringSim.es_strings = {
+  ACCELERATION: 'Aceleración',
+  DAMPING: 'Amortiguación',
+  MASS1: 'Masa 1',
+  MASS2: 'Masa 2',
+  POSITION: 'Posición',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidez',
+  VELOCITY: 'Velocidad',
+  REST_STATE: 'estado de reposo',
+  THIRD_SPRING: 'tercer muelle'
+};
+
 /** Set of internationalized strings.
 @type {DoubleSpringSim.i18n_strings}
 */
-DoubleSpringSim.i18n = goog.LOCALE === 'de' ? DoubleSpringSim.de_strings :
-    DoubleSpringSim.en;
+DoubleSpringSim.i18n = DoubleSpringSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    DoubleSpringSim.i18n = DoubleSpringSim.de_strings;
+    break;
+  case 'es':
+    DoubleSpringSim.i18n = DoubleSpringSim.es_strings;
+    break;
+  default:
+    DoubleSpringSim.i18n = DoubleSpringSim.en;
+    break;
+};
 
 exports = DoubleSpringSim;

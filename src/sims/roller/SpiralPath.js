@@ -209,10 +209,28 @@ SpiralPath.de_strings = {
   NAME: 'Spirale'
 };
 
+/**
+@private
+@type {SpiralPath.i18n_strings}
+*/
+SpiralPath.es_strings = {
+  NAME: 'Espiral'
+};
+
 /** Set of internationalized strings.
 @type {SpiralPath.i18n_strings}
 */
-SpiralPath.i18n = goog.LOCALE === 'de' ? SpiralPath.de_strings :
-    SpiralPath.en;
+SpiralPath.i18n = SpiralPath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    SpiralPath.i18n = SpiralPath.de_strings;
+    break;
+  case 'es':
+    SpiralPath.i18n = SpiralPath.es_strings;
+    break;
+  default:
+    SpiralPath.i18n = SpiralPath.en;
+    break;
+};
 
 exports = SpiralPath;

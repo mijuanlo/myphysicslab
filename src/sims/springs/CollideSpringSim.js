@@ -646,10 +646,40 @@ CollideSpringSim.de_strings = {
   START_GAP: 'Anfangsabstand' // Anfangslücke'
 };
 
+/**
+@private
+@type {CollideSpringSim.i18n_strings}
+*/
+CollideSpringSim.es_strings = {
+  NUM_BLOCKS: 'Número de bloques',
+  POSITION: 'Posición',
+  VELOCITY: 'Velocidad',
+  DAMPING: 'Amortiguación',
+  SPRING_DAMPING: 'Amortiguación del muelle',
+  GRAVITY: 'Gravedad',
+  MASS: 'Masa',
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  START_POSITION: 'Posición inicial',
+  START_IN_MIDDLE: 'en la mitad',
+  START_ON_WALL: 'en el muro',
+  START_GAP: 'Espacio inicial'
+};
+
 /** Set of internationalized strings.
 @type {CollideSpringSim.i18n_strings}
 */
-CollideSpringSim.i18n = goog.LOCALE === 'de' ? CollideSpringSim.de_strings :
-    CollideSpringSim.en;
+CollideSpringSim.i18n = CollideSpringSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CollideSpringSim.i18n = CollideSpringSim.de_strings;
+    break;
+  case 'es':
+    CollideSpringSim.i18n = CollideSpringSim.es_strings;
+    break;
+  default:
+    CollideSpringSim.i18n = CollideSpringSim.en;
+    break;
+};
 
 exports = CollideSpringSim;

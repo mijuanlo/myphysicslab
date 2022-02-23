@@ -91,11 +91,29 @@ FastBallApp.de_strings = {
   FAST_BALL: 'schnell Ball'
 };
 
+/**
+@private
+@type {FastBallApp.i18n_strings}
+*/
+FastBallApp.es_strings = {
+  FAST_BALL: 'bola rápida'
+};
+
 /** Set of internationalized strings.
 @type {FastBallApp.i18n_strings}
 */
-FastBallApp.i18n = goog.LOCALE === 'de' ? FastBallApp.de_strings :
-    FastBallApp.en;
+FastBallApp.i18n = FastBallApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    FastBallApp.i18n = FastBallApp.de_strings;
+    break;
+  case 'es':
+    FastBallApp.i18n = FastBallApp.es_strings;
+    break;
+  default:
+    FastBallApp.i18n = FastBallApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

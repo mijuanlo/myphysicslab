@@ -157,10 +157,28 @@ DiffEqSolverSubject.de_strings = {
   DIFF_EQ_SOLVER: 'Diff Eq Löser'
 };
 
+/**
+@private
+@type {DiffEqSolverSubject.i18n_strings}
+*/
+DiffEqSolverSubject.es_strings = {
+  DIFF_EQ_SOLVER: 'Solucionador de ec. diferenciales'
+};
+
 /** Set of internationalized strings.
 @type {DiffEqSolverSubject.i18n_strings}
 */
-DiffEqSolverSubject.i18n = goog.LOCALE === 'de' ? DiffEqSolverSubject.de_strings :
-    DiffEqSolverSubject.en;
+DiffEqSolverSubject.i18n = DiffEqSolverSubject.en;
+switch(goog.LOCALE) {
+  case 'de':
+    DiffEqSolverSubject.i18n = DiffEqSolverSubject.de_strings;
+    break;
+  case 'es':
+    DiffEqSolverSubject.i18n = DiffEqSolverSubject.es_strings;
+    break;
+  default:
+    DiffEqSolverSubject.i18n = DiffEqSolverSubject.en;
+    break;
+};
 
 exports = DiffEqSolverSubject;

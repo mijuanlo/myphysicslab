@@ -530,10 +530,28 @@ Clock.de_strings = {
   TIME_RATE: 'Zeitraffer'
 };
 
+/**
+@private
+@type {Clock.i18n_strings}
+*/
+Clock.es_strings = {
+  TIME_RATE: 'Tasa de tiempo'
+};
+
 /** Set of internationalized strings.
 @type {Clock.i18n_strings}
 */
-Clock.i18n = goog.LOCALE === 'de' ? Clock.de_strings :
-    Clock.en;
+Clock.i18n = Clock.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Clock.i18n = Clock.de_strings;
+    break;
+  case 'es':
+    Clock.i18n = Clock.es_strings;
+    break;
+  default:
+    Clock.i18n = Clock.en;
+    break;
+};
 
 exports = Clock;

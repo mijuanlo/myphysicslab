@@ -110,10 +110,32 @@ HorizAlign.de_strings = {
   VALUE: 'Wert'
 };
 
+/**
+@private
+@type {HorizAlign.i18n_strings}
+*/
+HorizAlign.es_strings = {
+  LEFT: 'izquierda',
+  MIDDLE: 'centrado',
+  RIGHT: 'derecha',
+  FULL: 'completo',
+  VALUE: 'valor'
+};
+
 /** Set of internationalized strings.
 @type {HorizAlign.i18n_strings}
 */
-HorizAlign.i18n = goog.LOCALE === 'de' ? HorizAlign.de_strings :
-    HorizAlign.en;
+HorizAlign.i18n = HorizAlign.en;
+switch(goog.LOCALE) {
+  case 'de':
+    HorizAlign.i18n = HorizAlign.de_strings;
+    break;
+  case 'es':
+    HorizAlign.i18n = HorizAlign.es_strings;
+    break;
+  default:
+    HorizAlign.i18n = HorizAlign.en;
+    break;
+};
 
 exports = HorizAlign;

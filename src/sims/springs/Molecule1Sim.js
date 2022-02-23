@@ -779,10 +779,42 @@ Molecule1Sim.de_strings = {
   SPRING_STIFFNESS: 'Federsteifheit'
 };
 
+/**
+@private
+@type {Molecule1Sim.i18n_strings}
+*/
+Molecule1Sim.es_strings = {
+  X1_POSITION: 'Posición X1',
+  Y1_POSITION: 'Posición Y1',
+  X1_VELOCITY: 'Velocidad X1',
+  Y1_VELOCITY: 'Velocidad Y1',
+  X2_POSITION: 'Posición X2',
+  Y2_POSITION: 'Posición Y2',
+  X2_VELOCITY: 'Velocidad X2',
+  Y2_VELOCITY: 'Velocidad Y2',
+  DAMPING: 'Amortiguación',
+  ELASTICITY: 'Elasticidad',
+  GRAVITY: 'Gravedad',
+  MASS1: 'Masa azul',
+  MASS2: 'Masa roja',
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_STIFFNESS: 'Rigidez del muelle'
+};
+
 /** Set of internationalized strings.
 @type {Molecule1Sim.i18n_strings}
 */
-Molecule1Sim.i18n = goog.LOCALE === 'de' ? Molecule1Sim.de_strings :
-    Molecule1Sim.en;
+Molecule1Sim.i18n = Molecule1Sim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    Molecule1Sim.i18n = Molecule1Sim.de_strings;
+    break;
+  case 'es':
+    Molecule1Sim.i18n = Molecule1Sim.es_strings;
+    break;
+  default:
+    Molecule1Sim.i18n = Molecule1Sim.en;
+    break;
+};
 
 exports = Molecule1Sim;

@@ -329,11 +329,31 @@ RigidBodyRollerApp.de_strings = {
   PATH_VELOCITY: 'Pfad Geschwindigkeit'
 };
 
+/**
+@private
+@type {RigidBodyRollerApp.i18n_strings}
+*/
+RigidBodyRollerApp.es_strings = {
+  BLOCK: 'Bloque',
+  PATH_POSITION: 'Posición del recorrido',
+  PATH_VELOCITY: 'Velocidad del recorrido'
+};
+
 /** Set of internationalized strings.
 @type {RigidBodyRollerApp.i18n_strings}
 */
-RigidBodyRollerApp.i18n = goog.LOCALE === 'de' ? RigidBodyRollerApp.de_strings :
-    RigidBodyRollerApp.en;
+RigidBodyRollerApp.i18n = RigidBodyRollerApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RigidBodyRollerApp.i18n = RigidBodyRollerApp.de_strings;
+    break;
+  case 'es':
+    RigidBodyRollerApp.i18n = RigidBodyRollerApp.es_strings;
+    break;
+  default:
+    RigidBodyRollerApp.i18n = RigidBodyRollerApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

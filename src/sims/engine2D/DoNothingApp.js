@@ -353,11 +353,35 @@ DoNothingApp.de_strings = {
   FIXED_BLOCK: 'Festblock'
 };
 
+/**
+@private
+@type {DoNothingApp.i18n_strings}
+*/
+DoNothingApp.es_strings = {
+  HANDLE_FORCE: 'Fuerza de agarre',
+  ROTATE_RATE: 'Tasa de fuerza de rotación',
+  TIGHT_FIT: 'Ajuste exacto',
+  EXTRA_BLOCK: 'Bloque adicional',
+  HANDLE: 'Agarre',
+  SHUTTLE: 'Lanzador',
+  FIXED_BLOCK: 'Bloque fijo'
+};
+
 /** Set of internationalized strings.
 @type {DoNothingApp.i18n_strings}
 */
-DoNothingApp.i18n = goog.LOCALE === 'de' ? DoNothingApp.de_strings :
-    DoNothingApp.en;
+DoNothingApp.i18n = DoNothingApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    DoNothingApp.i18n = DoNothingApp.de_strings;
+    break;
+  case 'es':
+    DoNothingApp.i18n = DoNothingApp.es_strings;
+    break;
+  default:
+    DoNothingApp.i18n = DoNothingApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

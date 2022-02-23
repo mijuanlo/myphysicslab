@@ -311,11 +311,33 @@ NewtonsCradleApp.de_strings = {
   RADIUS: 'Radius'
 };
 
+/**
+@private
+@type {NewtonsCradleApp.i18n_strings}
+*/
+NewtonsCradleApp.es_strings = {
+  GAP_DISTANCE: 'Espaciado',
+  PENDULUM: 'Pendulo',
+  NUM_BODIES: 'Número de pendulos',
+  LENGTH: 'Longitud de pendulo',
+  RADIUS: 'Radio'
+};
+
 /** Set of internationalized strings.
 @type {NewtonsCradleApp.i18n_strings}
 */
-NewtonsCradleApp.i18n = goog.LOCALE === 'de' ? NewtonsCradleApp.de_strings :
-    NewtonsCradleApp.en;
+NewtonsCradleApp.i18n = NewtonsCradleApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    NewtonsCradleApp.i18n = NewtonsCradleApp.de_strings;
+    break;
+  case 'es':
+    NewtonsCradleApp.i18n = NewtonsCradleApp.es_strings;
+    break;
+  default:
+    NewtonsCradleApp.i18n = NewtonsCradleApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

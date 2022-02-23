@@ -822,11 +822,31 @@ TestViewerApp.de_strings = {
   START_ON_LOAD: 'beginn nach laden'
 };
 
+/**
+@private
+@type {TestViewerApp.i18n_strings}
+*/
+TestViewerApp.es_strings = {
+  GROUP: 'Grupo',
+  TEST: 'Prueba',
+  START_ON_LOAD: 'comenzar al cargar'
+};
+
 /** Set of internationalized strings.
 @type {TestViewerApp.i18n_strings}
 */
-TestViewerApp.i18n = goog.LOCALE === 'de' ? TestViewerApp.de_strings :
-    TestViewerApp.en;
+TestViewerApp.i18n = TestViewerApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    TestViewerApp.i18n = TestViewerApp.de_strings;
+    break;
+  case 'es':
+    TestViewerApp.i18n = TestViewerApp.es_strings;
+    break;
+  default:
+    TestViewerApp.i18n = TestViewerApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

@@ -334,10 +334,28 @@ PointMass.de_strings = {
   POINT_MASS: 'Punktmasse'
 };
 
+/**
+@private
+@type {PointMass.i18n_strings}
+*/
+PointMass.es_strings = {
+  POINT_MASS: 'Punto de masa'
+};
+
 /** Set of internationalized strings.
 @type {PointMass.i18n_strings}
 */
-PointMass.i18n = goog.LOCALE === 'de' ? PointMass.de_strings :
-    PointMass.en;
+PointMass.i18n = PointMass.en;
+switch(goog.LOCALE) {
+  case 'de':
+    PointMass.i18n = PointMass.de_strings;
+    break;
+  case 'es':
+    PointMass.i18n = PointMass.es_strings;
+    break;
+  default:
+    PointMass.i18n = PointMass.en;
+    break;
+};
 
 exports = PointMass;

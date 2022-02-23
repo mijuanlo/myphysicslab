@@ -176,11 +176,29 @@ TestBodyApp.de_strings = {
   BLOCK: 'Block'
 };
 
+/**
+@private
+@type {TestBodyApp.i18n_strings}
+*/
+TestBodyApp.es_strings = {
+  BLOCK: 'Bloque'
+};
+
 /** Set of internationalized strings.
 @type {TestBodyApp.i18n_strings}
 */
-TestBodyApp.i18n = goog.LOCALE === 'de' ? TestBodyApp.de_strings :
-    TestBodyApp.en;
+TestBodyApp.i18n = TestBodyApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    TestBodyApp.i18n = TestBodyApp.de_strings;
+    break;
+  case 'es':
+    TestBodyApp.i18n = TestBodyApp.es_strings;
+    break;
+  default:
+    TestBodyApp.i18n = TestBodyApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

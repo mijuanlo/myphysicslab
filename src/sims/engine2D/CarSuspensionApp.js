@@ -366,11 +366,38 @@ CarSuspensionApp.de_strings = {
   CAR: 'Auto'
 };
 
+/**
+@private
+@type {CarSuspensionApp.i18n_strings}
+*/
+CarSuspensionApp.es_strings = {
+  CAR_MASS: 'Masa del coche',
+  FORMATION: 'Formación',
+  LENGTH: 'Longitud del muelle',
+  ROD_SPRING: 'Barra y muelle',
+  SPRING_DAMPING: 'Amortiguación del muelle',
+  STIFFNESS: 'Rigidez del muelle',
+  TWO_SPRINGS: 'dos muelles',
+  WHEEL_MASS: 'Masa de la rueda',
+  WHEEL: 'Rueda',
+  CAR: 'Coche'
+};
+
 /** Set of internationalized strings.
 @type {CarSuspensionApp.i18n_strings}
 */
-CarSuspensionApp.i18n = goog.LOCALE === 'de' ? CarSuspensionApp.de_strings :
-    CarSuspensionApp.en;
+CarSuspensionApp.i18n = CarSuspensionApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CarSuspensionApp.i18n = CarSuspensionApp.de_strings;
+    break;
+  case 'es':
+    CarSuspensionApp.i18n = CarSuspensionApp.es_strings;
+    break;
+  default:
+    CarSuspensionApp.i18n = CarSuspensionApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

@@ -462,10 +462,35 @@ LagrangeRollerSim.de_strings = {
   Y_VELOCITY: 'Y Geschwindigkeit'
 };
 
+/**
+@private
+@type {LagrangeRollerSim.i18n_strings}
+*/
+LagrangeRollerSim.es_strings = {
+  GRAVITY: 'Gravedad',
+  MASS: 'Masa',
+  POSITION: 'Posición',
+  VELOCITY: 'Valocidad',
+  X_POSITION: 'Posición X',
+  Y_POSITION: 'Posición Y',
+  X_VELOCITY: 'Velocidad X',
+  Y_VELOCITY: 'Velocidad Y'
+};
+
 /** Set of internationalized strings.
 @type {LagrangeRollerSim.i18n_strings}
 */
-LagrangeRollerSim.i18n = goog.LOCALE === 'de' ? LagrangeRollerSim.de_strings :
-    LagrangeRollerSim.en;
+LagrangeRollerSim.i18n = LagrangeRollerSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    LagrangeRollerSim.i18n = LagrangeRollerSim.de_strings;
+    break;
+  case 'es':
+    LagrangeRollerSim.i18n = LagrangeRollerSim.es_strings;
+    break;
+  default:
+    LagrangeRollerSim.i18n = LagrangeRollerSim.en;
+    break;
+};
 
 exports = LagrangeRollerSim;

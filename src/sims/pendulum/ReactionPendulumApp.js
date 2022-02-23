@@ -695,11 +695,31 @@ ReactionPendulumApp.de_strings = {
   SHOW_ENERGY_2: 'Energieanzeige 2'
 };
 
+/**
+@private
+@type {ReactionPendulumApp.i18n_strings}
+*/
+ReactionPendulumApp.es_strings = {
+  SEPARATION: 'Separación',
+  SHOW_ENERGY_2: 'Mostrar energía 2'
+};
+
 /** Set of internationalized strings.
 @type {ReactionPendulumApp.i18n_strings}
 */
-ReactionPendulumApp.i18n = goog.LOCALE === 'de' ? ReactionPendulumApp.de_strings :
-    ReactionPendulumApp.en;
+ReactionPendulumApp.i18n = ReactionPendulumApp.en;
+
+switch(goog.LOCALE) {
+  case 'de':
+    ReactionPendulumApp.i18n = ReactionPendulumApp.de_strings;
+    break;
+  case 'es':
+    ReactionPendulumApp.i18n = ReactionPendulumApp.es_strings;
+    break;
+  default:
+    ReactionPendulumApp.i18n = ReactionPendulumApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

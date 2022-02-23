@@ -157,10 +157,37 @@ ChainConfig.de_strings = {
   WALL_WIDTH: 'Wand breite'
 };
 
+/**
+@private
+@type {ChainConfig.i18n_strings}
+*/
+ChainConfig.es_strings = {
+  NUM_LINKS: 'Enlaces de cadena',
+  WALLS: 'Muros',
+  EXTRA_BODY: 'cuerpo extra',
+  FIXED_LEFT: 'Punto fijo izquierdo',
+  FIXED_RIGHT: 'Punto fijo derecho',
+  FIXED_LEFT_X: 'Punto fijo enlaces X',
+  FIXED_LEFT_Y: 'Punto fijo enlaces Y',
+  BLOCK_LENGTH: 'Longitud del bloque',
+  BLOCK_WIDTH: 'Ancho del bloque',
+  CHAIN: 'Cadena',
+  WALL_WIDTH: 'Ancho del muro'
+};
 /** Set of internationalized strings.
 @type {ChainConfig.i18n_strings}
 */
-ChainConfig.i18n = goog.LOCALE === 'de' ? ChainConfig.de_strings :
-    ChainConfig.en;
+ChainConfig.i18n = ChainConfig.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ChainConfig.i18n = ChainConfig.de_strings;
+    break;
+  case 'es':
+    ChainConfig.i18n = ChainConfig.es_strings;
+    break;
+  default:
+    ChainConfig.i18n = ChainConfig.en;
+    break;
+};
 
 exports = ChainConfig;

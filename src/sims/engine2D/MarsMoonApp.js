@@ -372,11 +372,39 @@ MarsMoonApp.de_strings = {
   DISTANCE: 'Entfernung'
 };
 
+/**
+@private
+@type {MarsMoonApp.i18n_strings}
+*/
+MarsMoonApp.es_strings = {
+  ASTERIOD_MASS: 'Masa del asteroide',
+  ASTERIOD_RADIUS: 'Radio del asteroide',
+  GRAVITY: 'Gravedad',
+  MOON_MASS: 'Masa de la Luna',
+  MOON_RADIUS: 'Radio de la Luna',
+  MOON_SPIN: 'Giro de la Luna',
+  OVALNESS: 'Ovalidad',
+  VELOCITY: 'Velocidad inicial',
+  MOON: 'Luna',
+  ASTERIOD: 'Asteroide',
+  DISTANCE: 'Distancia'
+};
+
 /** Set of internationalized strings.
 @type {MarsMoonApp.i18n_strings}
 */
-MarsMoonApp.i18n = goog.LOCALE === 'de' ? MarsMoonApp.de_strings :
-    MarsMoonApp.en;
+MarsMoonApp.i18n = MarsMoonApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    MarsMoonApp.i18n = MarsMoonApp.de_strings;
+    break;
+  case 'es':
+    MarsMoonApp.i18n = MarsMoonApp.es_strings;
+    break;
+  default:
+    MarsMoonApp.i18n = MarsMoonApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

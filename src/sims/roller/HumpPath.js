@@ -80,10 +80,28 @@ HumpPath.de_strings = {
   NAME: 'Buckel'
 };
 
+/**
+@private
+@type {HumpPath.i18n_strings}
+*/
+HumpPath.es_strings = {
+  NAME: 'Montículo'
+};
+
 /** Set of internationalized strings.
 @type {HumpPath.i18n_strings}
 */
-HumpPath.i18n = goog.LOCALE === 'de' ? HumpPath.de_strings :
-    HumpPath.en;
+HumpPath.i18n = HumpPath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    HumpPath.i18n = HumpPath.de_strings;
+    break;
+  case 'es':
+    HumpPath.i18n = HumpPath.es_strings;
+    break;
+  default:
+    HumpPath.i18n = HumpPath.en;
+    break;
+};
 
 exports = HumpPath;

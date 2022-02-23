@@ -518,10 +518,39 @@ DangleStickSim.de_strings = {
   STICK_LENGTH: 'Stangenlänge'
 };
 
+/**
+@private
+@type {DangleStickSim.i18n_strings}
+*/
+DangleStickSim.es_strings = {
+  SPRING_ANGLE: 'Ángulo del muelle',
+  SPRING_ANGULAR_VELOCITY: 'Velocidad angular del muelle',
+  SPRING_LENGTH: 'Longitud del muelle',
+  SPRING_LENGTH_VELOCITY: 'Velocidad angular del muelle',
+  STICK_ANGLE: 'Angulo de la barra',
+  STICK_ANGULAR_VELOCITY: 'Velocidad angular de la barra',
+  GRAVITY: 'Gravedad',
+  MASS1: 'Masa 1',
+  MASS2: 'Masa 2',
+  SPRING_REST_LENGTH: 'Longitud del muelle en reposo',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  STICK_LENGTH: 'Longitud de la barra'
+};
+
 /** Set of internationalized strings.
 @type {DangleStickSim.i18n_strings}
 */
-DangleStickSim.i18n = goog.LOCALE === 'de' ? DangleStickSim.de_strings :
-    DangleStickSim.en;
+DangleStickSim.i18n = DangleStickSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    DangleStickSim.i18n = DangleStickSim.de_strings;
+    break;
+  case 'es':
+    DangleStickSim.i18n = DangleStickSim.es_strings;
+    break;
+  default:
+    DangleStickSim.i18n = DangleStickSim.en;
+    break;
+};
 
 exports = DangleStickSim;

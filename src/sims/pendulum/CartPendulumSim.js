@@ -589,10 +589,39 @@ CartPendulumSim.de_strings = {
   WORK_FROM_DAMPING: 'Arbeit von Dämpfung'
 };
 
+/**
+@private
+@type {CartPendulumSim.i18n_strings}
+*/
+CartPendulumSim.es_strings = {
+  CART_POSITION: 'Posición del carro',
+  PENDULUM_ANGLE: 'Ángulo del péndulo',
+  CART_VELOCITY: 'Velocidad del carro',
+  PENDULUM_ANGLE_VELOCITY: 'Velocidad del ángulo del pendulo',
+  CART_DAMPING: 'Amortiguación del carro',
+  PENDULUM_DAMPING: 'Amortiguación del péndulo',
+  GRAVITY: 'Gravedad',
+  CART_MASS: 'Masa del carro',
+  PENDULUM_MASS: 'Masa del péndulo',
+  PENDULUM_LENGTH: 'Longitud del péndulo',
+  SPRING_STIFFNESS: 'Rigidez del muelle',
+  WORK_FROM_DAMPING: 'Trabajo de amortiguación'
+};
+
 /** Set of internationalized strings.
 @type {CartPendulumSim.i18n_strings}
 */
-CartPendulumSim.i18n = goog.LOCALE === 'de' ? CartPendulumSim.de_strings :
-    CartPendulumSim.en;
+CartPendulumSim.i18n = CartPendulumSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CartPendulumSim.i18n = CartPendulumSim.de_strings;
+    break;
+  case 'es':
+    CartPendulumSim.i18n = CartPendulumSim.es_strings;
+    break;
+  default:
+    CartPendulumSim.i18n = CartPendulumSim.en;
+    break;
+};
 
 exports = CartPendulumSim;

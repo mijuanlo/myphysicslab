@@ -239,11 +239,29 @@ DoublePendulum2App.de_strings = {
   BLOCK: 'Block'
 };
 
+/**
+@private
+@type {DoublePendulum2App.i18n_strings}
+*/
+DoublePendulum2App.es_strings = {
+  BLOCK: 'Bloque'
+};
+
 /** Set of internationalized strings.
 @type {DoublePendulum2App.i18n_strings}
 */
-DoublePendulum2App.i18n = goog.LOCALE === 'de' ? DoublePendulum2App.de_strings :
-    DoublePendulum2App.en;
+DoublePendulum2App.i18n = DoublePendulum2App.en;
+switch(goog.LOCALE) {
+  case 'de':
+    DoublePendulum2App.i18n = DoublePendulum2App.de_strings;
+    break;
+  case 'es':
+    DoublePendulum2App.i18n = DoublePendulum2App.es_strings;
+    break;
+  default:
+    DoublePendulum2App.i18n = DoublePendulum2App.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

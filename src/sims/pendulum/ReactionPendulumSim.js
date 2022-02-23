@@ -489,10 +489,40 @@ ReactionPendulumSim.de_strings = {
   RADIUS: 'Radius'
 };
 
+/**
+@private
+@type {ReactionPendulumSim.i18n_strings}
+*/
+ReactionPendulumSim.es_strings = {
+  X_POSITION: 'Posición X',
+  Y_POSITION: 'Posición Y',
+  X_VELOCITY: 'Velocidad X',
+  Y_VELOCITY: 'Velocidad Y',
+  ANGLE: 'Ángulo',
+  ANGULAR_VELOCITY: 'Velocidad angular',
+  START_ANGLE: 'ángulo de inicio',
+  DAMPING: 'Amortiguación',
+  GRAVITY: 'Gravedad',
+  LENGTH: 'Longitud',
+  MASS: 'Masa',
+  TIME: 'Tiempo',
+  RADIUS: 'Radio'
+};
+
 /** Set of internationalized strings.
 @type {ReactionPendulumSim.i18n_strings}
 */
-ReactionPendulumSim.i18n = goog.LOCALE === 'de' ? ReactionPendulumSim.de_strings :
-    ReactionPendulumSim.en;
+ReactionPendulumSim.i18n = ReactionPendulumSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ReactionPendulumSim.i18n = ReactionPendulumSim.de_strings;
+    break;
+  case 'es':
+    ReactionPendulumSim.i18n = ReactionPendulumSim.es_strings;
+    break;
+  default:
+    ReactionPendulumSim.i18n = ReactionPendulumSim.en;
+    break;
+};
 
 exports = ReactionPendulumSim;

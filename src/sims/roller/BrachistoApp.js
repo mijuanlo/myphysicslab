@@ -207,11 +207,29 @@ BrachistoApp.de_strings = {
   REPEAT_TIME: 'Intervallwiederholung'
 };
 
+/**
+@private
+@type {BrachistoApp.i18n_strings}
+*/
+BrachistoApp.es_strings = {
+  REPEAT_TIME: 'Tiempo de repetición'
+};
+
 /** Set of internationalized strings.
 @type {BrachistoApp.i18n_strings}
 */
-BrachistoApp.i18n = goog.LOCALE === 'de' ? BrachistoApp.de_strings :
-    BrachistoApp.en;
+BrachistoApp.i18n = BrachistoApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    BrachistoApp.i18n = BrachistoApp.de_strings;
+    break;
+  case 'es':
+    BrachistoApp.i18n = BrachistoApp.es_strings;
+    break;
+  default:
+    BrachistoApp.i18n = BrachistoApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids

@@ -170,10 +170,28 @@ RungeKutta.de_strings = {
   NAME: 'Runge-Kutta'
 };
 
+/**
+@private
+@type {RungeKutta.i18n_strings}
+*/
+RungeKutta.es_strings = {
+  NAME: 'Runge-Kutta'
+};
+
 /** Set of internationalized strings.
 @type {RungeKutta.i18n_strings}
 */
-RungeKutta.i18n = goog.LOCALE === 'de' ? RungeKutta.de_strings :
-    RungeKutta.en;
+RungeKutta.i18n = RungeKutta.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RungeKutta.i18n = RungeKutta.de_strings;
+    break;
+  case 'es':
+    RungeKutta.i18n = RungeKutta.es_strings;
+    break;
+  default:
+    RungeKutta.i18n = RungeKutta.en;
+    break;
+};
 
 exports = RungeKutta;

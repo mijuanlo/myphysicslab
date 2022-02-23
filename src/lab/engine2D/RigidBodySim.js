@@ -775,10 +775,35 @@ RigidBodySim.de_strings = {
   VELOCITY_TOL: 'Geschwindigkeitstoleranz'
 };
 
+/**
+@private
+@type {RigidBodySim.i18n_strings}
+*/
+RigidBodySim.es_strings = {
+  COLLISION_HANDLING: 'Método de colisión',
+  COLLISION_ACCURACY: 'Precisión de colisión',
+  DISTANCE_TOL: 'Distancia de tolerancia',
+  EXTRA_ACCEL: 'Aceleración extra',
+  RANDOM_SEED: 'Semilla aleatoria',
+  SHOW_FORCES: 'Mostrar fuerzas',
+  SHOW_COLLISIONS: 'Mostrar colisiones',
+  VELOCITY_TOL: 'Tolerancia de velocidad'
+};
+
 /** Set of internationalized strings.
 @type {RigidBodySim.i18n_strings}
 */
-RigidBodySim.i18n = goog.LOCALE === 'de' ? RigidBodySim.de_strings :
-    RigidBodySim.en;
+RigidBodySim.i18n = RigidBodySim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RigidBodySim.i18n = RigidBodySim.de_strings;
+    break;
+  case 'es':
+    RigidBodySim.i18n = RigidBodySim.es_strings;
+    break;
+  default:
+    RigidBodySim.i18n = RigidBodySim.en;
+    break;
+};
 
 exports = RigidBodySim;

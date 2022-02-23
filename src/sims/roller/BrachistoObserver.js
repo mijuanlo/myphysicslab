@@ -237,10 +237,30 @@ BrachistoObserver.de_strings = {
   YOU_PICKED: 'Sie haben den'
 };
 
+/**
+@private
+@type {BrachistoObserver.i18n_strings}
+*/
+BrachistoObserver.es_strings = {
+  PATH: 'Ruta',
+  QUESTION: '¿Que camino es más rápido para bajar deslizandose? Clic sobre un camino para comenzar.',
+  YOU_PICKED: 'Has elegido el'
+};
+
 /** Set of internationalized strings.
 @type {BrachistoObserver.i18n_strings}
 */
-BrachistoObserver.i18n = goog.LOCALE === 'de' ? BrachistoObserver.de_strings :
-    BrachistoObserver.en;
+BrachistoObserver.i18n = BrachistoObserver.en;
+switch(goog.LOCALE) {
+  case 'de':
+    BrachistoObserver.i18n = BrachistoObserver.de_strings;
+    break;
+  case 'es':
+    BrachistoObserver.i18n = BrachistoObserver.es_strings;
+    break;
+  default:
+    BrachistoObserver.i18n = BrachistoObserver.en;
+    break;
+};
 
 exports = BrachistoObserver;

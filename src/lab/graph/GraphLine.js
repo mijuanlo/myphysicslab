@@ -604,10 +604,35 @@ GraphLine.de_strings = {
   NONE: '-keine-'
 };
 
+/**
+@private
+@type {GraphLine.i18n_strings}
+*/
+GraphLine.es_strings = {
+  DRAWING_MODE: 'Modo de dibujado',
+  GRAPH_COLOR: 'Color de gráfico',
+  GRAPH_DRAW_MODE: 'Modo de dibujado del gráfico',
+  GRAPH_POINTS: 'Puntos del gráfico',
+  LINE_WIDTH: 'Ancho de línea',
+  X_VARIABLE: 'Variable X',
+  Y_VARIABLE: 'Variable Y',
+  CLEAR_GRAPH: 'Limpiar gráfico',
+  NONE: '-nada-'
+};
 /** Set of internationalized strings.
 @type {GraphLine.i18n_strings}
 */
-GraphLine.i18n = goog.LOCALE === 'de' ? GraphLine.de_strings :
-    GraphLine.en;
+GraphLine.i18n = GraphLine.en;
+switch(goog.LOCALE) {
+  case 'de':
+    GraphLine.i18n = GraphLine.de_strings;
+    break;
+  case 'es':
+    GraphLine.i18n = GraphLine.es_strings;
+    break;
+  default:
+    GraphLine.i18n = GraphLine.en;
+    break;
+};
 
 exports = GraphLine;

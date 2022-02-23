@@ -135,10 +135,28 @@ EulersMethod.de_strings = {
   NAME: 'Eulers Methode'
 };
 
+/**
+@private
+@type {EulersMethod.i18n_strings}
+*/
+EulersMethod.es_strings = {
+  NAME: 'Método de Euler'
+};
+
 /** Set of internationalized strings.
 @type {EulersMethod.i18n_strings}
 */
-EulersMethod.i18n = goog.LOCALE === 'de' ? EulersMethod.de_strings :
-    EulersMethod.en;
+EulersMethod.i18n = EulersMethod.en;
+switch(goog.LOCALE) {
+  case 'de':
+    EulersMethod.i18n = EulersMethod.de_strings;
+    break;
+  case 'es':
+    EulersMethod.i18n = EulersMethod.es_strings;
+    break;
+  default:
+    EulersMethod.i18n = EulersMethod.en;
+    break;
+};
 
 exports = EulersMethod;

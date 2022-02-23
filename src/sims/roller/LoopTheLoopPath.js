@@ -132,10 +132,28 @@ LoopTheLoopPath.de_strings = {
   NAME: 'Schleife'
 };
 
+/**
+@private
+@type {LoopTheLoopPath.i18n_strings}
+*/
+LoopTheLoopPath.es_strings = {
+  NAME: 'Bucle'
+};
+
 /** Set of internationalized strings.
 @type {LoopTheLoopPath.i18n_strings}
 */
-LoopTheLoopPath.i18n = goog.LOCALE === 'de' ? LoopTheLoopPath.de_strings :
-    LoopTheLoopPath.en;
+LoopTheLoopPath.i18n = LoopTheLoopPath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    LoopTheLoopPath.i18n = LoopTheLoopPath.de_strings;
+    break;
+  case 'es':
+    LoopTheLoopPath.i18n = LoopTheLoopPath.es_strings;
+    break;
+  default:
+    LoopTheLoopPath.i18n = LoopTheLoopPath.en;
+    break;
+};
 
 exports = LoopTheLoopPath;

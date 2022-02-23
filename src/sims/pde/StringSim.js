@@ -594,10 +594,33 @@ StringSim.de_strings = {
   TIME_STEP: 'Zeitschritt'
 };
 
+/**
+@private
+@type {StringSim.i18n_strings}
+*/
+StringSim.es_strings = {
+  DAMPING: 'Amortiguación',
+  DENSITY: 'Densidad',
+  TENSION: 'Tensión',
+  SHAPE: 'Forma',
+  NUM_POINTS: 'Número de puntos',
+  TIME_STEP: 'Tiempo de paso'
+};
+
 /** Set of internationalized strings.
 @type {StringSim.i18n_strings}
 */
-StringSim.i18n = goog.LOCALE === 'de' ? StringSim.de_strings :
-    StringSim.en;
+StringSim.i18n = StringSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    StringSim.i18n = StringSim.de_strings;
+    break;
+  case 'es':
+    StringSim.i18n = StringSim.es_strings;
+    break;
+  default:
+    StringSim.i18n = StringSim.en;
+    break;
+};
 
 exports = StringSim;

@@ -128,10 +128,28 @@ LemniscatePath.de_strings = {
   NAME: 'Lemniscate'
 };
 
+/**
+@private
+@type {LemniscatePath.i18n_strings}
+*/
+LemniscatePath.es_strings = {
+  NAME: 'Lemniscate'
+};
+
 /** Set of internationalized strings.
 @type {LemniscatePath.i18n_strings}
 */
-LemniscatePath.i18n = goog.LOCALE === 'de' ? LemniscatePath.de_strings :
-    LemniscatePath.en;
+LemniscatePath.i18n = LemniscatePath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    LemniscatePath.i18n = LemniscatePath.de_strings;
+    break;
+  case 'es':
+    LemniscatePath.i18n = LemniscatePath.es_strings;
+    break;
+  default:
+    LemniscatePath.i18n = LemniscatePath.en;
+    break;
+};
 
 exports = LemniscatePath;

@@ -352,10 +352,35 @@ MagnetWheelSim.de_strings = {
   MAGNET_ANGLE: 'Winkel zwischen Magnete'
 };
 
+/**
+@private
+@type {MagnetWheelSim.i18n_strings}
+*/
+MagnetWheelSim.es_strings = {
+  DAMPING: 'Amortiguación',
+  MASS: 'Masa',
+  ANGLE: 'Ángulo',
+  ANGULAR_VELOCITY: 'Velocidad ángular',
+  MAGNET_STRENGTH: 'Fuerza magnética',
+  NUM_MAGNETS: 'Número de imanes',
+  SYMMETRIC: 'simétrico',
+  MAGNET_ANGLE: 'Ángulo entre imanes'
+};
+
 /** Set of internationalized strings.
 @type {MagnetWheelSim.i18n_strings}
 */
-MagnetWheelSim.i18n = goog.LOCALE === 'de' ? MagnetWheelSim.de_strings :
-    MagnetWheelSim.en;
+MagnetWheelSim.i18n = MagnetWheelSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    MagnetWheelSim.i18n = MagnetWheelSim.de_strings;
+    break;
+  case 'es':
+    MagnetWheelSim.i18n = MagnetWheelSim.es_strings;
+    break;
+  default:
+    MagnetWheelSim.i18n = MagnetWheelSim.en;
+    break;
+};
 
 exports = MagnetWheelSim;

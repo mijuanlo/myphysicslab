@@ -109,10 +109,32 @@ VerticalAlign.de_strings = {
   VALUE: 'Wert'
 };
 
+/**
+@private
+@type {VerticalAlign.i18n_strings}
+*/
+VerticalAlign.es_strings = {
+  TOP: 'superior',
+  MIDDLE: 'medio',
+  BOTTOM: 'fondo',
+  FULL: 'completo',
+  VALUE: 'valor'
+};
+
 /** Set of internationalized strings.
 @type {VerticalAlign.i18n_strings}
 */
-VerticalAlign.i18n = goog.LOCALE === 'de' ? VerticalAlign.de_strings :
-    VerticalAlign.en;
+VerticalAlign.i18n = VerticalAlign.en;
+switch(goog.LOCALE) {
+  case 'de':
+    VerticalAlign.i18n = VerticalAlign.de_strings;
+    break;
+  case 'es':
+    VerticalAlign.i18n = VerticalAlign.es_strings;
+    break;
+  default:
+    VerticalAlign.i18n = VerticalAlign.en;
+    break;
+};
 
 exports = VerticalAlign;

@@ -151,10 +151,28 @@ ElasticitySetter.de_strings = {
   ELASTICITY : 'Elastizität'
 };
 
+/**
+@private
+@type {ElasticitySetter.i18n_strings}
+*/
+ElasticitySetter.es_strings = {
+  ELASTICITY : 'Elasticidad'
+};
+
 /** Set of internationalized strings.
 @type {ElasticitySetter.i18n_strings}
 */
-ElasticitySetter.i18n = goog.LOCALE === 'de' ? ElasticitySetter.de_strings :
-    ElasticitySetter.en;
+ElasticitySetter.i18n = ElasticitySetter.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ElasticitySetter.i18n = ElasticitySetter.de_strings;
+    break;
+  case 'es':
+    ElasticitySetter.i18n = ElasticitySetter.es_strings;
+    break;
+  default:
+    ElasticitySetter.i18n = ElasticitySetter.en;
+    break;
+};
 
 exports = ElasticitySetter;

@@ -377,10 +377,29 @@ RigidBodyEventHandler.de_strings = {
   DRAG: 'ziehen'
 };
 
+/**
+@private
+@type {RigidBodyEventHandler.i18n_strings}
+*/
+RigidBodyEventHandler.es_strings = {
+  CLICK: 'clic',
+  DRAG: 'arrastrar'
+};
+
 /** Set of internationalized strings.
 @type {RigidBodyEventHandler.i18n_strings}
 */
-RigidBodyEventHandler.i18n = goog.LOCALE === 'de' ? RigidBodyEventHandler.de_strings :
-    RigidBodyEventHandler.en;
+RigidBodyEventHandler.i18n = RigidBodyEventHandler.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RigidBodyEventHandler.i18n = RigidBodyEventHandler.de_strings;
+    break;
+  case 'es':
+    RigidBodyEventHandler.i18n = RigidBodyEventHandler.es_strings;
+    break;
+  default:
+    RigidBodyEventHandler.i18n = RigidBodyEventHandler.en;
+    break;
+};
 
 exports = RigidBodyEventHandler;

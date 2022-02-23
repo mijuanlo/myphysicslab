@@ -594,10 +594,37 @@ RigidDoublePendulumSim.de_strings = {
   PENDULUM: 'Pendel'
 };
 
+/**
+@private
+@type {RigidDoublePendulumSim.i18n_strings}
+*/
+RigidDoublePendulumSim.es_strings = {
+  ANGLE_1: 'Ángulo 1',
+  ANGLE_1_VELOCITY: 'Velocidad ángulo 1',
+  ANGLE_2: 'Ángulo 2',
+  ANGLE_2_VELOCITY: 'Velocidad ángulo 2',
+  GRAVITY: 'Gravedad',
+  MASS_1: 'Masa 1',
+  MASS_2: 'Masa 2',
+  ROD_1_LENGTH: 'Longitud barra 1',
+  ROD_2_LENGTH: 'Longitud barra 2',
+  PENDULUM: 'Péndulo'
+};
+
 /** Set of internationalized strings.
 @type {RigidDoublePendulumSim.i18n_strings}
 */
-RigidDoublePendulumSim.i18n = goog.LOCALE === 'de' ? RigidDoublePendulumSim.de_strings :
-    RigidDoublePendulumSim.en;
+RigidDoublePendulumSim.i18n = RigidDoublePendulumSim.en;
+switch(goog.LOCALE) {
+  case 'de':
+    RigidDoublePendulumSim.i18n = RigidDoublePendulumSim.de_strings;
+    break;
+  case 'es':
+    RigidDoublePendulumSim.i18n = RigidDoublePendulumSim.es_strings;
+    break;
+  default:
+    RigidDoublePendulumSim.i18n = RigidDoublePendulumSim.en;
+    break;
+};
 
 exports = RigidDoublePendulumSim;

@@ -90,10 +90,28 @@ CirclePath.de_strings = {
   NAME: 'Kreis'
 };
 
+/**
+@private
+@type {CirclePath.i18n_strings}
+*/
+CirclePath.es_strings = {
+  NAME: 'Círculo'
+};
+
 /** Set of internationalized strings.
 @type {CirclePath.i18n_strings}
 */
-CirclePath.i18n = goog.LOCALE === 'de' ? CirclePath.de_strings :
-    CirclePath.en;
+CirclePath.i18n = CirclePath.en;
+switch(goog.LOCALE) {
+  case 'de':
+    CirclePath.i18n = CirclePath.de_strings;
+    break;
+  case 'es':
+    CirclePath.i18n = CirclePath.es_strings;
+    break;
+  default:
+    CirclePath.i18n = CirclePath.en;
+    break;
+};
 
 exports = CirclePath;

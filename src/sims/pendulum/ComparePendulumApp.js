@@ -466,11 +466,29 @@ ComparePendulumApp.de_strings = {
   ANGLE_DELTA: 'Winkeldifferenz'
 };
 
+/**
+@private
+@type {ComparePendulumApp.i18n_strings}
+*/
+ComparePendulumApp.es_strings = {
+  ANGLE_DELTA: 'Diferencia de ángulo'
+};
+
 /** Set of internationalized strings.
 @type {ComparePendulumApp.i18n_strings}
 */
-ComparePendulumApp.i18n = goog.LOCALE === 'de' ? ComparePendulumApp.de_strings :
-    ComparePendulumApp.en;
+ComparePendulumApp.i18n = ComparePendulumApp.en;
+switch(goog.LOCALE) {
+  case 'de':
+    ComparePendulumApp.i18n = ComparePendulumApp.de_strings;
+    break;
+  case 'es':
+    ComparePendulumApp.i18n = ComparePendulumApp.es_strings;
+    break;
+  default:
+    ComparePendulumApp.i18n = ComparePendulumApp.en;
+    break;
+};
 
 /**
 * @param {!Object} elem_ids
