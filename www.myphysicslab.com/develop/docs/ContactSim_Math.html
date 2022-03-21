@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<link type="text/css" rel="stylesheet" href="Overview_2.css"/>
+	<title>ContactSim Math</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p><a href="index.html">myPhysicsLab Documentation</a></p>
+
+<h1 id="contactsimmath">ContactSim Math</h1>
+
+<p>This describes details of the math involved in the class
+<a href="myphysicslab.lab.engine2D.ContactSim.html">ContactSim</a> which is part of the
+<a href="../../explain/physics-engine-en.html">2d Rigid Body Physics Engine</a>
+of <a href="../../index.html">myPhysicsLab</a>.</p>
+
+<ul>
+<li><a href="ContactSim_Math.html#resources">Resources</a></li>
+<li><a href="ContactSim_Math.html#calculatetheamatrix">Calculate the &#8216;A&#8217; Matrix</a>
+
+<ul>
+<li><a href="ContactSim_Math.html#contactforceoncircularedge">Contact Force on Circular Edge</a></li>
+</ul></li>
+<li><a href="ContactSim_Math.html#calculatethebvector">Calculate the &#8216;b&#8217; Vector</a>
+
+<ul>
+<li><a href="ContactSim_Math.html#background">Background</a></li>
+<li><a href="ContactSim_Math.html#derivation">Derivation</a></li>
+<li><a href="ContactSim_Math.html#conclusion">Conclusion</a></li>
+<li><a href="ContactSim_Math.html#extraacceleration">Extra Acceleration</a></li>
+</ul></li>
+</ul>
+
+<h1 id="resources">Resources</h1>
+
+<p>Please see <a href="Engine2D.html">2D Physics Engine Overview</a> which has important
+information and references.</p>
+
+<p>The two main references are:</p>
+
+<ul>
+<li><p><strong>Baraff '94</strong> David Baraff,
+<a href="Baraff_Fast_Contact_Force_94.pdf">Fast Contact Force Computation for Nonpenetrating Rigid Bodies.</a>
+Computer Graphics Proceedings, Annual Conference Series, 1994; pages 23&#8211;34.</p></li>
+<li><p>Erik Neumman, <a href="CEP_Curved_Edge_Physics.pdf">Curved Edge Physics</a>
+about modifications to Baraff algorithm for curved edges.</p></li>
+</ul>
+
+<p>Information about myPhysicsLab software in general:</p>
+
+<ul>
+<li>See <a href="Architecture.html">myPhysicsLab Architecture</a> for an introduction to classes
+and interfaces.</li>
+<li>See <a href="index.html">myPhysicsLab Documentation</a> for detailed documentation of classes and
+interfaces.</li>
+<li>The <a href="../../index.html">myPhysicsLab website</a> shows the simulations
+running and contains explanations of the math behind them.</li>
+<li>See <a href="Building.html">Building myPhysicsLab Software</a> for information about building,
+testing, internationalization, and general programming issues.</li>
+</ul>
+
+<h1 id="calculatetheamatrix">Calculate the &#8216;A&#8217; Matrix</h1>
+
+<p>This section describes the math behind the private method
+<code>ContactSim.calculate_a_matrix()</code>.</p>
+
+<p><code>ContactSim.calculate_a_matrix()</code> calculates the <code>A</code> matrix which
+specifies how contact points react to contact forces. It returns a matrix where the
+<code>(i, j)</code>th entry is how much the relative normal acceleration at contact <code>i</code> will
+change from a unit force being applied at contact <code>j</code>.</p>
+
+<p>For a particular contact point <code>i</code>, let the bodies be numbered 1 and 2, with body 2
+specifying the normal vector pointing out from body 2 into body 1.</p>
+
+<p>Let <code>p1</code> be the point on body 1 that is in contact with the point <code>p2</code> on body 2.</p>
+
+<p>Let <code>di</code> be the distance between <code>p1</code> and <code>p2</code>.</p>
+
+<p>Because the bodies are in resting contact, it should be the case that <code>di = 0</code> (within
+numerical tolerance).</p>
+
+<p>Resting contact also implies that the velocity of separation should be <code>di' = 0</code>
+(otherwise, the bodies are moving apart).</p>
+
+<p>However, the acceleration <code>di''</code> is likely to be non-zero. If <code>di'' &gt; 0</code>, then the
+bodies are about to separate, and the reaction force should be zero.
+If <code>di'' &amp;lt; 0</code>, then the bodies are accelerating into each other, and a reaction force
+is needed to prevent them from interpenetrating.</p>
+
+<p>We need to find reaction forces that will just barely ensure that <code>di'' = 0</code>.</p>
+
+<p>This method calculates the <code>A</code> matrix in the equation <code>a = A f + b</code>. The <code>i-j</code>-th entry
+in the <code>A</code> matrix, <code>Aij</code>, specifies how the <code>j</code>-th contact force, <code>fj</code>, affects the
+acceleration of the <code>i</code>-th contact distance, <code>ai = di''</code>. Our goal is to find this
+expression for <code>di''</code> (Equation D-1 of the <a href="Baraff_Fast_Contact_Force_94.pdf">Baraff '94 paper</a>)</p>
+
+<pre><code>(D-1)  di'' = Ai1 f1 + Ai2 f2 + ... + Ain fn + bi
+</code></pre>
+
+<p>where <code>bi</code> is from the <code>b</code> vector which specifies external forces (gravity, thrust,
+etc.).</p>
+
+<p>A contact force <code>fj</code> only affects <code>di''</code> if that contact force operates on body 1 or
+body 2. If that is not the case, we have the <code>Aij = 0</code>. Assume now that <code>fj</code> affects
+body 1 or body 2. We can find <code>Aij</code> from the geometry of the situation as follows.</p>
+
+<p>Let <code>Nj</code> be the vector normal at the <code>j</code>-th contact point. Then the contact force is <code>fj
+Nj</code> (note that <code>fj</code> is a scalar). From the geometry we can calculate the effect of the
+force on <code>p1''</code> and <code>p2''</code>. (Keep in mind that the reaction force is equal and opposite
+for the two bodies.) The effect on <code>di''</code> is given by equation D-2 of the
+<a href="Baraff_Fast_Contact_Force_94.pdf">Baraff '94 paper</a>:</p>
+
+<pre><code>(D-2)   di'' = Ni.(p1'' - p2'') + 2 Ni'.(p1' - p2')
+</code></pre>
+
+<p>The term <code>2 Ni'.(p1' - p2')</code> &#8220;is a velocity dependent term (i.e. you can immediately
+calculate it without knowing the forces involved), and is part of <code>bi</code>&#8221;. See method
+<code>calculate_b_vector</code>. So the <code>fj</code> dependent part of (D-2) is just</p>
+
+<pre><code>Ni.(p1'' - p2'').
+</code></pre>
+
+<p>Here is a quick derivation of equation (D-3) based on section C.3 of
+the <a href="Baraff_Fast_Contact_Force_94.pdf">Baraff '94 paper</a>.</p>
+
+<pre><code>Let p(t) be the world space coordinates of a point on a rigid body.
+Let R(t) be the vector from center of mass to p(t)
+Let X(t) be the center of mass
+Let V(t) be velocity of center of mass
+Let w(t) be the angular velocity (about the CM) of the rigid body
+Then p(t) = X(t) + R(t)
+</code></pre>
+
+<p>Taking derivatives:</p>
+
+<pre><code>p'(t) = X'(t) + R'(t) = V(t) + w(t) x R(t)
+</code></pre>
+
+<p>Here we use the knowledge that <code>R(t)</code> is only changing by rotation at a rate of <code>w(t)</code>.
+An elementary calculus result then gives the result that <code>R'(t) = w(t) x R(t)</code>.
+(See derivation of <code>Ni'</code> in <code>calculate_b_vector</code> which shows the calculus steps).
+Taking another derivative:</p>
+
+<pre><code>p''(t) = V'(t) + w'(t) x R(t) + w(t) x R'(t)
+    = V'(t) + w'(t) x R(t) + w(t) x (w(t) x R(t))
+</code></pre>
+
+<p>(Baraff&#8217;s derivation in section C.3 is slightly more elaborate, and I don&#8217;t
+entirely understand why its necessary).</p>
+
+<p>Two cases to consider here: whether the force is acting on body 1 or body 2.
+Suppose <code>fj</code> is acting on body 1. Then <code>fj</code> will contribute to <code>p1''</code>.
+(Otherwise if <code>fj</code> is acting on body 2, then <code>fj</code> will contribute to <code>p2''</code>.)</p>
+
+<p>NEED: Derivation of following equation D-3.</p>
+
+<p>Equation D-3 of the <a href="Baraff_Fast_Contact_Force_94.pdf">Baraff '94 paper</a> gives an expression for <code>p1''</code></p>
+
+<pre><code>(D-3)  p1'' = v1' + w1' x R1 + w1 x (w1 x R1)
+</code></pre>
+
+<p>where</p>
+
+<pre><code>v1 = linear velocity of center of mass of body 1,
+w1 = angular velocity of body 1
+R1 = vector from center of mass to point of contact p1
+</code></pre>
+
+<p>The term <code>w1 x (w1 x R1)</code> is velocity dependent, so it goes into the <code>b</code> vector.
+The <code>fj</code> dependent part of (D-3) is therefore</p>
+
+<pre><code>p1'' = v1' + w1' x R1
+</code></pre>
+
+<p>Because <code>v1'</code> is the linear acceleration of body 1, we have by Newton&#8217;s First Law</p>
+
+<pre><code>v1' = (total force on body 1)/ m1
+</code></pre>
+
+<p>where <code>m1</code> = mass of body 1. Therefore the the force <code>fj Nj</code>contributes</p>
+
+<pre><code>(D-4)  fj Nj / m1
+</code></pre>
+
+<p>to <code>v1'</code>.</p>
+
+<p>Next we find the term <code>w1' x R1</code> in (D-3). Equation C-10 of
+the <a href="Baraff_Fast_Contact_Force_94.pdf">Baraff '94 paper</a> gives <code>w1'</code> as</p>
+
+<pre><code>(C-10)  w1' = I1^-1 (t1 + L1 x w1)
+</code></pre>
+
+<p>where</p>
+
+<pre><code>I1 = the rotational inertia (about what axis? CM?  is it a vector?)
+t1 = torque,
+L1 = angular momentum.
+</code></pre>
+
+<p>I think that <code>I1</code> is a scalar quantity, so I don&#8217;t know why he uses <code>I1^-1</code> instead of
+dividing by <code>I1</code>. Additionally, the <code>L1</code> vector is also perpendicular to the plane in
+2D, as is <code>w1</code>, so <code>L1 x w1 = 0</code>. (In 3D, this could be non-zero, but it would go into
+the <code>b</code> vector since it is velocity dependent). So we are left with simply:</p>
+
+<pre><code>w1' = t1 / I1
+</code></pre>
+
+<p>To find <code>t1</code>, suppose that the <code>j</code>-th contact occurs at the point <code>pj</code>, and the vector
+<code>Rj</code> goes from center of mass of object 1 to <code>pj</code>. Then the force <code>fj Nj</code> contributes a
+torque of</p>
+
+<pre><code>Rj x fj Nj
+</code></pre>
+
+<p>So (C-10) becomes</p>
+
+<pre><code>w1' = (Rj x fj Nj) / I1
+</code></pre>
+
+<p>and we can write the <code>fj</code> dependent part of (D-3) as</p>
+
+<pre><code>p1'' = fj Nj / m1 + (Rj x fj Nj) x R1 / I1
+   = fj (Nj / m1 + (Rj x Nj) x R1 / I1
+</code></pre>
+
+<p>and the <code>fj</code> dependent part of (D-2) is</p>
+
+<pre><code>di'' = fj Ni.(Nj / m1 + (Rj x Nj) x R1 / I1)
+</code></pre>
+
+<p>Therefore from (D-1) we can see that the <code>fj</code> dependent part, which is <code>Aij</code>, is:</p>
+
+<pre><code>Aij = Ni.(Nj / m1 + (Rj x Nj) x R1 / I1)
+</code></pre>
+
+<p>Next, we expand express the vector cross product <code>(Rj x Nj) x R1</code>, to help with
+writing the computer code. All these vectors lie in the plane initially.</p>
+
+<pre><code>Rj x Nj = [0, 0, Rjx Njy - Rjy Njx]
+(Rj x Nj) x R1 = [0, 0, Rjx Njy - Rjy Njx] x [R1x, R1y, 0]
+= (Rjx Njy - Rjy Njx) [-R1y, R1x, 0]
+</code></pre>
+
+<p>Then we can expand the dot product:</p>
+
+<pre><code>Aij = Nix (Njx / m1 + (Rjx Njy - Rjy Njx)(-R1y) / I1) +
+    Niy (Njy / m1 + (Rjx Njy - Rjy Njx) R1x / I1)
+</code></pre>
+
+<p>Keep in mind that this is only the effect of <code>fj</code> on <code>p1''</code>. The complete picture is
+given in equation (D-2) above, so there can be a contribution from <code>p2''</code> to <code>Aij</code> as
+well.</p>
+
+<p>The above assumed that <code>Nj</code> pointed out of body 2 into body 1, that body 2 is the
+&#8220;normal object&#8221;. Actually this can vary for each contact. In the <code>j</code>-th contact, it
+could be that body 1 is the &#8220;normal object&#8221; and therefore <code>Nj</code> points out of body 1
+into some other body. In that case we need to use <code>-fj Nj</code> as the force in the above
+analysis.</p>
+
+<p>The above assumed that <code>fj</code> was affecting body 1. If <code>fj</code> is affecting body 2, then
+the analysis is identical except the effect is on <code>p2''</code>. Note that <code>p2</code> has a negative
+sign in equation D-2, so we need to multiply the resulting <code>Aij</code> by -1.
+And of course you use <code>m2</code> instead of <code>m1</code>, <code>I2</code> instead of <code>I1</code>, <code>R2</code> instead of <code>R1</code>.</p>
+
+<p>So there are four cases, which we list with the overall factor needed for each case.
+(The factor is determined by the sign on <code>fj</code> and the sign of <code>p1</code> or <code>p2</code> in equation
+D-2).</p>
+
+<pre><code>fj affects body 1
+  body 1 is primary object in contact j --&gt;  fj affects p1  --&gt; +1
+  body 1 is normal object in contact j --&gt;  -fj affects p1 --&gt; -1
+
+fj affects body 2
+  body 2 is primary object in contact j --&gt;  fj affects p2  --&gt; -1
+  body 2 is normal object in contact j --&gt;  -fj affects p2 --&gt; +1
+</code></pre>
+
+<p>Terminology: &#8220;primary&#8221; object just means it is the non-normal object in the contact, it
+is the object whose corner is colliding. See the fields of <code>RigidBodyCollision</code> object.</p>
+
+<p>Note that in the case where <code>fj</code> affects both bodies 1 and 2 (which happens for
+the contact force at the contact point) then <code>Aij</code> is the sum of these two.</p>
+
+<h2 id="contactforceoncircularedge">Contact Force on CircularEdge</h2>
+
+<p>For CircularEdge, there are some other differences when calculating the
+<code>b</code>-vector, but here the only difference is we use the <code>U</code> vector instead of the
+<code>R</code> vector.</p>
+
+<p>The <code>U</code> vector is from center of mass to the center of the
+circular edge. See the <a href="CEP_Curved_Edge_Physics.pdf">Curved Edge Physics paper</a>,
+where we define the gap in terms
+of not the two points at the contact, but instead by the center of the circle
+and one of the contact points. The center of the circle on body 2 is at</p>
+
+<pre><code>C2(t) = X2(t) + U2(t).
+</code></pre>
+
+<p>The point of contact on the other body 1 is at</p>
+
+<pre><code>P1(t) = X1(t) + R1(t).
+</code></pre>
+
+<p>From the Curved Edge Physics paper, the gap is <code>N . (P1 - C2)</code>. We then take
+derivatives, and the result involves <code>U2</code>.</p>
+
+<p>Another fact about using <code>U</code> vector vs. <code>R</code> vector: When calculating the effect
+of a force <code>F</code> at the contact in producing torque <code>T</code>, we have a calculation that is
+like</p>
+
+<pre><code>T = F x R
+</code></pre>
+
+<p>It turns out that this is the same when substituting <code>U</code>:</p>
+
+<pre><code>T = F x R = F x U
+</code></pre>
+
+<p>It has to do with both <code>R</code> and <code>U</code> being on the line of the normal thru the contact
+point. See docs for <code>RigidBodyCollision</code> for a diagram and explanation; the section
+is called &#8220;Equivalence of Using R or U Vector For Normal Velocity&#8221;.</p>
+
+<h1 id="calculatethebvector">Calculate the &#8216;b&#8217; Vector</h1>
+
+<p>This section describes the math behind the method <code>ContactSim.calculate_b_vector()</code>
+which calculates the <code>b</code> vector which specifies how external forces (like gravity,
+thrust, etc) affect acceleration of contact points.</p>
+
+<h2 id="background">Background</h2>
+
+<p>In <code>calculate_a_matrix</code>, we found for <code>di''</code> the parts that were dependent on the
+contact forces <code>fi</code>. Here we find the part of <code>di''</code> that is independent of the <code>fi</code>&#8217;s,
+such as gravity, thrust, rubber band force, and damping. For the purposes of calculating
+the contact forces we regard these forces as &#8220;constant&#8221; (at this moment in time) in the
+matrix equation <code>a = A f + b</code>.</p>
+
+<p>These &#8220;constant&#8221; or &#8220;external&#8221; forces are put into the <code>b</code> vector, so that we can then
+solve the matrix equation <code>a = A f + b</code>, subject to the constraints that <code>f &gt;= 0</code>,
+<code>a &gt;= 0</code>, and <code>f.a = 0</code>. Those constraints say that reaction forces can only push
+things apart, that objects cannot interpenetrate, and that if objects are separating
+then there is no reaction force.</p>
+
+<h2 id="derivation">Derivation</h2>
+
+<p>We start with the expression for <code>di''</code> = the acceleration of the distance between
+the contact points <code>p1, p2</code>. This was derived above as:</p>
+
+<pre><code>(D-2)   di'' = Ni.(p1'' - p2'') + 2 Ni'.(p1' - p2')
+</code></pre>
+
+<p>The term <code>Ni.(p1'' - p2'')</code> involves accelerations and therefore forces, so we need
+to include the effect of any forces other than the reaction forces on the accelerations
+of the contact points <code>p1</code> and <code>p2</code>. We will examine each of those forces (such as
+gravity) and determine through the geometry of the situation how the force affects the
+acceleration of each contact point.</p>
+
+<p>The term <code>2 Ni'.(p1' - p2')</code> is dependent only on current velocity, not acceleration,
+and therefore is independent of any forces being applied, and therefore belongs
+in the <code>b</code> vector.</p>
+
+<h3 id="derivationofni">Derivation of <code>Ni'</code></h3>
+
+<pre><code>Ni = (Nix, Niy, 0)
+</code></pre>
+
+<p>The vector <code>Ni</code> is rotating at a rate <code>w</code>. If we ignore any acceleration, we could
+write the vector <code>Ni</code> as a function of time like this:</p>
+
+<pre><code>Ni = |Ni| (cos wt, sin wt, 0)
+</code></pre>
+
+<p>Where</p>
+
+<pre><code>|Ni| is the magnitude of the vector Ni
+w = angular velocity
+t = time
+</code></pre>
+
+<p>For some particular value of time <code>t</code>, this will be equal to <code>(Nix, Niy, 0)</code>.
+Now elementary calculus gives us the derivative:</p>
+
+<pre><code>Ni' = |Ni| (-w sin wt, w cos wt, 0)
+</code></pre>
+
+<p>And we can recognize that this is equivalent to:</p>
+
+<pre><code>Ni' = w (-Niy, Nix, 0)
+</code></pre>
+
+<p>Because we picked the value of <code>t</code> such that <code>Nix = |Ni| cos wt</code>,
+and <code>Niy = |Ni| sin wt</code>. Note that this can also be expressed as a cross product of two</p>
+
+<p>vectors:</p>
+
+<pre><code>Ni' = W x Ni
+</code></pre>
+
+<p>where we treat angular velocity as a vector <code>W</code> with components <code>(0, 0, w)</code>.</p>
+
+<h3 id="derivationofp1">Derivation of <code>p1'</code></h3>
+
+<p>This is the velocity of a particular point, <code>p1</code>, on the object. The object is
+translating and rotating. The translation is given by the velocity of the center of
+mass, <code>V = (Vx, Vy, 0)</code>, and the rotation is given by the angular velocity <code>w</code>.</p>
+
+<pre><code>Let R be the vector from the center of mass to the point.
+Let X be the vector from the origin to the center of mass of the object.
+Let V be the velocity of the center of mass, so that V = X'.
+Let W be the angular velocity of the object, in 2D we have W = (0, 0, w).
+</code></pre>
+
+<p>Then the point <code>p1</code> is given by</p>
+
+<pre><code>p1 = X + R
+</code></pre>
+
+<p>Taking derivatives, we get</p>
+
+<pre><code>p1' = X' + R' = V + W x R
+</code></pre>
+
+<p>where we used the vector cross product method of finding R' (see above derivation
+of Ni'). This then expands to</p>
+
+<pre><code>p1' = (Vx, Vy, 0) + w (-Ry, Rx, 0)
+p1' = (Vx - w Ry, Vy + w Rx, 0)
+</code></pre>
+
+<h3 id="expansionof2ni.p1-p2">Expansion of <code>2 Ni'.(p1' - p2')</code></h3>
+
+<p>To bring together the entire expression <code>2 Ni'.(p1' - p2')</code> we need to recognize
+that each body has its own angular velocity w. The w used in calculating <code>Ni'</code>
+is that of the &#8220;normal&#8221; object, which is always body 2 in our scheme, or <code>w2</code>.
+Here is the complete expansion using subscripts 1 and 2 to refer to body 1 or 2
+of the contact.</p>
+
+<pre><code>2 Ni'.(p1' - p2')
+= 2 w2 (-Niy, Nix, 0) . ((V1x - w1 R1y, V1y + w1 R1x, 0)
+  - (V2x - w2 R2y, V2y + w2 R2x, 0))
+= 2 w2 (-Niy (V1x - w1 R1y - V2x + w2 R2y) +  Nix (V1y + w1 R1x - V2y - w2 R2x)
+  +  0)
+</code></pre>
+
+<h3 id="externalforcesinni.p1-p2">External forces in <code>Ni.(p1'' - p2'')</code></h3>
+
+<p>Next we examine the &#8220;external&#8221; forces (all forces other than the contact forces
+we are trying to solve for) and determine their contribution to the acceleration
+of the separation of the contact points. As explained above, these show up in
+the term Ni.(p1'' - p2'').</p>
+
+<p>Equation D-3 of the <a href="Baraff_Fast_Contact_Force_94.pdf">Baraff '94 paper</a> gives an expression for <code>p1''</code></p>
+
+<pre><code>(D-3)  p1'' = v1' + w1' x R1 + w1 x (w1 x R1)
+</code></pre>
+
+<p>(this magic needs to be elucidated)
+where</p>
+
+<pre><code>v1' = acceleration of center of mass
+w1 = angular velocity
+w1' = angular acceleration (= torque? I think not!)
+R1 = vector from CM to contact point p1
+</code></pre>
+
+<p>The corresponding expression for <code>p2''</code> is</p>
+
+<pre><code>p2'' = v2' + w2' x R2 + w2 x (w2 x R2)
+</code></pre>
+
+<p>It turns out that the external forces have already been calculated for us by
+the earlier processes (see <code>evaluate</code> method of RigidBodySim class). In the change
+variable we get passed in the current values for <code>x'', y'', th''</code>.
+These accelerations are the result of all the external forces such as gravity,
+thrust, rubber bands, damping. They operate on each object regardless of the
+contact forces that are applied. So we only have to plug these in to
+the above equations.</p>
+
+<pre><code>Ni.(p1'' - p2'') =
+Ni.( (v1' + w1' x R1 + w1 x (w1 x R1)) - (v2' + w2' x R2 + w2 x (w2 x R2)))
+</code></pre>
+
+<p>We can expand the above as follows. (Keep in mind that we regard <code>w'</code> and <code>w</code>
+as vectors perpendicular to the plane for purposes of vector cross products.)</p>
+
+<pre><code>w' x R = (-w' Ry, w' Rx, 0)
+w x (w x R) = (-w^2 Rx, -w^2 Ry, 0)
+V' + w' x R + w x (w x R) = (Vx -w^2 Rx - w' Ry, Vy - w^2 Ry + w' Rx, 0)
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>We now have the expansions of the two terms in equation (D-2).
+This gives for each contact i, the contribution to the acceleration
+which we add to <code>b[i]</code>. Keep in mind that for each contact, the RigidBodyCollision
+object figures out for us: which is body 1 (the &#8220;primary&#8221; object whose corner is
+in contact), which is body 2 (the &#8220;normal&#8221; object whose edge determines the normal
+vector), and the normal vector <code>Ni</code>.</p>
+
+<h2 id="extraacceleration">Extra Acceleration</h2>
+
+<p>Extra acceleration is added to eliminate velocity at contact. See ExtraAccel enum for
+explanations of the various options.</p>
+
+<p>See the paper <a href="CEP_Curved_Edge_Physics.pdf">Curved Edge Physics </a> which explains the
+math involved in extra acceleration for curved edges.</p>
+
+<p>This is a major new (as of Oct 2011) experimental change to contact handling
+policy. Add extra acceleration at contacts to offset the residual velocity. Turn off
+the “small zero elasticity impacts at every contact on every time step” policy (in
+CollisionSim.advance). Why? Because in the “resting state”, we continue to get lots
+of impacts happening resulting in a lot of undesirable wiggling jiggling of objects
+that should be at rest.</p>
+
+<p>The underlying scenario in many &#8220;resting contact&#8221; situations is this:</p>
+
+<ol>
+<li><p>fire an impulse at contact A to eliminate negative velocity there; this
+ results in some positive velocity at another contact B.</p></li>
+<li><p>the small positive velocity at contact B leads eventually to a momentary loss of
+contact there</p></li>
+<li><p>contact B then “falls” back into contact with negative velocity leading to the
+cycle starting over again.</p></li>
+</ol>
+
+<p>In this way you get an oscillation of impulses at contact A, then at contact B, then at
+contact A, etc.</p>
+
+<p>The canonical example is a long block (size 1 x 3) resting on the ground in vertical
+position. With no extra acceleration, you see the above scenario of a continuous cycle
+of a collision happening every couple seconds, alternating between the two corners on
+the ground. (When the block rests in horizontal position, then this doesn&#8217;t happen.)</p>
+
+<p>The new idea is to <em>not</em> use impact impulse to correct the negative velocity at
+contacts. Instead we request some <em>additional acceleration</em> at contacts with negative
+velocity, by adding to the <code>b</code>-vector. Also, we request a little less acceleration at
+contacts with positive velocity so that they stay in contact.</p>
+
+<p>How the amount of extra acceleration is calculated: We want an amount of
+acceleration <code>a</code> which over a single time step <code>h</code> will reduce the normal velocity
+<code>v</code> to zero. Assume constant acceleration. Change in velocity over timestep <code>h</code> is</p>
+
+<pre><code>∆v = (v - 0) = integral(a dt) = a h.
+</code></pre>
+
+<p>Therefore we get <code>a = -v / h</code>.</p>
+
+</body>
+</html>
+

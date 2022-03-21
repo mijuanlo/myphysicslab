@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab Reaction Diffusion</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../../common/myphysicsicon.png">
+</head>
+<body>
+
+<a id="logo" href="../../index-en.html">
+  <img src="../../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Reaction Diffusion</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="reaction-diffusion-en.html" selected>English</option>
+    <option value="reaction-diffusion-de.html" >German</option>
+  </select>
+</div>
+<ul id="header_bar">
+</ul>
+
+<div class="image" style="width: 97px;">
+<img src="reaction.gif" width="97" height="89" alt="">
+</div>
+
+<p style="margin-left: 110px; max-width: 40em;">
+There are unusual chemical reactions that exhibit oscillating behavior that can persist for a long time.  Below are links to videos of simulations of such a reaction-diffusion system. The simulations were done using Matlab, see the
+<a href="reaction.pdf">paper</a> for details.
+</p>
+
+<p style="clear: both;">
+We have a two-dimensional space (eg. a thin fluid) with two chemical species <span class="html-math inline-math">
+<i>U</i>, <i>V</i>
+</span> which react with each other, and also diffuse (spread out) on their own. The system is defined by the equations
+</p>
+
+<p class="html-math display-equation">
+<i>U</i><sub><i>t</i></sub> = <i>&lambda;</i>(<i>A</i>)<i>U</i> &minus; <i>&omega;</i>(<i>A</i>)<i>V</i> + <i>D</i> &nabla;<sup>2</sup><i>U</i><br>
+<i>V</i><sub><i>t</i></sub> = <i>&omega;</i>(<i>A</i>)<i>U</i> &minus; <i>&lambda;</i>(<i>A</i>)<i>V</i> + <i>D</i> &nabla;<sup>2</sup><i>V</i>
+</p>
+
+<p>where <span class="html-math inline-math">
+<i>A</i> <sup>2</sup> = <i>U</i> <sup>2</sup>+<i>V</i> <sup>2</sup>
+</span> and
+<span class="html-math inline-math">
+&nabla;<sup>2</sup> = &part;<sub><i>x</i></sub><sup>2</sup> + &part;<sub><i>y</i></sub><sup>2</sup>
+</span>. The diffusion constant is <span class="html-math inline-math">
+<i>D</i>
+</span>.  The <span class="html-math inline-math">
+<i>&lambda;</i>
+</span> and <span class="html-math inline-math">
+<i>&omega;</i>
+</span> functions are defined by</p>
+
+<p class="html-math display-equation">
+<i>&lambda;</i>(<i>A</i>) = <i>&epsilon;</i> &minus; <i>a</i> <i>A</i><sup>2</sup><br>
+<i>&omega;</i>(<i>A</i>) = <i>c</i> &minus; <i>&beta;</i> <i>A</i><sup>2</sup>
+</p>
+
+<p>The movies show the concentration of only one of the two chemical species, <span class="html-math inline-math">
+<i>U</i>
+</span>. The concentration is represented by colors, with blue being low concentration, through  light-blue, green, yellow to red which is the highest concentration. The first four movies show various initial conditions. The parameters used are: <span class="html-math inline-math">
+<i>&epsilon;</i> = 1, <i>a</i> = 1, <i>c</i> = 0, <i>&beta;</i> = 1, <i>D</i> = 0.1
+</span>.</p>
+
+<ul>
+<li><a href="m15.mp4">One-armed spiral waves.</a></li>
+<li><a href="t1.mp4">Two-armed spiral waves.</a></li>
+<li><a href="b1.mp4">Square grid oscillating.</a></li>
+<li><a href="r1.mp4">Parallel rows moving.</a></li>
+</ul>
+
+<p>The next several movies show the effect of modifying the parameters in the defining equations of the system. The parameters used are: <span class="html-math inline-math">
+<i>&epsilon;</i> = 1, <i>a</i> = 1, <i>c</i> = 0, <i>&beta;</i> = 1, <i>D</i> = 0.1
+</span> unless otherwise noted. The initial condition is the one-armed spiral in each movie.</p>
+
+<ul>
+<li><a href="s47.mp4">High diffusion, _D = 0.4</a></li>
+<li><a href="m12.mp4">Clockwise rotation from setting _c = 1.5</a></li>
+<li><a href="m10.mp4">No rotation from setting _c = 0.9</a></li>
+<li><a href="m17.mp4">Chaos results from setting beta = 2.5</a></li>
+<li><a href="s55.mp4">Chaos results from setting _a = 0.25</a></li>
+</ul>
+
+<p id="page_history">
+  This web page was first published February 2002.
+</p>
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">previous</a>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+<script>
+  window.addEventListener('pageshow', function(event){
+    // set language menu to correct language
+    var menu = document.getElementById('language_menu');
+    if (menu) {
+      menu.selectedIndex = 0;
+    }
+  }, /*capturing=*/false);
+</script>
+</body>
+</html>

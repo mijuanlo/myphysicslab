@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab 2D Spring</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">2D Spring</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="2d-spring-en.html" selected>English</option>
+    <option value="2d-spring-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="../pendulum/inverted-double-pendulum-en.html">previous</a>
+<a class="nav_link" 
+   href="double-2d-spring-en.html">next</a>
+</div>
+<ul id="header_bar" class="horiz_tabs">
+  
+  <li class="sim selected">Sim</li>
+  <li class="graph ">Graph</li>
+  <li class="time_graph">Time Graph</li>
+  <li class="multi_graph">Multi Graph</li>
+</ul>
+
+
+<div id="container" class="control_container" lang="en">
+  <div id="div_graph" >
+  </div>
+  <div id="div_time_graph" >
+  </div>
+  <div id="sim_applet" >
+  </div>
+  <div id="sim_controls" class="control_group">
+  </div>
+  <div id="graph_controls" class="control_group">
+  </div>
+  <div id="time_graph_controls" class="control_group">
+  </div>
+  <p>
+  <label id="label_show_sim">
+    <input type="checkbox" id="show_sim">show sim
+  </label>
+  <label id="label_terminal">
+    <input type="checkbox" id="show_terminal">terminal
+  </label>
+  <div id="div_terminal">
+    <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea> <br>
+    <label style="display:inline-block">command &gt;
+      <input type="text" id="term_input" size="80">
+    </label>
+  </div>
+</div>
+
+<p class="introduction">
+This simulation shows a single mass on a spring, which is connected to the ceiling. The
+mass is able to move in 2 dimensions, and gravity operates. Does the motion look random
+to you? Watch the graph for a while and you'll see its actually an intricate pattern.
+</p>
+
+<p class="instructions">
+You can change gravity, mass, spring stiffness, and friction (damping). You can drag
+the mass with your mouse to change the starting position.
+</p>
+
+<p>The math behind the simulation is shown below.  Also available are:
+<a href="https://github.com/myphysicslab/myphysicslab/blob/master/src/sims/springs/Spring2DApp.js">open source code</a>,
+<a href="../develop/docs/myphysicslab.sims.springs.Spring2DApp.html">documentation</a> and a
+<a href="../develop/build/sims/springs/Spring2DApp-en.html">simple-compiled version</a>
+which is <a href="../develop/docs/Customizing.html">more customizable</a>.
+</p>
+
+<h2 id="physics">Physics of the 2-Dimensional Spring</h2>
+
+<div class="image" style="width: 103px;">
+<br>
+<img src="spring2d.gif" width="100" height="117" alt="">
+<br>
+2D spring variables
+</div>
+
+<div style="margin-left:105px;">
+
+<p>An immoveable (but draggable) anchor point has a spring and bob hanging below and
+swinging in two dimensions. Regard the bob as a point mass. Define the following
+variables:</p>
+
+
+<ul class="vars">
+    <li><span class="html-math inline-math">
+<i>&theta;</i> =
+</span> angle (<span class="html-math inline-math">
+0 =
+</span> vertical, increases counter-clockwise)</li>
+    <li><span class="html-math inline-math">
+<i>S</i> =
+</span> spring stretch (displacement from rest length)</li>
+    <li><span class="html-math inline-math">
+<i>L</i> =
+</span> length of spring</li>
+    <li><span class="html-math inline-math">
+<i>u</i> =
+</span> position of bob</li>
+    <li><span class="html-math inline-math">
+<i>v</i> = <i>u</i>'= 
+</span> velocity of bob</li>
+    <li><span class="html-math inline-math">
+<i>a</i> = <i>u</i>''= 
+</span> acceleration of bob</li>
+</ul>
+
+<p>Define some constants:</p>
+
+<ul class="vars">
+    <li><span class="html-math inline-math">
+<i>R</i> =
+</span> rest length of spring</li>
+    <li><span class="html-math inline-math">
+<i>T</i> =
+</span> position of anchor point</li>
+    <li><span class="html-math inline-math">
+<i>m</i> =
+</span> mass of bob</li>
+    <li><span class="html-math inline-math">
+<i>k</i> =
+</span> spring constant</li>
+    <li><span class="html-math inline-math">
+<i>b</i> =
+</span> damping constant</li>
+    <li><span class="html-math inline-math">
+<i>g</i> =
+</span> gravitational constant</li>
+</ul>
+</div>
+
+<div class="image" style="width: 103px;">
+<img src="i_j_vectors2.gif" width="74" height="73" alt=""><br>
+I &amp; J unit vectors
+</div>
+
+<div style="margin-left:105px;">
+
+<p>Note that for this simulation the vertical dimension increases downwards. We'll need
+the standard unit vectors <span class="html-math inline-math">
+<span class="vector">i</span>, <span class="vector">j</span>
+</span>. We use bold and overline to indicate a
+vector.</p>
+
+<ul class="vars">
+    <li><span class="html-math inline-math">
+<span class="vector">i</span> =
+</span> unit vector in horizontal direction</li>
+    <li><span class="html-math inline-math">
+<span class="vector">j</span> =
+</span> unit vector in vertical (down) direction</li>
+</ul>
+</div>
+
+<p style="clear: both;">There are three vector forces acting on the bob:</p>
+
+<ul class="vars">
+    <li><span class="html-math inline-math">
+<span class="vector">F</span><sub>gravity</sub> = <i>m</i> <i>g</i> <span class="vector">j</span> =
+</span> <span class="text">gravity acting straight down</span></li>
+    <li><span class="html-math inline-math">
+<span class="vector">F</span><sub>spring</sub> = &minus;<i>k</i> <i>S</i> (sin <i>&theta;</i> <span class="vector">i</span> + cos <i>&theta;</i> <span class="vector">j</span>) =
+</span>
+      <span class="text">the spring pulling (or pushing) along the line from bob to anchor point.</span></li>
+    <li><span class="html-math inline-math">
+<span class="vector">F</span><sub>damping</sub> = &minus;<i>b</i> (<i>v<sub>x</sub></i> <span class="vector">i</span> + <i>v<sub>y</sub></i> <span class="vector">j</span>) =
+</span>
+      <span class="text">damping (friction) acting opposite to the direction of motion of the bob, ie. opposite to its velocity vector.</span></li>
+</ul>
+
+<p>Summing these forces and using Newton's second law we get:</p>
+
+<p class="html-math display-equation">
+<i>m</i> <span class="vector">a</span> = <span class="vector">F</span><sub>gravity</sub> + <span class="vector">F</span><sub>spring</sub> + <span class="vector">F</span><sub>damping</sub>
+</p>
+
+<p class="html-math display-equation">
+<i>m</i> (<i>a<sub>x</sub></i> <span class="vector">i</span> + <i>a<sub>y</sub></i> <span class="vector">j</span>) = <i>m</i> <i>g</i> <span class="vector">j</span> &minus;
+<span class="nobr"><i>k</i> <i>S</i> (sin <i>&theta;</i> <span class="vector">i</span> + cos <i>&theta;</i> <span class="vector">j</span>)</span> &minus;
+<span class="nobr"><i>b</i> (<i>v<sub>x</sub></i> <span class="vector">i</span> + <i>v<sub>y</sub></i> <span class="vector">j</span>)</span>
+</p>
+
+<p>We can write the horizontal and vertical components of the above as separate
+equations. This gives us two simultaneous equations. We also divide each side by
+<span class="html-math inline-math">
+<i>m</i>
+</span>.</p>
+
+<table class="html-math numbered-equation"><tr><td class="emphasized">
+<i>a<sub>x</sub></i> = &minus; <sup><i>k</i></sup>&frasl;<sub><i>m</i></sub> <i>S</i> sin <i>&theta;</i> &minus; <sup><i>b</i></sup>&frasl;<sub><i>m</i></sub> <i>v<sub>x</sub></i>
+
+</td><td class="equation-number">(1a)</td></tr></table>
+
+<table class="html-math numbered-equation"><tr><td class="emphasized">
+<i>a<sub>y</sub></i> = <i>g</i> &minus; <sup><i>k</i></sup>&frasl;<sub><i>m</i></sub> <i>S</i> cos <i>&theta;</i> &minus; <sup><i>b</i></sup>&frasl;<sub><i>m</i></sub> <i>v<sub>y</sub></i>
+
+</td><td class="equation-number">(1b)</td></tr></table>
+
+<p>These are the equations of motion. It only remains to show how <span class="html-math inline-math">
+<i>S</i> sin <i>&theta;</i>
+</span> and
+<span class="html-math inline-math">
+<i>S</i> cos <i>&theta;</i>
+</span> are functions of the position of the bob. The displacement of the
+spring <span class="html-math inline-math">
+<i>S</i>
+</span> is the current length of the spring minus the rest length.</p>
+
+
+<table class="html-math numbered-equation">
+<tr><td class="equation-number">&nbsp;&nbsp;</td><td>
+<i>S</i> = <i>L</i> &minus; <i>R</i>
+
+</td><td class="equation-number">(2)</td></tr></table>
+
+<p>From the pythagorean theorem we can get the length of the spring <span class="html-math inline-math">
+<i>L</i>
+</span> in terms
+of from the position of the bob, <span class="html-math inline-math">
+<i>u</i>
+</span>, and the position of the anchor point,
+<span class="html-math inline-math">
+<i>T</i>
+</span>.</p>
+
+
+<p>$$L = \sqrt{(u_x - T_x)^2 + (u_y - T_y)^2} \tag{3}$$</p>
+
+<p>The sine and cosine of the angle <span class="html-math inline-math">
+<i>&theta;</i>
+</span> are:</p>
+
+<table class="html-math numbered-equation">
+<tr><td class="equation-number">&nbsp;&nbsp;</td><td>
+sin <i>&theta;</i> = (<i>u<sub>x</sub></i> &minus; <i>T<sub>x</sub></i>)/<i>L</i>
+
+</td><td class="equation-number">(4a)</td></tr></table>
+
+<table class="html-math numbered-equation">
+<tr><td class="equation-number">&nbsp;&nbsp;</td><td>
+cos <i>&theta;</i> = (<i>u<sub>y</sub></i> &minus; <i>T<sub>y</sub></i>)/<i>L</i>
+
+</td><td class="equation-number">(4b)</td></tr></table>
+
+
+
+<h2 id="numerics">Numerical Solution of the 2-Dimensional Spring</h2>
+
+<p>To solve the equations of motion numerically, so that we can drive the simulation,
+we use the <a href="../explain/runge-kutta-en.html">Runge Kutta method</a>
+for solving sets of ordinary differential equations. Since the Runge-Kutta method only
+works with <a href="../explain/classify-diff-eq-en.html">first-order</a>
+differential equations, we convert the two second-order equations (1) to the following
+four first-order equations.</p>
+
+<p class="html-math display-equation">
+<i>u<sub>x</sub></i>' = <i>v<sub>x</sub></i>
+</p>
+
+<p class="html-math display-equation">
+<i>u<sub>y</sub></i>' = <i>v<sub>y</sub></i>
+</p>
+
+<p class="html-math display-equation">
+<i>v<sub>x</sub></i>' = &minus; <sup><i>k</i></sup>&frasl;<sub><i>m</i></sub> <i>S</i> sin <i>&theta;</i> &minus; <sup><i>b</i></sup>&frasl;<sub><i>m</i></sub> <i>v<sub>x</sub></i>
+</p>
+
+<p class="html-math display-equation">
+<i>v<sub>y</sub></i>' = <i>g</i> &minus; <sup><i>k</i></sup>&frasl;<sub><i>m</i></sub> <i>S</i> cos <i>&theta;</i> &minus; <sup><i>b</i></sup>&frasl;<sub><i>m</i></sub> <i>v<sub>y</sub></i>
+</p>
+
+<p>Keep in mind that <span class="html-math inline-math">
+<i>S</i> sin <i>&theta;</i>
+</span> and <span class="html-math inline-math">
+<i>S</i> cos <i>&theta;</i>
+</span> are functions of the
+position of the bob, <span class="html-math inline-math">
+<i>u<sub>x</sub></i>, <i>u<sub>y</sub></i>
+</span>, as given in equations (2-4).</p>
+
+
+<!--h2>TO DO:</h2>
+
+<ul>
+  <li>Does Y really increase downwards??? It doesn't in the graph, so should change
+    the equations here to match what the sim is doing.</li>
+</ul-->
+
+
+<p id="page_history">
+  This web page was first published April 2001.
+</p>
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="../pendulum/inverted-double-pendulum-en.html">previous</a>
+  <a class="nav_link" href="double-2d-spring-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+
+<!-- Call the app script after the body so that html entities are defined and 
+* the script can find them.--> 
+<script src="Spring2DApp-en.js"></script>
+<script>
+  (function build() {
+    var elem_ids = {
+      tab_list: 'header_bar',
+      container: 'container',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      sim_controls: 'sim_controls',
+      div_terminal: 'div_terminal',
+      div_time_graph: 'div_time_graph',
+      time_graph_controls: 'time_graph_controls',
+      div_multi_graph: 'div_multi_graph',
+      multi_graph_controls: 'multi_graph_controls',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_sim: 'show_sim',
+      images_dir: '../common'
+    };
+    app = makeSpring2DApp(elem_ids);
+    app.defineNames('app');
+    window.addEventListener('pageshow', function(event){
+      // set language menu to correct language
+      var menu = document.getElementById('language_menu');
+      if (menu) { menu.selectedIndex = 0; }
+    }, /*capturing=*/false);
+    app.setup();
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+<script>
+  // separate script tag, runs even if error occurs in earlier script tag
+  app.start();
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+</body>
+</html>

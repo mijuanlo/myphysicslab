@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="../../../../common/myphysicsicon.png">
+<title>myphysicslab.sims.experimental.GraphCalc2App</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../../index-en.html">
+  <img src="../../images/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+<h1>sims.experimental.MultiGraphCalc2App </h1>
+<div id="header_nav">
+
+  <select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="MultiGraphCalc2App-en.html" selected>English</option>
+    <option value="MultiGraphCalc2App-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="GraphCalc2App-en.html">previous</a>
+<a class="nav_link" 
+   href="SimpleApp-en.html">next</a>
+</div>
+<ul id="header_bar">
+</ul>
+
+<div id="graph_div1">
+</div>
+<div id="graph_controls1" class="control_group">
+</div>
+
+<p>This demonstrates using the myPhysicsLab library to draw multiple graphs on
+  a web page.
+</p>
+
+<p>NOTE: This will only work on
+<a href="../../../docs/Building.html#advancedvs.simplecompile">simple-compiled versions</a>
+of this app; advanced-compiled versions cannot execute JavaScript.
+</p>
+
+
+<div id="graph_div2">
+</div>
+<div id="graph_controls2" class="control_group">
+</div>
+
+<script src="GraphCalc2App-en.js"></script>
+  <script>
+    (function build() {
+      var elem_ids = {
+        graph_div: 'graph_div1',
+        graph_controls: 'graph_controls1',
+        term_output: '',
+        term_input: '',
+        images_dir: '../../images',
+        b_max: 20,
+        b_min: 0.01,
+        b_multiply: true,
+        b_increments: 200,
+        b_value: 5
+      };
+      app = makeGraphCalc2App(elem_ids);
+      app.defineNames('app');
+      app.setBParam(5);
+      app.eval('plot("x*Math.sin(b*x)", -10, 10)');
+    }());
+  </script>
+  <script>
+    (function build() {
+      var elem_ids = {
+        graph_div: 'graph_div2',
+        graph_controls: 'graph_controls2',
+        term_output: '',
+        term_input: '',
+        images_dir: '../../images'
+      };
+      app2 = makeGraphCalc2App(elem_ids);
+      app2.defineNames('app2');
+      app2.setBParam(3);
+      app2.eval('graphLine.setColor("blue");plot("x*Math.cos(b*x)", -10, 10)');
+    }());
+  </script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+
+<script>app.setup();</script>
+<script>app.start();</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+    <br><span id="revised_date">revised Mar 24 2021 14:48</span>
+  </div>
+  <a id="valid_html" href="http://validator.w3.org/check?uri=referer;outline=1;"
+      title="check if this page is valid HTML">
+  <img  src="../../images/ValidHTML401.png" alt="Valid HTML 4.01" 
+      height="31" width="88">
+  </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab Displaying Math on the Web</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Displaying Math on the Web</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="web-math-en.html" selected>English</option>
+    <option value="web-math-de.html" >German</option>
+  </select>
+</div>
+<ul id="header_bar">
+</ul>
+
+
+<!--  TODO:  replace HTML entities with the actual characters, as recommended in the Google style guidelines:
+http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
+Do not use entity references.
+There is no need to use entity references like &mdash;, &rdquo;, or &#x263a;, assuming the same encoding (UTF-8) is used for files and editors as well as among teams.
+The only exceptions apply to characters with special meaning in HTML (like < and &) as well as control or “invisible” characters (like no-break spaces).
+-->
+
+<p>Displaying math on web pages with HTML is challenging.  There are many approaches.   Here are some notes on what I've learned and the solutions I'm using (for now).</p>
+
+<p style="margin: 1em; padding: 1em; border: dashed black 1px">This page was created in 2004.  As of December 2010, the situation has not significantly improved, however there are some hopeful developments.  MathML is now supported in more browsers.  And <a href="http://www.mathjax.org/">MathJax</a> looks very promising:  <q><em>MathJax is an open source JavaScript display engine for mathematics that works in all modern browsers. No more setup for readers. No more browser plugins. No more font installations... It just works.</em></q>
+</p>
+
+
+<h2>Goals and Requirements</h2>
+
+What solution you choose for displaying math depends on your goals and requirements.  Here are some factors to consider:
+<ul>
+<li><em>Package or font installation.</em>  Are your readers willing to install a package or special fonts required to view math?</li>
+<li><em>Authoring.</em>  What kind of authoring environment do you want?  How do you want to express your math?  How much control do you want over the HTML that is produced?</li>
+<li><em>Print quality.</em>  Is being able to produce a printed version important?  How high quality must the print version be?</li>
+<li><em>Academic papers.</em>  Are you putting an academic paper (usually in LaTeX format) on the web?  Do you want to keep it as a LaTeX document and not have a separate version for the web?</li>
+<li><em>Fancy math.</em>  Does your math have lots of fancy formatting and special symbols?</li>
+<li><em>Compatibility.</em>  What browser and operating system combinations must you support?  All of them, or only certain ones?</li>
+<li><em>Speed.</em>  Should your web page display quickly, even on a slow internet connection?</li>
+<li><em>Disabilities.</em>  Must you support readers with disabilities?  For example, should readers with poor eyesight be able to increase the font size?</li>
+<li><em>License and cost.</em>  What are your cost considerations?  Do you require open source software that you can modify yourself?</li>
+<li><em>Amount of math.</em>  Do you have less than 10 equations or more than 100 on your page?</li>
+</ul>
+
+
+
+<h2>How I Display Math on the Web</h2>
+
+My reviews of the various options for displaying math on the web are given <a href="web-math-en.html#reviews">below</a>.  To cut to the chase, here is the solution that I came up with.<br>
+<br>
+
+I use <strong>raw HTML and CSS</strong> (cascading style sheets) for most of the math display on <a href="https://www.myphysicslab.com/archive/index.html">MyPhysicsLab</a>.  In addition I'm using a modified version of <a href="web-math-en.html#my_gladtex">gladTeX</a> to create bitmap images of the fancier equations.<br>
+<br>
+
+<div style="margin: 0 3em;">
+<small>I would <em>prefer</em> to be writing math as LaTeX expressions within my HTML files that is then pre-processed to <a href="web-math-en.html#reviews">mathML</a>.  But mathML seems to be not quite ready for wide-spread use.  mathML is built-in for very few browsers, so a user must download a special player which may not be available for all systems or browsers.</small><br>
+</div>
+<br>
+I sometimes have as many as 50 or more equations on a page, so I felt that converting them all to images would result in the page loading too slowly.  Also, I would like to allow the user to change the font size of the text and math in the browser – but images do not adapt to font size changes.  And the print quality is better with text-based math than with images.<br>
+<br>
+My primary target is HTML pages, so I want a solution that lets me write HTML.  Therefore I stayed away from tools where you write the entire page in LaTeX which is then converted to HTML.  I felt that LaTeX to HTML conversion would not give me enough control over the resulting HTML.<br>
+<br>
+I use a <strong>macro pre-processor</strong> to define macros that I use in creating the HTML math.  For example I can write<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; #define eqn_start &nbsp;&nbsp;&nbsp;&nbsp; &lt;p class="display-equation"&gt;</code><br>
+which defines a macro that I can place before each equation.  This makes for less typing, and if I need to change what comes before each equation I can do so in one place &ndash; by changing the macro (and re-processing the pages).  I can also make macros that take one or more arguments.  For example<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &#035;define sup(1)  &nbsp;&nbsp;&nbsp;&nbsp; &lt;sup&gt;&#035;arg&#035;&lt;/sup&gt;</code><br>
+is a macro for making a superscript.  The <code>#arg#</code> is replaced by whatever is passed in to the macro. 
+I wrote my own macro pre-processor but there are probably better ones out there, such as <a href="http://htmlex.sourceforge.net">htmlex</a>. 
+<!-- (If you are interested I'm happy to provide my macro pre-processor &ndash; written in C &ndash; under an open source license, just <a href="mailto:erikn@MyPhysicsLab.com">email me</a>.) -->
+<br>
+<br>
+Another example of macro usage:  since I use italics for variable names, I usually have several macros like this:<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &#035;define _x  &nbsp;&nbsp;&nbsp;&nbsp; &lt;i&gt;x&lt;/i&gt;</code><br>
+Then I can just refer to <code>_x</code> in the HTML file, and the pre-processor turns that into the italicized version automatically.
+
+
+
+
+<h2 id="HTML_math">Writing Math in HTML and CSS</h2>
+
+You can look at the HTML source of any of the pages on my <a href="../index.html">physics simulation website</a> to see examples of writing math with HTML.  (Keep in mind that I use macros when authoring the math, so the actual HTML is more dense than what I work with). You can also look at the <a href="https://www.myphysicslab.com/archive/stylesheet4.css">CSS style sheet</a> for this website.  Here I'll explain some of the techniques I use.<br>
+<br>
+A good reference for rendering math in HTML is <a href="http://www.cs.tut.fi/~jkorpela/math/index.html">Jukka Korpela's website</a>.  I use many of the basic techniques he describes.  Some are obvious such as using <code>&lt;sub&gt;</code> for subscripts, <code>&lt;sup&gt;</code> for exponents, or <code>&lt;b&gt;</code> for vectors.<br>
+<br>
+A nice trick for small fractions that I found on Jukka's website is this:<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;</code><br>
+which is rendered as frac(1,2).  You can create a macro to make this easier to type.  The <em>fraction slash</em> character <code>&amp;frasl;</code> renders this a bit nicer than a regular slash (though older browsers might not recognize it at all).<br>
+<br>
+
+I use many of the <a href="http://www.alanwood.net/demos/ent4_frame.html">HTML 4.0 Character Entity References</a> for greek characters such as<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &amp;theta;</code> = &theta;<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &amp;pi;</code> = &pi;<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &amp;omega;</code> = &omega;<br>
+Also available are some math symbols like<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &amp;radic;</code> = &radic;<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &amp;int;</code> = &int;<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &amp;sum;</code> = &sum;<br>
+Compatibility?  Modern browsers support these, but it depends on the font.  Some font's have these symbols and others don't.  I've seen a case where different sizes of the same font varied in whether they have these symbols.<br>
+<br>
+I use <code>&amp;minus;</code> instead of a dash.  Compare how they look: <span class="html-math inline-math">
+−1, -1
+</span>.  If you are using a mono-spaced font (like Courier) then you can get away with using a dash instead.<br>
+<br>
+I frequently use the <em>non-breaking space</em> <code>&amp;nbsp;</code> to fix up spacing problems, in math and elsewhere.<br>
+<br>
+Using a CSS cascading stylesheet can help standardize the look of math across many pages and different browsers.  For example, I define the styles for <code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code> with<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; sup { vertical-align: 0.8ex; font-size:95%; }</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; sub { vertical-align: -0.6ex; font-size:95%; }</code><br>
+This helps ensure that CSS compliant browsers show subscripts and superscripts as I want them to.<br>
+<br>
+
+I define several CSS classes to control things like margins, centering, line breaks, default font, etc.  For example, here is my class for inline math display:<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; span.inline-math { white-space: nowrap; }</code><br>
+Then in the HTML I would write something like<br>
+<code>...the function &lt;span class="inline-math"&gt;f(x) = x + 2&lt;/span&gt; is a simple function...</code><br>
+which ensures that the inline equation is not split onto two lines when the browser renders the page.<br>
+<br>
+
+I specify a bigger line height for <em>display equations</em> (equations that are on their own line) with <code>{ line-height: 2em }</code> to help make the spacing between equations more even.  This helps because then equations with or without subscripts or superscripts have about the same line height.
+<br>
+
+
+
+<h2>Fractions with <code>&lt;table&gt;</code></h2>
+
+Fractions can be made with HTML tables.  I use the CSS <code>border-top</code> style to create the fraction line.  Here's an example:
+<table style="margin-top:0.5em; margin-bottom:0.5em; text-align: center;" align="center" cellpadding="0" cellspacing="0" >
+    <tr>
+        <td rowspan="2" nowrap="nowrap">
+            <i>x</i> = &nbsp;
+        </td>
+        <td nowrap="nowrap">
+            <i>x</i><sup>2</sup> + <i>x</i> + 1
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top:solid 1px black;">
+            2 cos(<i>x</i>)
+        </td>
+    </tr>
+</table>
+Here is the equation with the table borders turned on, so you can see where the cells are:
+<table style="margin-top:0.5em; margin-bottom:0.5em; text-align: center;" align="center" cellpadding="0" cellspacing="0" border=1>
+    <tr>
+        <td rowspan="2" nowrap="nowrap">
+            <i>x</i> = &nbsp;
+        </td>
+        <td nowrap="nowrap">
+            <i>x</i><sup>2</sup> + <i>x</i> + 1
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top:solid 1px black;">
+            2 cos(<i>x</i>)
+        </td>
+    </tr>
+</table>
+This is the HTML and CSS that produces the fraction.
+<pre style="margin:0.5em">
+&lt;style&gt;
+  td.upper_line { <b>border-top:solid 1px black;</b> }
+  table.fraction { text-align: center; vertical-align: middle;
+      margin-top:0.5em; margin-bottom:0.5em; line-height: 2em; }
+&lt;/style&gt;
+
+&lt;table class="fraction" align="center" cellpadding="0"
+      cellspacing="0"&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2" nowrap="nowrap"&gt;
+      &lt;i&gt;x&lt;/i&gt; = &nbsp;
+    &lt;/td&gt;
+    &lt;td nowrap="nowrap"&gt;
+      &lt;i&gt;x&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt; + &lt;i&gt;x&lt;/i&gt; + 1
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td <b>class="upper_line"</b>&gt;
+        2 cos(&lt;i&gt;x&lt;/i&gt;)
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+Note that the part of the equation that is not in the fraction is put into a separate table cell that spans the rows of the table.  I find that proper indenting helps to make the HTML more readable while authoring.  I don't use macros for these tables because macros would obscure the indenting of the table.<br>
+<br>
+
+To display a table within a sentence apply the CSS <kbd>"display:inline-table"</kbd> property to the table.  For example, here is a small table-based fraction: 
+<table style="display:inline-table; margin-top:0; margin-bottom:0; text-align: center; vertical-align: middle;" cellpadding="0" cellspacing="0" >
+    <tr>
+        <td nowrap="nowrap">
+            &part; <i>L</i>
+        </td>
+    </tr><tr>
+        <td style="border-top:solid 1px black;" nowrap="nowrap">
+            &part; <i>&theta;'</i>
+        </td>
+    </tr>
+</table>&nbsp;
+ which should appear within the text, not on a separate line. <br>
+<br>
+
+Using tables for layout is generally <a href="http://www.alistapart.com/articles/journey/">frowned-upon</a> by advanced web gurus.  But, until MathML is more widely supported, I think using tables is a good short-term solution.<br>
+
+
+
+
+
+
+<h2 id="sqrt">Square Roots with <code>&lt;table&gt;</code></h2>
+
+Square roots can also be done with the HTML <code>&lt;table&gt;</code> command.  It's very similar to the fractions-with-tables described above.  Here's an example:
+<table style="margin-top:0.5em; margin-bottom:0.5em; text-align: center;" align="center" cellpadding="0" cellspacing="0" >
+    <tr>
+        <td nowrap="nowrap" align="right" >
+            <i>r</i> = <span style="font-size: 150%;">&radic;</span>
+        </td><td style="border-top:solid 1px black;" nowrap="nowrap">
+            &nbsp;<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup>
+        </td>
+    </tr>
+</table>
+Depending on your browser and default fonts, the radical and the horizontal line may not join up exactly. On my PC this looks best with Internet Explorer, fair with Opera, and poor with Firefox.  (Firefox seems to be doing more kerning of the characters which causes some overlap problems).<br><br>
+
+To see where the table cells are, here is the same equation with borders turned on:
+<table style="margin-top:0.5em; margin-bottom:0.5em; text-align: center;" align="center" cellpadding="0" cellspacing="0" border="1">
+    <tr>
+        <td nowrap="nowrap" align="right" >
+            <i>r</i> = <span style="font-size: 150%;">&radic;</span>
+        </td><td style="border-top:solid 1px black;" nowrap="nowrap">
+            &nbsp;<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup>
+        </td>
+    </tr>
+</table>
+The HTML to produce this is:
+<pre>
+&lt;table
+  style="margin-top:0.5em; margin-bottom:0.5em; text-align: center;"
+  align="center" cellpadding="0" cellspacing="0" &gt;
+  &lt;tr&gt;
+    &lt;td nowrap="nowrap" align="right"&gt;
+        &lt;i&gt;r&lt;/i&gt; = <b>&lt;span style="font-size: 150%;"&gt;&amp;radic;&lt;/span&gt;</b>
+    &lt;/td&gt;&lt;td <b>style="border-top:solid 1px black;"</b> nowrap="nowrap"&gt;
+        &amp;nbsp;&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt; + &lt;i&gt;y&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+Things to notice:
+<ul>
+<li>the radical symbol is given a larger font size; </li>
+<li>the horizontal line is made by giving the cell a top border; </li>
+<li>I use a non-breaking space <code>&amp;nbsp;</code> to give a little more room next to the radical. </li>
+</ul>
+For consistency and flexibility you may want to use CSS style classes instead of the <code>style</code> directive inside the <code>&lt;table&gt;</code> commands (this is shown in the fraction example above).<br><br>
+
+Larger radicals can be had by increasing the font size (though each browser interprets this a bit differently);  here is an example that is combined with a fraction:
+
+<table style="margin-top:0.5em; margin-bottom:0.5em; text-align: center;" align="center" cellpadding="0" cellspacing="0" >
+    <tr>
+        <td rowspan="2" nowrap="nowrap" align="right">
+            <i>r</i> = <span style="font-size: 250%;">&radic;</span>
+        </td><td style="border-top:solid 1px black;" nowrap="nowrap">
+            &nbsp;<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup>
+        </td>
+    </tr><tr>
+        <td style="border-top:solid 1px black;" align="center">
+            5
+        </td>
+    </tr>
+</table>
+
+A different approach is to use a bitmap image for the radical symbol.  With CSS absolute positioning you can make a transparent PNG or GIF bitmap and position it over the text.  But the drawbacks to this approach are:  if the user chooses a different font size, then the radical symbol won't scale correctly along with the text under the radical;  and print quality is not as good when mixing bitmaps and text.
+
+
+
+
+
+
+
+<h2>Numbering Equations</h2>
+
+I use <code>&lt;table&gt;</code> for numbering equations.  Here's an example:
+<table class="numbered-equation" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup> = <i>c</i><sup>2</sup>
+        </td>
+        <td class="equation-number">
+            (1)
+        </td>
+    </tr>
+</table>
+Here is the table with borders to show where the cells are:
+<table class="numbered-equation" cellpadding="0" cellspacing="0" border="1">
+    <tr>
+        <td>
+            <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup> = <i>c</i><sup>2</sup>
+        </td>
+        <td class="equation-number">
+            (1)
+        </td>
+    </tr>
+</table>
+
+The HTML/CSS to produce this is
+<pre>
+&lt;style&gt;
+    table.numbered-equation { width:99%;  text-align: center;
+        vertical-align: middle;
+        margin-top:0.5em; margin-bottom:0.5em; line-height: 2em; }
+    td.equation-number { text-align:right; width:2em; }
+&lt;/style&gt;
+
+&lt;table class="numbered-equation" cellpadding="0" cellspacing="0"&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;i&gt;a&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt; +
+            &lt;i&gt;b&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt; =
+            &lt;i&gt;c&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt;
+        &lt;/td&gt;
+        &lt;td class="equation-number"&gt;
+            (1)
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+Also I use a macro to generate most of the HTML code for the numbered equation table, so it's a lot easier to type.
+
+
+
+
+
+<h2>Long Equations and Line-Breaking</h2>
+
+With long equations, it is annoying when the browser puts a line-break in the middle of a math expression.  Try resizing your browser window and you'll see this here:
+<p class="html-math display-equation">
+−<sup><i>b</i></sup>&frasl;<sub><i>R</i></sub> <i>&theta;'</i> cos<sup>2</sup> <i>&theta;</i> − <i>m</i> <i>x''</i> cos <i>&theta;</i>  − <i>m</i> <i>R</i> <i>&theta;''</i> cos<sup>2</sup><i>&theta;</i> +
+<i>m</i> <i>R</i> <i>&theta;'</i> <sup>2</sup>sin <i>&theta;</i> cos <i>&theta;</i> −
+<i>m</i> <i>g</i> sin <i>&theta;</i> −
+<sup><i>b</i></sup>&frasl;<sub><i>R</i></sub> <i>&theta;'</i> sin<sup>2</sup> <i>&theta;</i> =
+<i>m</i> <i>R</i> <i>&theta;''</i> sin<sup>2</sup><i>&theta;</i> +
+<i>m</i> <i>R</i> <i>&theta;'</i> <sup>2</sup>sin <i>&theta;</i> cos <i>&theta;</i>
+</p>
+The solution is to surround the sub-expressions with the tags<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &lt;span style="white-space:nowrap;"&gt; ...  &lt;/span&gt;</code><br>
+Here is the same equation with the <code>nowrap</code> styling:
+<p class="html-math display-equation">
+−<sup><i>b</i></sup>&frasl;<sub><i>R</i></sub> <i>&theta;'</i> cos<sup>2</sup> <i>&theta;</i> − <i>m</i> <i>x''</i> cos <i>&theta;</i>  − <i>m</i> <i>R</i> <i>&theta;''</i> cos<sup>2</sup><i>&theta;</i> +
+<span class="nobr"><i>m</i> <i>R</i> <i>&theta;'</i> <sup>2</sup>sin <i>&theta;</i> cos <i>&theta;</i></span> −
+<span class="nobr"><i>m</i> <i>g</i> sin <i>&theta;</i></span> −
+<span class="nobr"><sup><i>b</i></sup>&frasl;<sub><i>R</i></sub> <i>&theta;'</i> sin<sup>2</sup> <i>&theta;</i></span> =
+<span class="nobr"><i>m</i> <i>R</i> <i>&theta;''</i> sin<sup>2</sup><i>&theta;</i></span> +
+<span class="nobr"><i>m</i> <i>R</i> <i>&theta;'</i> <sup>2</sup>sin <i>&theta;</i> cos <i>&theta;</i></span>
+</p>
+
+
+
+
+
+<h2 id="my_gladtex">GladTeX for Windows</h2>
+<a href="http://www.math.uio.no/~martingu/gladtex/">gladTeX</a> is a perl script that converts LaTeX expressions to bitmap images.  (Note that I have created an enhanced version of <a href="gladtex-en.html">gladTeX for Windows</a>, more on this below).  The LaTeX is embedded in your HTML document within <code>&lt;eq&gt;</code> tags. When the document is processed by gladTeX, bitmap images are produced and <code>&lt;img&gt;</code> tags are inserted into your HTML document.  For example,<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &lt;eq&gt;\sum_{k=1}^\infty \frac{1}{k^2} = \frac{\pi^2}{6}&lt;/eq&gt;</code><br>
+is replaced by<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &lt;img src="eqns/web_math000.png"  width="88" height="48" <br>
+&nbsp;&nbsp;&nbsp;&nbsp; alt="\sum_{k=1}^\infty \frac{1}{k^2} = \frac{\pi^2}{6}"&gt;</code><br>
+which displays this equation image
+<p class="html-math display-equation">
+<eq>\sum_{k=1}^\infty \frac{1}{k^2} = \frac{\pi^2}{6}</eq>
+</p>
+(Actually, the source document should have a <code>.htex</code> extension, and gladTeX then produces a document with the <code>.html</code> extension.)<br>
+<br>
+Here is an example of an inline equation: <eq inline=1>\int x \; dx = x^2 /2</eq> which is specified with the text<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &lt;eq inline=1&gt;\int x \; dx = x^2 /2&lt;/eq&gt;</code><br>
+Note the <code>inline=1</code> property.  GladTeX takes special measures to get the equation to line up with the other text on the line.
+<br>
+<br>
+
+I've enhanced gladTeX in several ways:
+<ul>
+    <li>Now works under Windows XP.</li>
+    <li>Avoids re-creating equation images that already exist.</li>
+    <li>Improved how inline equation images are aligned with text.</li>
+    <li>Names equation images to correspond to the HTML document they are from.</li>
+    <li>Automatically adds the LaTeX version of the equation as an <code>alt</code> tag.</li>
+</ul>
+To use gladTeX, you need to install several other tools:  perl, LaTeX, ghostscript, and grep.  See the page describing my <a href="gladtex-en.html">enhanced version of gladTeX</a> for more information.
+
+
+
+
+
+
+
+<h2 id="reviews">Reviews of Math Display Packages</h2>
+<div class="review">
+<a href="web-math-en.html#HTML_math">HTML math</a> as described above is not a package, but for comparison here is a review:<br>
+<p><em>Authoring:</em> More complicated than other packages that use LaTeX input.  Helpful to use a macro package to reduce the amount of HTML you have to write.</p>
+<p><em>Advantages:</em> Fast display of lots of math. No special installation required for users.  Free and standards based.  Adjusts to user font size preferences.</p>
+<p><em>Disadvantages:</em> Authoring can be more tedious.  Only simple math can be represented, though you can combine it with GladTeX as needed for more complex equations.</p>
+<p><em>Compatibility:</em> Very good.  Uses built-in HTML and CSS standards.  But be sure to test under various browsers and operating systems.</p>
+<br>
+
+<a href="http://www.w3.org/Math">mathML</a> is the new standard for displaying math on the web.  In the long term this will probably be the best solution.<br>
+<p><em>Authoring:</em>  MathML is too verbose to write directly, so you need to find an authoring package that will produce it.  Several packages are available, however you then need to integrate the resulting mathML into your HTML file.</p>
+<p><em>Advantages:</em>  it is <em>the</em> standard.  Can represent any imaginable equation.  Display and print quality should be very good.  It downloads quickly because it arrives as text within the  web page, instead of separate image files.</p>
+<p><em>Disadvantages:</em>  Not yet widely supported by browsers.  Requires a player to be installed by the user.</p>
+<p><em>Compatibility:</em>  Not yet widely supported.  There is a <a href="http://www.dessci.com/">free player</a> available for IE under Windows.  Directly supported by <a href="http://w3.org/Amaya/">Amaya</a> and <a href="http://www.mozilla.org/projects/mathml/">Mozilla/Netscape</a> browsers.</p>
+<br>
+
+
+<a href="http://www.math.uio.no/~martingu/gladtex/">gladTeX</a> is a perl script that converts LaTeX expressions to bitmap images.  The LaTeX is embedded in your HTML document within <code>&lt;eq&gt;</code> tags. When the document is processed by gladTeX, bitmap images are produced and <code>&lt;img&gt;</code> tags are inserted into your HTML document.  Note that I have created a <a href="web-math-en.html#my_gladtex">version that works on Windows</a> and that has some additional useful features.<br>
+<p><em>Advantages:</em> Easy authoring with LaTeX embedded directly in your HTML document.</p>
+<p><em>Disadvantages:</em>  With many equations on a page, image files can make the page slow to display.  Image files require some additional file and directory organization.  Print quality is not the best.  Images do not scale if the reader changes font size.</p>
+<p><em>Compatibility:</em> 100% compatible with all browsers, all systems.</p>
+<p><em>License:</em>  Open source.</p>
+<br>
+
+
+<a href="http://www.math.union.edu/~dpvc/jsMath/welcome.html">jsMath</a> produces some of the best looking math I've seen, and is very easy to use.  You put a TeX equation inside an HTML <code>&lt;span&gt;</code> or <code>&lt;div&gt;</code> tag, and then some Javascript will turn it into HTML.  The Javascript is sent along with the page to the user's machine where it runs when they look at the page.  The Javascript is based on an actual TeX engine, so the result is quite beautiful.<br>
+<p>
+<em>Advantages:</em>  Easy authoring using standard TeX inside HTML tags.  Free, open source.</p>
+<p><em>Disadvantages:</em>  Users should install TeX fonts for best results.  jsMath works without the TeX fonts, but the result doesn't look nearly as good and the speed of display is slow.  Even with the TeX fonts it can take a while to render lots of math, so best for pages without much math.</p>
+<p><em>Compatibility:</em>  Seems good, but relies on complex Javascript code and specific fonts.
+</p>
+<br>
+
+
+
+<a href="http://hutchinson.belmont.ma.us/tth/">TtH</a> is a TeX to HTML translator.  It is a highly developed package and seems to be well regarded.<br>
+<p><em>Authoring:</em>  You create a LaTeX document which is then converted to HTML by TtH (a C program).</p>
+<p><em>Advantages:</em>  Easy authoring in LaTeX.</p>
+<p><em>Disadvantages:</em>  The resulting math is sometimes a bit odd looking.  The HTML is not really under author control.</p>
+<p><em>Compatibility:</em>  Reliance on the Symbol font means this does not work on Macintosh systems.</p>
+<p><em>License:</em>  Free only for non-commercial uses.  Not open source.</p>
+<br>
+
+
+<a href="http://www.adobe.com/products/acrobat/adobepdf.html">pdf</a> is a great format for display-only on the web.  You can easily make a pdf version of a LaTeX paper using <code>pdflatex</code>.<br>
+<p><em>Advantages:</em>  Looks great.  Prints great.</p>
+<p><em>Disadvantages:</em>  Not HTML, therefore not well integrated into a web site.  Appears in a special player window.  User must have installed a PDF viewer.</p>
+<p><em>Compatibility:</em>  PDF viewer is widely available.</p>
+
+
+</div>
+
+<h2>Other Math Display Packages</h2>
+
+<a href="http://www.fourmilab.ch/webtools/textogif/textogif.html">TexToGif</a> is a LaTeX-to-image convertor similar to gladTeX, but requires you to write each equation as a separate .tex file.<br>
+<br>
+<a href="http://inca.math.indiana.edu/iumj/webMath/htex.htm">HTeX</a> is a LaTeX-to-image convertor similar to gladTeX, but seems to not be actively supported currently.<br>
+<br>
+<a href="http://hyperlatex.sourceforge.net/">Hyperlatex</a> "is a way to create documents that will look good both as printed text and on the web. It is <strong>not</strong> a general-purpose converter to take LaTeX into HTML. Rather it is a set of macro definitions that allow a user to write one document for two media and to have the output look good in both.  Hyperlatex is a set of Emacs macros, which can be used from within Emacs, or compiled and used independently."<br>
+If you are not scared off by emacs, hyperlatex may be a good solution.<br>
+<br>
+<a href="http://www.latex2html.org/">LaTeX2HTML</a> is a well-known converter from LaTeX to HTML.  I would rather have more control over the HTML, so I did not evaluate this seriously.<br>
+<br>
+<a href="http://www.cse.ohio-state.edu/~gurari/TeX4ht/mn.html">Tex4HT</a> is a general LaTeX-to-HTML converter similar to TtH or Latex2HTML.<br>
+<br>
+<a href="http://www.wolfram.com">Mathematica</a> is a commercial math package.  It provides some solutions for exporting to HTML or MathML.<br>
+<br>
+
+
+
+
+
+<h2>Other Links</h2>
+Here are some useful links about displaying math on the web:<br>
+<ul>
+<li><a href="http://inca.math.indiana.edu/iumj/webMath/">Math on the Web</a> is a nice concise listing of available packages.</li>
+<li><a href="http://www.cs.tut.fi/~jkorpela/math/index.html">Math in HTML (and CSS)</a> from an expert on web standards.</li>
+<li><a href="http://hutchinson.belmont.ma.us/tth/webmath.html">Approaches to WWW Mathematics Documents</a> by the author of TtH.</li>
+<li><a href="http://www.w3.org/Math/implementations.html">MathML implementations</a> lists software that implements MathML.</li>
+<li><a href="http://www.alanwood.net/demos/ent4_frame.html">Special characters</a> using HTML 4.0 Character Entity References.</li>
+</ul>
+
+<p id="page_history">
+  This web page was first published September 2004.
+</p>
+
+
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">previous</a>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+<script>
+  window.addEventListener('pageshow', function(event){
+    // set language menu to correct language
+    var menu = document.getElementById('language_menu');
+    if (menu) {
+      menu.selectedIndex = 0;
+    }
+  }, /*capturing=*/false);
+</script>
+</body>
+</html>

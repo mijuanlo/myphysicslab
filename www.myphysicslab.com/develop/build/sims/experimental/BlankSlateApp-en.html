@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="../../../../common/myphysicsicon.png">
+<title>myphysicslab.sims.experimental.BlankSlateApp</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../../index-en.html">
+  <img src="../../images/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+<h1>sims.experimental.BlankSlateApp </h1>
+<div id="header_nav">
+
+  <select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="BlankSlateApp-en.html" selected>English</option>
+    <option value="BlankSlateApp-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="BikeTimerApp-en.html">previous</a>
+<a class="nav_link" 
+   href="GraphCalcApp-en.html">next</a>
+</div>
+<ul id="header_bar">
+</ul>
+
+<div id="sim_canvas">
+</div>
+<div id="sim_controls" class="control_group">
+</div>
+<!-- the "onsubmit=return false" is to prevent the page from reloading after
+enter key is typed in the text input field.
+-->
+<form id="script_terminal" onsubmit="return false;">
+  <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea>
+  <label>command:<input type="text" id="term_input" size="80"></label>
+  <label>compiled: 
+  <select id="compiled_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="BlankSlateApp-en.html" selected>simple</option>
+    <option value="../../../adv-build/sims/experimental/BlankSlateApp-en.html">advanced</option>
+  </select>
+  </label>
+</form>
+
+<p>BlankSlateApp has a LabCanvas and Terminal, and lets you experiment building
+things with scripts.  Below is a sample script to try.
+</p>
+
+<p>NOTE: This will only work on
+<a href="../../../docs/Building.html#advancedvs.simplecompile">simple-compiled versions</a>
+of this app; advanced-compiled versions cannot execute JavaScript.
+</p>
+
+<pre>
+var r = PointMass.makeSquare(4);
+var dr = new DisplayShape(r).setStrokeStyle('red').setThickness(4);
+displayList.add(dr);
+r.setPosition(new Vector(0, 0));
+var clock = new Clock();
+var timer = new Timer();
+var callback = function () {
+    r.setAngle(Math.sin(clock.getTime()));
+    simCanvas.paint();
+};
+timer.setCallBack(callback);
+clock.resume();
+timer.startFiring();
+</pre>
+
+<p>A script can be provided in the query portion of the URL (after the question mark)
+  for this page. For example, the following URL contains the above script.
+</p>
+<pre><a href="BlankSlateApp-en.html%3Fvar&#32;r=PointMass.makeSquare(4)%3Bvar&#32;dr=new&#32;DisplayShape(r).setStrokeStyle('red').setThickness(4)%3BdisplayList.add(dr)%3Br.setPosition(new&#32;Vector(0,0))%3Bvar&#32;clock=new&#32;C.html">
+https://www.myphysicslab.com/develop/build/sims/experimental/BlankSlateApp-en.html?var r=PointMass.makeSquare(4);
+var dr=new DisplayShape(r);displayList.add(dr);dr.strokeStyle='red';r.setPosition(new Vector(0,0));
+var clock=new Clock();var timer=new Timer();
+timer.setCallBack(function(){r.setAngle(Math.sin(clock.getTime()));simCanvas.paint();});
+clock.resume();</a>
+</pre>
+
+
+<script src="BlankSlateApp-en.js"></script>
+<script>
+  (function build() {
+    var elem_ids = {
+      sim_canvas: 'sim_canvas',
+      sim_controls: 'sim_controls',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      images_dir: '../../images'
+    };
+    app = makeBlankSlateApp(elem_ids);
+    app.defineNames('app');
+  }());
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+
+<script>app.setup();</script>
+<script>app.start();</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+    <br><span id="revised_date">revised Mar 24 2021 14:48</span>
+  </div>
+  <a id="valid_html" href="http://validator.w3.org/check?uri=referer;outline=1;"
+      title="check if this page is valid HTML">
+  <img  src="../../images/ValidHTML401.png" alt="Valid HTML 4.01" 
+      height="31" width="88">
+  </a>
+</div>
+</body>
+</html>

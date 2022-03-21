@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="../../../../common/myphysicsicon.png">
+<title>myphysicslab.sims.experimental.SimpleApp</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../../index-en.html">
+  <img src="../../images/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+<h1>sims.experimental.SimpleApp </h1>
+<div id="header_nav">
+
+  <select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="SimpleApp-en.html" selected>English</option>
+    <option value="SimpleApp-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="MultiGraphCalc2App-en.html">previous</a>
+<a class="nav_link" 
+   href="../misc/MagnetWheelApp-en.html">next</a>
+</div>
+<ul id="header_bar">
+</ul>
+
+<div id="canvas_div"></div>
+<p>SimpleApp is a demonstration of using a minimal set of myPhysicsLab classes.</p>
+
+<p>This displays something like the SingleSpringSim simulation, but it uses a very
+simple math routine to move the objects instead of a differential equation. There are
+no DiffEqSolver or Simulation classes involved. This sets up the LabCanvas and
+DisplayObjects and defines the callback that drives the animation.</p>
+
+<label>compiled: 
+  <select id="compiled_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="SimpleApp-en.html" selected>simple</option>
+    <option value="../../../adv-build/sims/experimental/SimpleApp-en.html">advanced</option>
+  </select>
+  </label>
+
+<script src="SimpleApp-en.js"></script>
+  <script>
+    makeSimpleApp();
+  </script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+    <br><span id="revised_date">revised Mar 24 2021 14:48</span>
+  </div>
+  <a id="valid_html" href="http://validator.w3.org/check?uri=referer;outline=1;"
+      title="check if this page is valid HTML">
+  <img  src="../../images/ValidHTML401.png" alt="Valid HTML 4.01" 
+      height="31" width="88">
+  </a>
+</div>
+</body>
+</html>

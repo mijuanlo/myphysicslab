@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab Collide Springs</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Collide Springs</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="collide-spring-en.html" selected>English</option>
+    <option value="collide-spring-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="chain-of-springs-en.html">previous</a>
+<a class="nav_link" 
+   href="../pendulum/reaction-pendulum-en.html">next</a>
+</div>
+<ul id="header_bar" class="horiz_tabs">
+  
+  <li class="sim selected">Sim</li>
+  <li class="graph ">Graph</li>
+  <li class="time_graph">Time Graph</li>
+  <li class="multi_graph">Multi Graph</li>
+</ul>
+
+
+<div id="container" class="control_container" lang="en">
+  <div id="div_graph" >
+  </div>
+  <div id="div_time_graph" >
+  </div>
+  <div id="sim_applet" >
+  </div>
+  <div id="sim_controls" class="control_group">
+  </div>
+  <div id="graph_controls" class="control_group">
+  </div>
+  <div id="time_graph_controls" class="control_group">
+  </div>
+  <p>
+  <label id="label_show_sim">
+    <input type="checkbox" id="show_sim">show sim
+  </label>
+  <label id="label_terminal">
+    <input type="checkbox" id="show_terminal">terminal
+  </label>
+  <div id="div_terminal">
+    <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea> <br>
+    <label style="display:inline-block">command &gt;
+      <input type="text" id="term_input" size="80">
+    </label>
+  </div>
+</div>
+
+<p class="introduction">
+This simulation explores using small stiff springs to do collision handling. 
+
+<p class="instructions">
+You can change the number of blocks (from 1 to 3) and their starting positions. You can
+change parameters such as mass, spring stiffness, spring length and damping (friction).
+You can apply a spring force with your mouse to any block.
+</p>
+
+<p>An advantage of using small stiff springs to do collision handling is that you don't
+have to
+<a href="collide-blocks-en.html#collisions">back up in time</a>
+after detecting a collision. A disadvantage is that you have to take very small time
+steps, at least when objects are close enough to be capable of colliding. Small time
+steps are needed because the springs are stiff and small.
+</p>
+
+<p>Using springs for collision handling is also discussed on the page about
+<a href="../engine2D/collision-methods-en.html">Multiple Simultaneous Collisions</a>.
+</p>
+
+<p>Also available are:
+<a href="https://github.com/myphysicslab/myphysicslab/blob/master/src/sims/springs/CollideSpringApp.js">open source code</a>,
+<a href="../develop/docs/myphysicslab.sims.springs.CollideSpringApp.html">documentation</a> and a
+<a href="../develop/build/sims/springs/CollideSpringApp-en.html">simple-compiled version</a>
+which is <a href="../develop/docs/Customizing.html">more customizable</a>.
+</p>
+
+<p id="page_history">
+  This web page was first published November 2016.
+</p>
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="chain-of-springs-en.html">previous</a>
+  <a class="nav_link" href="../pendulum/reaction-pendulum-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+
+<!-- Call the app script after the body so that html entities are defined and 
+* the script can find them.--> 
+<script src="CollideSpringApp-en.js"></script>
+<script>
+  (function build() {
+    var elem_ids = {
+      tab_list: 'header_bar',
+      container: 'container',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      sim_controls: 'sim_controls',
+      div_terminal: 'div_terminal',
+      div_time_graph: 'div_time_graph',
+      time_graph_controls: 'time_graph_controls',
+      div_multi_graph: 'div_multi_graph',
+      multi_graph_controls: 'multi_graph_controls',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_sim: 'show_sim',
+      images_dir: '../common'
+    };
+    app = makeCollideSpringApp(elem_ids);
+    app.defineNames('app');
+    window.addEventListener('pageshow', function(event){
+      // set language menu to correct language
+      var menu = document.getElementById('language_menu');
+      if (menu) { menu.selectedIndex = 0; }
+    }, /*capturing=*/false);
+    app.setup();
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+<script>
+  // separate script tag, runs even if error occurs in earlier script tag
+  app.start();
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+</body>
+</html>

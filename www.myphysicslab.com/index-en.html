@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title lang="en">myPhysicsLab Home Page</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="common/myphysicsicon.png">
+  <meta name="keywords" content="physics simulation, physics simulations,
+  differential equations, numerical methods, Java, source code">
+  <style type="text/css">
+
+    /* simlist = list of simulations on home page */
+    #simlist a {display: inline-block;
+        text-align: center;
+        margin: 0.5em;
+        font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        font-size: 80%;
+        text-decoration: none;
+        padding: 1px;
+        color: #00f;
+      }
+    #simlist a:link {
+      color: #00f;
+    }
+    #simlist a:visited {
+      color: #60c;
+    }
+    #simlist a:hover, #simlist a:focus {
+      border: 1px solid #99f;
+      padding: 0px;
+      color: #99f;
+    }
+    #simlist a:active {
+      border: 1px solid #f00;
+      padding: 0px;
+      color: #f00;
+    }
+    ol#sim-steps em {
+      font-weight: bold;
+    }
+  </style>
+
+<link href="https://cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  width:600px;}
+</style>
+
+</head>
+
+<body>
+
+<a id="logo" href="index-en.html">
+  <img src="common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Physics Simulations</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="index-en.html" selected>English</option>
+    <option value="index-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="engine2D/collision-methods-en.html">previous</a>
+<a class="nav_link" 
+   href="springs/single-spring/single-spring-en.html">next</a>
+</div>
+<ul id="header_bar">
+</ul>
+
+<p class="introduction" lang="en">Click on one of the physics simulations below... you'll see them animating in real time, and be able to interact with them by dragging objects or changing parameters like gravity.</p>
+
+<div id="simlist">
+
+<a href="springs/single-spring/single-spring-en.html">
+  <img src="home-page/pic_spring1.png" alt="" width="94" height="48"><br>Single Spring</a>
+
+<a href="springs/double-spring/double-spring-en.html">
+  <img src="home-page/pic_dbl_spring.png" alt="" width="104" height="65"><br>Double Spring</a>
+
+<a href="pendulum/pendulum-en.html">
+<img src="home-page/pic_pendulum1.png" alt="" width="62" height="55" ><br>Pendulum</a>
+
+<a href="pendulum/direction-field/direction-field-en.html">
+<img src="home-page/pic_Pendulum-direction-field.png" alt="" width="89" height="81"><br>Pendulum with<br>Direction Field</a>
+
+<a href="pendulum/chaotic-pendulum-en.html">
+<img src="home-page/pic_pendulum2.png" alt="" width="58" height="63"><br>Chaotic Pendulum</a>
+
+<a href="pendulum/compare-pendulum/compare-pendulum-en.html">
+<img src="home-page/pic_Pendulum-compare.png" alt="" width="83" height="73"><br>Two Chaotic<br>Pendulums</a>
+
+<a href="pendulum/moveable-pendulum-en.html">
+  <img src="home-page/pic_Moveable-pendulum.png" alt="" width="59" height="64"><br>Moveable<br>Pendulum</a>
+
+<a href="pendulum/double-pendulum/double-pendulum-en.html">
+  <img src="home-page/pic_dbl_pendulum.gif" alt="" width="63" height="68"><br>Double Pendulum</a>
+
+<a href="pendulum/moveable-double-pendulum-en.html">
+<img src="home-page/pic_Moveable-double-pendulum.png" alt="" width="46" height="67"><br>Moveable<br>Double Pendulum</a>
+
+<a href="pendulum/inverted-pendulum-en.html">
+<img src="home-page/pic_Inverted-pendulum.png" alt="" width="51" height="88"><br>Inverted<br>Vibrating Pendulum</a>
+
+<a href="pendulum/inverted-double-pendulum-en.html">
+<img src="home-page/pic_Inverted-double-pendulum.png" alt="" width="68" height="85"><br>Inverted<br>Double Pendulum</a>
+
+<a href="springs/2d-spring-en.html">
+<img src="home-page/pic_spring_2d.png" alt="" width="62" height="86"><br>2D Spring</a>
+
+<a href="springs/double-2d-spring-en.html">
+<img src="home-page/pic_dbl_spring_2d.png" alt="" width="56" height="80"><br>Double<br>2D Spring</a>
+
+<a href="springs/collide-blocks-en.html">
+<img src="home-page/pic_collide_blocks.png" alt="" width="142" height="52"><br>Colliding Blocks</a>
+
+<a href="pendulum/cart-pendulum-en.html">
+<img src="home-page/pic_cart_pendulum.png" alt="" width="118" height="70"><br>Cart + Pendulum</a>
+
+<a href="springs/dangle-stick-en.html">
+<img src="home-page/pic_dangle_stick.png" alt="" width="48" height="91"><br>Dangling Stick</a>
+
+<a href="engine2D/rigid-body-en.html">
+<img src="home-page/pic_rigid-body.gif" alt="" width="106" height="100"><br>Rigid Body<br>Forces</a>
+
+<a href="collision.html">
+<img src="home-page/pic_collision.gif" alt="" width="86" height="99"><br>Rigid Body<br>Collisions</a>
+
+<a href="contact.html">
+<img src="home-page/pic_contact.png" alt="" width="94" height="69"><br>Rigid Body<br>Contact Forces</a>
+
+<a href="roller/roller-single-en.html">
+<img src="home-page/pic_RollerSimple.gif" alt="" width="96" height="71"><br>Roller Coaster</a>
+
+<a href="roller/roller-spring-en.html">
+<img src="home-page/pic_RollerSpring.gif" alt="" width="79" height="90"><br>Roller Coaster<br>with Spring</a>
+
+<a href="roller/roller-double-en.html">
+<img src="home-page/pic_RollerDouble.gif" alt="" width="69" height="86"><br>Roller Coaster<br>with Two Balls</a>
+
+<a href="roller/roller-flight-en.html">
+<img src="home-page/pic_RollerFlight.gif" alt="" width="87" height="74"><br>Roller Coaster<br>with Flight</a>
+
+<a href="roller/rigid-body-roller-en.html">
+<img src="home-page/pic_rigid_body_roller.gif" alt="" width="84" height="82"><br>Rigid Body<br>Roller Coaster</a>
+
+<a href="roller/brachistochrone-en.html">
+<img src="home-page/pic_Brachistochrone.png" alt="" width="119" height="83"><br>Brachistochrone</a>
+
+<a href="engine2D/billiards-en.html">
+<img src="home-page/pic_Billiards.png" alt="" width="97" height="60"><br>Billiards</a>
+
+<a href="engine2D/chain-en.html">
+<img src="home-page/pic_Chain.png" alt="" width="109" height="64"><br>Hanging Chain</a>
+
+<a href="engine2D/newtons-cradle-en.html">
+<img src="home-page/pic_Newtons-cradle.png" alt="" width="132" height="71"><br>Newton's Cradle</a>
+
+<a href="engine2D/do-nothing-en.html">
+<img src="home-page/pic_do_nothing.gif" alt="" width="97" height="95"><br>Do Nothing<br>Grinder</a>
+
+<a href="engine2D/pendulum-clock-en.html">
+<img src="home-page/pic_pendulum_clock.gif" alt="" width="87" height="109"><br>Pendulum Clock</a>
+
+
+<a href="engine2D/car-suspension-en.html">
+<img src="home-page/pic_Car-suspension.png" alt="" width="114" height="78"><br>Car Suspension</a>
+
+<a href="engine2D/double-pendulum2-en.html">
+<img src="home-page/pic_double_pendulum2.gif" alt="" width="94" height="99"><br>Double Pendulum<br>with Physics Engine</a>
+
+<a href="engine2D/cart-pendulum-en.html">
+<img src="home-page/pic_cart_pendulum2.gif" alt="" width="103" height="72"><br>Cart + Pendulum<br>with Physics Engine</a>
+
+<a href="engine2D/mars-moon-en.html">
+<img src="home-page/pic_Mars-moon.png" alt="" width="100" height="100"><br>Mars Moon</a>
+
+<a href="engine2D/curved-objects-en.html">
+<img src="home-page/pic_curved_objects.gif" alt="" width="96" height="69"><br>Curved Objects</a>
+
+<a href="engine2D/pile-en.html">
+<img src="home-page/pic_pile.gif" alt="" width="108" height="78"><br>Pile</a>
+
+<a href="engine2D/pile-attract-en.html">
+<img src="home-page/pic_pile_attract.gif" alt="" width="100" height="66"><br>Pile Attract</a>
+
+<a href="engine2D/shapes-en.html">
+<img src="home-page/pic_shapes.gif" alt="" width="106" height="55"><br>Polygon Shapes</a>
+
+<a href="pde/string-en.html">
+<img src="home-page/pic_string.gif" alt="" width="94" height="37"><br>String</a>
+
+<a href="pendulum/rigid-double-pendulum-en.html">
+<img src="home-page/pic_rigid_double_pendulum.gif" alt="" width="79" height="87"><br>Rigid Double Pendulum</a>
+
+<a href="pendulum/compare-double-pendulum-en.html">
+<img src="home-page/pic_compare_double_pendulum.gif" alt="" width="85" height="60"><br>Compare<br>Double Pendulums</a>
+
+<a href="springs/molecule2-en.html">
+<img src="home-page/pic_molecule2.gif" alt="" width="78" height="48" ><br>Molecule 2</a>
+
+<a href="springs/molecule3-en.html">
+<img src="home-page/pic_molecule3.gif" alt="" width="74" height="55"><br>Molecule 3</a>
+
+<a href="springs/molecule4-en.html">
+<img src="home-page/pic_molecule4.gif" alt="" width="61" height="59"><br>Molecule 4</a>
+
+<a href="springs/molecule5-en.html">
+<img src="home-page/pic_molecule5.gif" alt="" width="72" height="67"><br>Molecule 5</a>
+
+<a href="springs/molecule6-en.html">
+<img src="home-page/pic_molecule6.gif" alt="" width="72" height="63"><br>Molecule 6</a>
+
+<a href="springs/chain-of-springs-en.html">
+<img src="home-page/pic_chain_of_springs.gif" alt="" width="98" height="46"><br>Chain Of Springs</a>
+
+<a href="springs/collide-spring-en.html">
+<img src="home-page/pic_collide_spring.gif" alt="" width="107" height="38"><br>Collide Springs</a>
+
+<a href="pendulum/reaction-pendulum-en.html">
+<img src="home-page/pic_reaction_pendulum.gif" alt="" width="76" height="90"><br>Reaction Force<br>Pendulum</a>
+
+<a href="engine2D/mutual-attract-en.html">
+<img src="home-page/pic_mutual_attract.gif" alt="" width="83" height="81"><br>Mutual Attraction</a>
+
+</div>
+
+
+
+<h2 id="customize">Customize and Share</h2>
+
+<p>There are several ways to reproduce a particular experimental setup. The easiest way is to click the "share" button.
+</p>
+
+<ol>
+<li>Modify the simulation by changing parameters such as gravity, damping,
+    and by dragging objects with your mouse.</li>
+
+<li>Click the "share" button. Copy the URL from the dialog.</li>
+
+<li>Paste the URL in an email. Or save it in a text file for later use.</li>
+
+</ol>
+
+<p>When the recipient clicks the URL, the EasyScript that is embedded in the URL will
+replicate the conditions that you set up.</p>
+
+<p>See
+<a href="develop/docs/Customizing.html">Customizing myPhysicsLab Simulations</a> for how to customize further with JavaScript or EasyScript.
+</p>
+
+
+
+<h2 id="open-source">Open Source Software</h2>
+
+<p>myPhysicsLab is provided as open source software under the
+<a href="http://www.apache.org/licenses/">Apache 2.0 License</a>.
+Source code is available at
+<a href="https://github.com/myphysicslab/myphysicslab">https://github.com/myphysicslab/myphysicslab</a>.
+Online <a href="develop/docs/index.html">documentation</a> is available.
+</p>
+
+<p>There are around 50 different simulations in the source code, each of which has an
+<em>example file</em> which is mainly for development and testing. These can also
+be used to <em>show simulations offline</em> (when not connected to the internet).
+</p>
+
+<p>The example files are available online in two forms:
+</p>
+
+<ul>
+<li><a href="develop/adv-build/index-en.html">advanced-compiled</a> which loads
+  faster.
+  <a href="develop/adv-build.zip">Downloadable version</a> for offline usage.
+</li>
+
+<li><a href="develop/build/index-en.html">simple-compiled</a> which allows for
+  more customization.
+  <a href="develop/build.zip">Downloadable version</a> for offline usage.
+</li>
+</ul>
+
+
+
+<h2 id="how-does-it-work">How Does It Work?</h2>
+
+
+<p>Most of the simulation web pages show how the math is derived. See for example the
+<a href="springs/single-spring/single-spring-en.html">Single Spring</a> simulation.
+</p>
+
+<ul id="sim-steps">
+
+<li>A physics simulation starts with a <em>mathematical model</em> whose variables
+define the state of the system at a given time. Each variable represents the position
+or velocity of some part of the system.
+</li>
+
+<li>The heart of a physics simulation is the
+<a href="explain/what-is-a-diff-eq-en.html">set of differential equations</a>
+that describe how the variables evolve over time. The forces and geometry determine
+the equations.
+</li>
+
+<li>The next step is <em>getting the computer to solve the equations</em>, a process
+that goes by the name <a href="explain/numerical-solution-en.html">numerical analysis</a>.
+The <a href="explain/runge-kutta-en.html">Runge Kutta method</a> is a popular choice.
+</li>
+
+<li>For simulations that involve <em>collisions</em> there are additional steps:
+we need to detect the collision and then
+<a href="springs/collide-blocks-en.html#collisions">back up in time</a> to the moment before
+the collision to modify the velocities.
+</li>
+
+<li>Finally, there are lots of programming details about
+<a href="develop/docs/Architecture.html#view">how to represent objects</a> on the
+computer display, how to
+<a href="develop/docs/Architecture.html#controller">handle user input</a>, how to
+<a href="develop/docs/Architecture.html#event-drivenprogramming">synchronize with real time</a>,
+and so on.
+</li>
+
+</ul>
+
+<p>The <a href="explain/physics-engine-en.html">rigid body physics engine</a> is the most
+sophisticated simulation shown here. It is capable of replicating all of the other more
+specialized simulations. The physics engine handles
+<a href="collision.html">collisions</a> and also calculates
+<a href="contact.html">contact forces</a> which allow objects to push against each
+other.
+</p>
+
+
+<p>See also <a href="explain/links-en.html">links to other physics websites</a>.</p>
+
+
+
+<h2 id="units">Units Of Measurement</h2>
+
+<p>The myPhysicsLab simulations do not have units of measurements specified such as
+meters, kilograms, seconds. The units are <em>dimensionless</em>, they can be
+interpreted however you want, but they must be <em>consistent within the
+simulation</em>.
+</p>
+
+<p>For example if we regard a unit of distance as <em>one meter</em> and a unit of time
+as <em>one second</em>, then a unit of velocity must be <em>one meter/second</em>.
+</p>
+
+<p>See the discussion
+<a href="develop/docs/Architecture.html#aboutunitsofmeasurement">About Units Of Measurement</a>
+in the myPhysicsLab Documentation.
+</p>
+
+
+<h2 id="email-list">E-Mail List</h2>
+
+<p>Stay informed about <em>new myPhysicsLab simulations</em> and software.
+  Low volume of email. We won't share your email address with anyone else.
+</p>
+
+<!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+<form action="https://myphysicslab.us14.list-manage.com/subscribe/post?u=bbe0d6f3c3dd77c5cba96fae0&amp;id=5b4a953f3d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+<p><a href="http://us14.campaign-archive1.com/home/?u=bbe0d6f3c3dd77c5cba96fae0&id=5b4a953f3d" title="View previous campaigns">View previous campaigns.</a></p>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bbe0d6f3c3dd77c5cba96fae0_5b4a953f3d" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+
+
+<h2 id="about_me">About the Author</h2>
+
+<img src="home-page/erik_photo.jpg" width="240" height="320"
+    style="float: left; margin: 10px;" alt="photo of Erik Neumann">
+
+<p>Hi, my name is <a href="mailto:erikn@MyPhysicsLab.com">Erik Neumann</a>, I live in
+Seattle, WA, USA, and I am a self-employed software engineer. I started developing this
+website in 2001, both as a personal project to learn scientific computing, and with a
+vision of developing an online science museum. I grew up in Chicago near the
+<a href="http://www.msichicago.org/">Museum of Science and Industry</a> which I loved
+to visit and learn about science and math.
+</p>
+
+<p>I got a BA in Mathematics at Oberlin College, Ohio, 1978, and an MBA from Univerity
+of Chicago, 1984. My first software jobs were using the language
+<a href="http://en.wikipedia.org/wiki/APL_(programming_language)">APL</a> which I
+enjoyed for its math-like conciseness and power.
+</p>
+
+<p>I was fortunate to get involved in the Macintosh software industry early on in 1985,
+joining
+<a href="http://en.wikipedia.org/wiki/MacroMind">MacroMind</a>, which became
+<a href="http://en.wikipedia.org/wiki/Macromedia">Macromedia</a>. I led the software
+development at MacroMind as VP of Engineering for 5 years. Our most significant product
+was VideoWorks, which was renamed Director, and lives on today as
+<a href="http://en.wikipedia.org/wiki/Adobe_Director">Adobe Director</a>. In the
+1980's, the interactive multimedia concepts that are so common today were new and being
+developed. VideoWorks was mainly an animation tool, but also incorporated programmable
+interactivity. Our main competitors at that time were HyperCard, SuperCard, and
+Authorware. Director was used in many different ways; I am most proud that it became
+the preferred way to prototype software user interfaces for a time during the 90's.
+Director was also used to develop the introductory "guided tour" tutorial that came
+with the Macintosh in the early years. And of course, Director was used for all sorts
+of art, design, and marketing projects.
+</p>
+
+<p>I went on to work at Apple Computer on new multimedia and user interface concepts
+involving digital agents, animated user interfaces, speech recognition and distributed
+information access. In 1991, there was a sudden flurry of activity when Apple and IBM
+were trying to set up a strategic partnership. I became involved in the super-secret
+negotiations, and made the suggestion that what the world needed was a standard for
+multimedia that multimedia content creators could rely on to publish to (ultimately
+this is what HTML became). Based on these suggestions,
+<a href="http://en.wikipedia.org/wiki/Kaleida_Labs">Kaleida Labs</a> was founded. Our
+work there developed a product called
+<a href="http://en.wikipedia.org/wiki/Kaleida_Labs#Features_of_ScriptX">ScriptX</a>,
+which turned out to be very similar to Sun's Java which was being developed at the same
+time. ScriptX had goals of supporting all forms of multimedia: text, images, audio,
+video, animation; being cross-platform (Mac and Windows), interpreted, object oriented,
+with a garbage collector to manage memory.
+</p>
+
+<p>I then moved to Seattle and turned my attention back to mathematics and science. I
+relearned calculus by doing all the problems in my old college text book and took
+further math classes at the University of Washington. I started developing this website
+as a way to practice what I was learning. I am now happy to use excellent tools such as
+HTML and JavaScript, and leave their development to others. I continue to work on
+physics simulations, with several new ones in development.
+</p>
+
+<p><a href="archive/archive-en.html">Archive</a> of older projects.</p>
+
+<p id="page_history">
+  This web page was first published April 2001.
+</p>
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="engine2D/collision-methods-en.html">previous</a>
+  <a class="nav_link" href="springs/single-spring/single-spring-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+<script>
+  window.addEventListener('pageshow', function(event){
+    // set language menu to correct language
+    var menu = document.getElementById('language_menu');
+    if (menu) {
+      menu.selectedIndex = 0;
+    }
+  }, /*capturing=*/false);
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab Rigid Body Physics Engine</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Rigid Body Physics Engine</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="physics-engine-en.html" selected>English</option>
+    <option value="physics-engine-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="math-refresh-en.html">previous</a>
+<a class="nav_link" 
+   href="../engine2D/collision-methods-en.html">next</a>
+</div>
+<ul id="header_bar">
+</ul>
+
+
+<p>The physics simulations shown on <a href="../index-en.html">myPhysicsLab</a>
+fall into two categories</p>
+
+<ol>
+<li>Specialized - designed for one particular mechanism</li>
+<li>General - uses the <em>2D rigid body physics engine</em> which can simulate just
+   about any configuration</li>
+</ol>
+
+<p>An example in the "specialized" category is the
+  <a href="../pendulum/cart-pendulum-en.html">cart + pendulum</a>. That simulation works well, but it
+  <em>can only ever simulate that particular mechanism</em>.
+  You can vary the length of the pendulum, the mass of the objects, or spring
+  stiffness. But you can't change how the parts are connected, or apply new forces, or
+  collide with another object.
+</p>
+
+<p>In contrast, the Rigid Body Physics Engine can model a wide variety of mechanisms.
+  For example, here is the
+  <a href="../develop/adv-build/sims/engine2D/CartPendulum2App-en.html">cart + pendulum using the physics engine</a>.
+  Notice that you can drag the cart or pendulum by
+  pressing the mouse button to activate a spring force -- this is not possible
+  in the specialized version of the simulation.
+<p>
+
+<p>It is remarkable that the Rigid Body Physics Engine is able to model so many
+  different mechanisms with good accuracy.  Here are some more examples:</p>
+
+<ul>
+  <li><a href="../pendulum/double-pendulum/double-pendulum-en.html">Specialized Double Pendulum</a> versus
+    <a href="../engine2D/double-pendulum2-en.html">Double Pendulum using Physics Engine</a>.
+    Notice that in the physics engine version you can apply spring forces or collide
+    the free block into the double pendulum.
+  </li>
+
+  <li><a href="../pendulum/compare-double-pendulum-en.html">Compare Double Pendulum</a>
+    shows side-by-side a specialized double pendulum and a physics engine version. Note
+    that they stay in sync for a long time. But you can interact with the physics
+    engine version, applying a spring force with your mouse.
+  </li>
+
+  <li><a href="../develop/adv-build/sims/roller/RigidBodyRollerApp-en.html">RigidBody Roller Coaster</a>
+    shows that the physics engine can handle situations similar to the
+    <a href="../roller/roller-single-en.html">specialized roller coaster</a> simulations.
+  </li>
+</ul>
+
+
+<h2>About the Physics Engine</h2>
+
+<p>The physics engine is composed of three classes that can be used separately
+   (though we almost always use the last one).
+</p>
+
+<ol>
+  <li>The
+    <a href="../develop/docs/myphysicslab.lab.engine2D.RigidBodySim.html">RigidBodySim class</a>
+    handles moving rigid bodies by applying forces to them such
+     as springs, gravity, damping.
+  See <a href="../engine2D/rigid-body-en.html">Rigid Body Forces</a> for the math.
+  </li>
+
+  <li>The
+    <a href="../develop/docs/myphysicslab.lab.engine2D.ImpulseSim.html">ImpulseSim class</a>
+    extends RigidBodySim, adding collision handling.
+    See <a href="../collision.html">Rigid Body Collisions</a> for the math.
+    See <a href="../develop/docs/myphysicslab.lab.model.CollisionAdvance.html">CollisionAdvance</a>
+    which manages the collision handling process.
+  </li>
+
+  <li>The
+    <a href="../develop/docs/myphysicslab.lab.engine2D.ContactSim.html">ContactSim class</a>
+    extends ImpulseSim, adding contact forces that allow
+    objects to push against each other.
+    See <a href="../contact.html">Rigid Body Contact Forces</a> for the math.
+  </li>
+
+</ol>
+
+<p>More information about how the rigid body physics engine works is described in several places:</p>
+
+<ul>
+  <li><a href="../develop/docs/Engine2D.html">2D Physics Engine Overview</a>
+  </li>
+
+  <li><a href="../develop/docs/index.html">myPhysicsLab Documentation</a> has detailed
+    information about the software.
+  </li>
+
+  <li><a href="../engine2D/collision-methods-en.html">Collision Handling Methods</a> discusses
+    various schemes for handling collisions in rigid body simulations.
+  </li>
+
+  <li><a href="../pendulum/reaction-pendulum-en.html">Reaction Forces Pendulum</a> is an example
+    of finding contact forces for a specific simple mechanism (the pendulum)
+    instead of using the general (and complex) physics engine.
+  </li>
+</ul>
+
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="math-refresh-en.html">previous</a>
+  <a class="nav_link" href="../engine2D/collision-methods-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+<script>
+  window.addEventListener('pageshow', function(event){
+    // set language menu to correct language
+    var menu = document.getElementById('language_menu');
+    if (menu) {
+      menu.selectedIndex = 0;
+    }
+  }, /*capturing=*/false);
+</script>
+</body>
+</html>

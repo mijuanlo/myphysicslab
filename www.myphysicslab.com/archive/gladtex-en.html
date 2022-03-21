@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab GladTeX for Windows</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">GladTeX for Windows</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="gladtex-en.html" selected>English</option>
+    <option value="gladtex-de.html" >German</option>
+  </select>
+</div>
+<ul id="header_bar">
+</ul>
+
+
+<p>GladTeX is a utility for creating images of mathematics equations.  This page describes an outdated version of GladTeX for Windows created by <a href=    "mailto:erikn@MyPhysicsLab.com">Erik Neumann</a>, first released September 2004.  See also
+<a href="web-math-en.html#my_gladtex">Displaying Math on the Web</a>.
+
+<p style="margin: 1em; padding: 1em; border: dashed red 1px">
+As of 2017, GladTeX development has resumed at
+<a href="https://github.com/humenda/gladtex">https://github.com/humenda/gladtex</a>.
+please see that page for the current version. There is a Windows version at
+<a href="https://github.com/humenda/GladTeX/releases">https://github.com/humenda/GladTeX/releases</a>.
+</p>
+
+<!--li><a href="index.html">MyPhysicsLab physics simulations</a> for examples of GladTeX usage.</li-->
+
+<p>This version of gladTeX is based on <a href="http://ans.hsh.no/home/mgg/gladtex/">gladtex 0.3</a> by Martin G. Gulbrandsen copyright (C) 1999-2002.  Please see the <code>readme</code> file in gladtex 0.3 which spells out the GNU General Public License terms.
+</p>
+<p>
+Here is an example of an equation produced by gladTeX. To see how this equation is created in gladTeX,
+see <a href="web-math-en.html#my_gladtex">Displaying Math on the Web</a>.
+</p>
+<p class="html-math display-equation">
+<eq>\sum_{k=1}^\infty \frac{1}{k^2} = \frac{\pi^2}{6}</eq>
+</p>
+
+<h2>Differences To GladTeX 0.3</h2>
+
+<p>This version of gladTeX is different from gladTeX 0.3 in the following ways:</p>
+
+<ul>
+<li><b>Now works under Windows XP.</b><br>
+However, this version probably ONLY works under Windows until I or someone attempts to make this version work both under Unix and Windows (not a difficult job, but I don't have a Unix system to test it with).
+</li>
+
+<li><b>Avoids re-creating equation images that already exist. </b><br>
+This vastly speeds up the running time of gladTeX, especially if you are making changes to the source page which don't affect existing equations.  Briefly, here's how it works:  the LaTeX equation is written to a <code>.tex</code> file in the same directory where the <code>.png</code> file is created.  When gladTeX is asked to render a certain LaTeX expression, it first scans all the available <code>.tex</code> files to see if that expression has already been rendered.  If so, it just uses the existing <code>.png</code> file with the same name.
+</li>
+
+<li><b>Improved how inline equation images are aligned with text.</b><br>
+GladTeX originally used the vertical centering of images to effect alignment with the text -- gladTex would resize the image to add blank space above or below so it would align.  This version instead uses a CSS <code>vertical-align</code> style attribute in the <code>&lt;IMG&gt;</code> tag like this:<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp; &lt;IMG style="vertical-align: -13px; margin: 0;" width="20" height="30"&gt;</code><br>
+With this attribute, we no longer need to make the image larger with blank space.  This keeps the spacing between lines of text more compact.
+</li>
+
+<li><b>Names equation images to correspond to the HTML document they are from.</b><br>
+This helps me to keep track of what equation goes with what HTML document.  Note that currently the 'avoid re-creating an image' code might find existing files that 'belong' to a different page.  (It would be fairly simple to add an option to prevent that behavior).
+</li>
+
+<li><b>Adds <code>alt</code> property to <code>&lt;img&gt;</code> tags.</b><br>
+The <code>alt</code> property specifies a text equivalent for an image, which is important for visually impaired users, or for display on alternate devices or text-only browsers.  The <code>alt</code> property is required under HTML 4.01.  This version of GladTeX automatically adds the LaTeX form of the equation as the <code>alt</code> property.  You can see the <code>alt</code> text by hovering your mouse over the equation image in many browsers.
+</li>
+
+<li><b>Only supports PNG, not GIF (at present).</b><br>
+I decided that PNG was good enough, and didn't try to get the GIF code to work.
+</li>
+
+<li><b>Double-quotes not allowed in LaTeX expressions.</b><br>
+This is because of how I am using <code>grep</code> to search for existing files.  Since Windows command-line arguments are wrapped in double-quotes, we pass the LaTeX expression wrapped in double-quotes.  So, a double-quote in the LaTeX expression would break that part of the process.  This is not a big problem since double-quotes are pretty much not used in LaTeX anyway!  (LaTeX requires use of two single quotes like '' or back quotes `` instead).  If you really need a double quote you can use <code>\\symbol{34}</code> instead.  (Note that this limitation could be eliminated by writing the search argument to a file instead of passing it via the command-line).
+</li>
+</ul>
+
+
+<h2>Obtaining and Installing GladTeX</h2>
+
+<p style="margin: 1em; padding: 1em; border: dashed red 1px">
+As of 2017, GladTeX development has resumed at
+<a href="https://github.com/humenda/gladtex">https://github.com/humenda/gladtex</a>.
+please see that page for the current version. There is a Windows version at
+<a href="https://github.com/humenda/GladTeX/releases">https://github.com/humenda/GladTeX/releases</a>.
+
+<br><br>For archival purposes, you can access the <a href="gladtex.zip">outdated version of GladTeX</a>. The rest of this page describes that outdated version.
+</p>
+
+
+<p>Get the two files (that are part of this software release): </p>
+
+<pre>
+    eqn2img.exe  (compiled for Windows OS)
+    gladtex.pl
+</pre>
+<p>and put them somewhere that can be found by the Windows command line.
+In addition you will need the following:</p>
+
+<ul>
+<li>perl &nbsp;&nbsp;&nbsp;&nbsp;   I use <a href="http://www.activestate.com/Products/ActivePerl/">ActiveState perl</a></li>
+
+<li>LaTeX &nbsp;&nbsp;&nbsp;&nbsp;    for the commands <code>latex</code> and <code>dvips</code>  (I use <a href="http://www.miktex.org">MikTeX</a>).</li>
+
+<li><a href="http://www.interlog.com/~tcharron/grep.html">grep for Windows</a> &nbsp;&nbsp;&nbsp;&nbsp; A Windows version of <code>grep</code></li>
+
+<li>ghostscript for the command <code>gswin32c</code>.</li>
+</ul>
+
+<p>With this version of gladTeX, <code>libpng</code> is part of <code>eqn2img.exe</code>, so you don't need to install <code>libpng</code> on your own.
+</p>
+
+<p>Before trying to use gladTeX, you should be able to run latex on a simple <code>.tex</code> file, and turn it into a <code>.dvi</code> file (try viewing it with a <code>.dvi</code> viewer like Yap which is part of MikTeX).  You should also be able to give the commands listed above (<code>perl, latex, dvips, grep, gswin32c</code>) at the command line.</p>
+
+
+
+
+<h2>Usage</h2>
+
+<p>Put </p>
+<pre>
+    &lt;eq&gt;...latex code here....&lt;/eq&gt;
+</pre>
+<p>in your <code>.html</code> file.  But rename it to have the <code>.htex</code> extension.  Then invoke gladtex by:</p>
+<pre>
+    perl gladtex.pl [options] myfile.htex
+</pre>
+
+<p>where <code>[options]</code> are described in <code>gladtex.pl</code>.</p>
+
+
+<p>For inline equations use</p>
+<pre>
+    &lt;eq inline=1&gt;...latex code here...&lt;/eq&gt;
+</pre>
+
+<p>This will result in special processing so that the equation image lines up with the other text on the line.</p>
+
+
+<p>I have some additional <a href="web-math-en.html#my_gladtex">examples of GladTeX usage</a> available.  Please see the <a href="https://github.com/humenda/gladtex">official gladTeX site</a> for additional usage information.
+</p>
+
+
+
+
+<h2>Source Code</h2>
+
+<p>The perl file <code>gladtex.pl</code> is a perl text file.  The source code for <code>eqn2img.c</code> is provided <a href="gladtex.zip">here</a> in case you want to try to build it yourself.  There are some additional <code>.h</code> and <code>.c</code> files:</p>
+
+<ul>
+<li><code>getopt.c</code> is code for a command line parser.</li>
+
+<li><code>direct.h</code> header is for directory operations like <code>_chdir</code> (<code>direct.h</code> comes with Visual C++ and is not included here)</li>
+
+<li><code>png.h</code> is the header for <code>libpng</code> (comes with <code>libpng</code> and is not included here).
+</li>
+</ul>
+
+<p>You will need to obtain <code>libpng</code> and <code>zlib</code> if you want to compile <code>eqn2img.c</code>.  This is rather involved when using VisualC++ on Windows, see the accompanying file <code>'libpng notes.txt'</code> for more information.</p>
+
+
+
+<h2>Changes to eqn2img</h2>
+
+<p>I've made various changes to <code>eqn2img.c</code> so that it compiles and works on Windows.  In addition some other changes I made were:</p>
+
+<ul>
+<li>Added the <code>-i</code> option to specify when an equation is inline with the text.  Those equations are handled specially.  They result in the <code>&lt;img&gt;</code> tag having a <code>style="vertical-align"</code> property so that they line up with the other text on that line.  (In the old version of <code>eqn2img</code> this was done by increasing the size of the image, so that <code>align=middle</code> property would line it up, but that resulted in large spaces between lines of text).
+</li>
+
+<li>Added the <code>-e</code> option to specify the equation on the command line.
+</li>
+
+<li>No longer deletes the <code>.tex</code> file that is created.  It is used by gladtex to see if a <code>.png</code> image can be reused.
+</li>
+
+<li>Automatically adds the LaTeX version of the equation as the <code>alt</code> text for the <code>&lt;img&gt;</code> tag.
+</li>
+</ul>
+
+</div>
+
+<p id="page_history">
+  This web page was first published September 2004.
+</p>
+
+
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">previous</a>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+<script>
+  window.addEventListener('pageshow', function(event){
+    // set language menu to correct language
+    var menu = document.getElementById('language_menu');
+    if (menu) {
+      menu.selectedIndex = 0;
+    }
+  }, /*capturing=*/false);
+</script>
+</body>
+</html>

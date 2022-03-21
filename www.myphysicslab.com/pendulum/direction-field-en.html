@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab Pendulum with Direction Field</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Pendulum with Direction Field</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="direction-field-en.html" selected>English</option>
+    <option value="direction-field-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="pendulum-en.html">previous</a>
+<a class="nav_link" 
+   href="chaotic-pendulum-en.html">next</a>
+</div>
+<ul id="header_bar" class="horiz_tabs">
+  
+  <li class="sim ">Sim</li>
+  <li class="graph selected">Graph</li>
+  <li class="time_graph">Time Graph</li>
+  <li class="multi_graph">Multi Graph</li>
+</ul>
+
+
+<div id="container" class="control_container" lang="en">
+  <div id="div_graph" >
+  </div>
+  <div id="div_time_graph" >
+  </div>
+  <div id="sim_applet" >
+  </div>
+  <div id="sim_controls" class="control_group">
+  </div>
+  <div id="graph_controls" class="control_group">
+  </div>
+  <div id="time_graph_controls" class="control_group">
+  </div>
+  <p>
+  <label id="label_show_sim">
+    <input type="checkbox" id="show_sim">show sim
+  </label>
+  <label id="label_terminal">
+    <input type="checkbox" id="show_terminal">terminal
+  </label>
+  <div id="div_terminal">
+    <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea> <br>
+    <label style="display:inline-block">command &gt;
+      <input type="text" id="term_input" size="80">
+    </label>
+  </div>
+</div>
+
+<p class="introduction">
+Physics-based simulation of a pendulum, showing both a phase graph and the direction
+field (or slope field) associated with the differential equation.
+</p>
+
+<p class="instructions">
+Click the "Sim" tab to access parameters such as: gravity, mass or friction (damping).
+Drag the pendulum to change the starting position. Or click below to set some
+predefined initial conditions.
+</p>
+
+<form name="form1" onsubmit="return false;">
+  <input type="button" value="small" onClick="app.eval('ANGLE=0.3')">
+  &nbsp;&nbsp;
+  <input type="button" value="medium" onClick="app.eval('ANGLE=1.0')">
+  &nbsp;&nbsp;
+  <input type="button" value="big" onClick="app.eval('ANGLE=3.0')">
+  &nbsp;&nbsp;
+  <input type="button" value="fast" onClick="app.eval('ANGLE=1.0;ANGLE_VELOCITY=8')">
+</form>
+
+<p>See the page about the
+<a href="pendulum-en.html">single pendulum</a>
+for more about how pendulums work and the math behind this simulation. This simulation
+is identical to that one, but adds a graph of the
+<a href="http://en.wikipedia.org/wiki/Slope_field">direction field</a>
+(AKA slope field) of the differential equation.  This direction field is shown
+overlapping the  <a href="http://en.wikipedia.org/wiki/Phase_space">phase space</a>
+graph of angular velocity vs. angle.  At each point, the path of the pendulum in phase
+space is along the direction field.</p>
+
+<p>Also available are:
+<a href="https://github.com/myphysicslab/myphysicslab/blob/master/src/sims/pendulum/VectorGraphPendulumApp.js">open source code</a>,
+<a href="../develop/docs/myphysicslab.sims.pendulum.VectorGraphPendulumApp.html">documentation</a> and a
+<a href="../develop/build/sims/pendulum/VectorGraphPendulumApp-en.html">simple-compiled version</a>
+which is <a href="../develop/docs/Customizing.html">more customizable</a>.
+</p>
+
+
+<h2>Experiments to try:</h2>
+<ul>
+  <li>Notice that the path through phase space is always along the direction field.</li>
+  <li>Which parameters (damping, gravity, mass, length) change the direction field?
+     Why do they or don't they change the direction field?</li>
+	<li>Try bigger faster motions of the pendulum (drag the pendulum to a high starting
+     point, or give it a high start velocity).  Notice that it still moves along the
+     direction field in phase space.</li>
+  <li>Turn on "show energy".  When is kinetic energy highest?  When is potential energy
+    highest?</li>
+</ul>
+
+
+<!--h2>TO DO</h2>
+<ul>
+  <li><b>Show the simulation controls along with the graph.</b> Perhaps add a <em>show
+     controls</em> checkbox.</li>
+  <li>Explain how direction field is constructed.  Explain it only works in 2D
+     for 2 variables.</li>
+  <li>Show equation of motion, to show which params alter direction field</li>
+	<li>Links to other videos and articles</li>
+	<li>Allow setting density of the direction field plot (number of points plotted)</li>
+</ul-->	
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="pendulum-en.html">previous</a>
+  <a class="nav_link" href="chaotic-pendulum-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+
+<!-- Call the app script after the body so that html entities are defined and 
+* the script can find them.--> 
+<script src="VectorGraphPendulumApp-en.js"></script>
+<script>
+  (function build() {
+    var elem_ids = {
+      tab_list: 'header_bar',
+      container: 'container',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      sim_controls: 'sim_controls',
+      div_terminal: 'div_terminal',
+      div_time_graph: 'div_time_graph',
+      time_graph_controls: 'time_graph_controls',
+      div_multi_graph: 'div_multi_graph',
+      multi_graph_controls: 'multi_graph_controls',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_sim: 'show_sim',
+      images_dir: '../common'
+    };
+    app = makeVectorGraphPendulumApp(elem_ids);
+    app.defineNames('app');
+    app.eval('TAB_LAYOUT.LAYOUT="sim+graph";');
+    app.eval('DRIVE_AMPLITUDE=0;DAMPING=0.1;GRAVITY=9.8;ANGLE=1;ANGLE_VELOCITY=0;');
+    window.addEventListener('pageshow', function(event){
+      app.start();
+      // set language menu to correct language
+      var menu = document.getElementById('language_menu');
+      if (menu) {
+        menu.selectedIndex = 0;
+      }
+    }, /*capturing=*/false);
+    app.setup();
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+<script>
+  // separate script tag, runs even if error occurs in earlier script tag
+  app.start();
+</script>
+</body>
+</html>

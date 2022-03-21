@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="../../../../common/myphysicsicon.png">
+<title>myphysicslab.sims.experimental.GraphCalc2App</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../../index-en.html">
+  <img src="../../images/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+<h1>sims.experimental.GraphCalc2App </h1>
+<div id="header_nav">
+
+  <select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="GraphCalc2App-en.html" selected>English</option>
+    <option value="GraphCalc2App-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="GraphCalcApp-en.html">previous</a>
+<a class="nav_link" 
+   href="MultiGraphCalc2App-en.html">next</a>
+</div>
+<ul id="header_bar">
+</ul>
+
+<div id="graph_div1">
+</div>
+<div id="graph_controls1" class="control_group">
+</div>
+<!-- the "onsubmit=return false" is to prevent the page from reloading after
+enter key is typed in the text input field.
+-->
+<form id="script_terminal" onsubmit="return false;">
+  <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea>
+  <label>command:<input type="text" id="term_input" size="80"></label>
+  <label>compiled: 
+  <select id="compiled_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="../../../build/sims/experimental/GraphCalc2App-en.html">simple</option>
+    <option value="GraphCalc2App-en.html" selected>advanced</option>
+  </select>
+  </label>
+</form>
+
+<p>This demonstrates using the myPhysicsLab library to draw graphs. The equation of the
+graph can be entered as JavaScript in the Terminal command line interface.</p>
+
+<p>NOTE: This will only work on
+<a href="../../../docs/Building.html#advancedvs.simplecompile">simple-compiled versions</a>
+of this app; advanced-compiled versions cannot execute JavaScript.
+</p>
+
+<p>This graph shows a single GraphLine. However, you can change the style (color, line
+width, dots vs. lines) at any time, so it can look like there are several different
+graphs being drawn.
+</p>
+
+<p>To clear all points from the GraphLine:</p>
+<pre>
+  graphLine.reset();
+</pre>
+
+<p>To plot a new graph use the "plot" command.  This adds points to the GraphLine, with
+the value for "x" going between the two given numbers. The "b" value is set by the
+slider control below the graph.</p>
+<pre>
+  plot("b*x*x", -5, 5);
+</pre>
+
+<p>You can specify the number of points plotted as the 4th argument to plot (the
+default is 200). To add points to the GraphLine in a new color:</p>
+<pre>
+  graphLine.setColor("red");
+  plot("-b*x*x", -5, 5, 50);
+</pre>
+
+<p>To change the area being shown (arguments are left, bottom, top, right)</p>
+<pre>
+  simView.setSimRect(new DoubleRect(-6, -30, 6, 30));
+</pre>
+
+<p>To change line width or drawing mode:</p>
+<pre>
+  graphLine.setLineWidth(2);
+  plot("x", -10, 10);
+  graphLine.setDrawingMode("dots");
+  graphLine.setColor("black");
+  plot("-x", -10, 10);
+</pre>
+
+<p>To redraw the entire GraphLine with a different style:</p>
+<pre>
+  graphLine.setColor('blue');
+  graphLine.resetStyle();
+  graph.reset();
+</pre>
+
+
+<script src="GraphCalc2App-en.js"></script>
+  <script>
+    (function build() {
+      var elem_ids = {
+        graph_div: 'graph_div1',
+        graph_controls: 'graph_controls1',
+        term_output: 'term_output',
+        term_input: 'term_input',
+        images_dir: '../../images',
+        b_max: 20,
+        b_min: 0.01,
+        b_multiply: true,
+        b_increments: 200,
+        b_value: 5
+      };
+      app = makeGraphCalc2App(elem_ids);
+      app.defineNames('app');
+      app.eval('plot("x*Math.sin(b*x)", -10, 10)');
+    }());
+  </script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+
+<script>app.setup();</script>
+<script>app.start();</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+    <br><span id="revised_date">revised Mar 25 2021 23:40</span>
+  </div>
+  <a id="valid_html" href="http://validator.w3.org/check?uri=referer;outline=1;"
+      title="check if this page is valid HTML">
+  <img  src="../../images/ValidHTML401.png" alt="Valid HTML 4.01" 
+      height="31" width="88">
+  </a>
+</div>
+</body>
+</html>

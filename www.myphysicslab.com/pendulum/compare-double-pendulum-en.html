@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab Compare Double Pendulums</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Compare Double Pendulums</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="compare-double-pendulum-en.html" selected>English</option>
+    <option value="compare-double-pendulum-de.html" >German</option>
+  </select>
+<a class="nav_link" 
+   href="rigid-double-pendulum-en.html">previous</a>
+<a class="nav_link" 
+   href="../springs/molecule2-en.html">next</a>
+</div>
+<ul id="header_bar" class="horiz_tabs">
+  
+  <li class="sim selected">Sim</li>
+  <li class="graph ">Graph</li>
+  <li class="time_graph">Time Graph</li>
+  <li class="multi_graph">Multi Graph</li>
+</ul>
+
+
+<div id="container" class="control_container" lang="en">
+  <div id="div_graph" >
+  </div>
+  <div id="div_time_graph" >
+  </div>
+  <div id="sim_applet" >
+  </div>
+  <div id="sim_controls" class="control_group">
+  </div>
+  <div id="graph_controls" class="control_group">
+  </div>
+  <div id="time_graph_controls" class="control_group">
+  </div>
+  <p>
+  <label id="label_show_sim">
+    <input type="checkbox" id="show_sim">show sim
+  </label>
+  <label id="label_terminal">
+    <input type="checkbox" id="show_terminal">terminal
+  </label>
+  <div id="div_terminal">
+    <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea> <br>
+    <label style="display:inline-block">command &gt;
+      <input type="text" id="term_input" size="80">
+    </label>
+  </div>
+</div>
+
+<p class="introduction">
+Compares two double pendulum simulations that are run simultaneously.
+</p>
+<p class="instructions">
+You can modify the starting angles and gravity. The right pendulum can be dragged with
+a spring force by clicking your mouse near it. You can change the separation between
+the pendulums to compare them more easily.
+</p>
+
+<p>The two simulations being run are:</p>
+
+<ol>
+  <li>The theoretically accurate
+    <a href="rigid-double-pendulum-en.html">RigidDoublePendulumSim</a>
+    shown in blue on the left.
+  </li>
+  <li>The equivalent double pendulum using the
+    <a href="../explain/physics-engine-en.html">2D Rigid Body Physics Engine</a>
+    shown in red on the right.
+  </li>
+</ol>
+
+<p>The purpose is to show that the two are closely equivalent, which demonstrates the
+accuracy of the physics engine. Although two very different simulation methods are
+used, we get pretty much the exact same result.
+</p>
+
+<p>The angles shown in the graphs are modified for the physics engine version so that
+they are equivalent to the corresponding RigidDoublePendulumSim angles.
+</p>
+
+<p>Also available are:
+<a href="https://github.com/myphysicslab/myphysicslab/blob/master/src/sims/pendulum/CompareDoublePendulumApp.js">open source code</a>,
+<a href="../develop/docs/myphysicslab.sims.pendulum.CompareDoublePendulumApp.html">documentation</a> and a
+<a href="../develop/build/sims/pendulum/CompareDoublePendulumApp-en.html">simple-compiled version</a>
+which is <a href="../develop/docs/Customizing.html">more customizable</a>.
+</p>
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="rigid-double-pendulum-en.html">previous</a>
+  <a class="nav_link" href="../springs/molecule2-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+
+<!-- Call the app script after the body so that html entities are defined and 
+* the script can find them.--> 
+<script src="CompareDoublePendulumApp-en.js"></script>
+<script>
+  (function build() {
+    var elem_ids = {
+      tab_list: 'header_bar',
+      container: 'container',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      sim_controls: 'sim_controls',
+      div_terminal: 'div_terminal',
+      div_time_graph: 'div_time_graph',
+      time_graph_controls: 'time_graph_controls',
+      div_multi_graph: 'div_multi_graph',
+      multi_graph_controls: 'multi_graph_controls',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_sim: 'show_sim',
+      images_dir: '../common'
+    };
+    app = makeCompareDoublePendulumApp(elem_ids);
+    app.defineNames('app');
+    window.addEventListener('pageshow', function(event){
+      // set language menu to correct language
+      var menu = document.getElementById('language_menu');
+      if (menu) { menu.selectedIndex = 0; }
+    }, /*capturing=*/false);
+    app.setup();
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+<script>
+  // separate script tag, runs even if error occurs in earlier script tag
+  app.start();
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+</body>
+</html>

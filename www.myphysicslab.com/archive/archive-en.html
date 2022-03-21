@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title lang="en">myPhysicsLab Archive (Older Projects)</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="icon" sizes="32x32" type="image/png" href="../common/myphysicsicon.png">
+</head>
+<body>
+
+<a id="logo" href="../index-en.html">
+  <img src="../common/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">
+</a>
+
+<h1 lang="en">Archive (Older Projects)</h1>
+
+<div id="header_nav">
+<select id="language_menu"
+    onchange="location = this.options[this.selectedIndex].value;">
+    <option value="archive-en.html" selected>English</option>
+    <option value="archive-de.html" >German</option>
+  </select>
+</div>
+<ul id="header_bar">
+</ul>
+
+
+<p>Here are links to older projects.</p>
+
+<ul>
+  <li><a href="reaction-diffusion/reaction-diffusion-en.html">Reaction-Diffusion</a>
+    Simulations of a chemical reaction. Non-interactive videos.
+  </li>
+  <li><a href="shallow-liquid/shallow-liquid-en.html">Shallow-Liquid</a> Simulations of fluid dynamics
+    in shallow water. Non-interactive videos.
+  </li>
+  <li><a href="web-math-en.html">Displaying Math on the Web</a>
+  </li>
+  <li><a href="gladtex-en.html">Gladtex</a> is software for displaying LaTeX mathematics
+    in a web page.</li>
+  <li><a href="../develop/adv-build/sims/experimental/BikeTimerApp-en.html">Bike Timer</a>
+    was used by my brother Mark Neumann for breaking the hour-record in bike riding on
+    a track.
+  </li>
+  
+</ul>
+
+
+<p id="page_history">
+  This web page was first published November 2001.
+</p>
+
+
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    title="send comments to Erik Neumann">
+    Erik Neumann</a>,  2004-2016<br>
+    <span id="revised_date">revised Feb 6 2021</span>
+  </div>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">previous</a>
+  <a class="nav_link" href="https://www.myphysicslab.com/-en.html">next</a>
+  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"
+   title="check if this page is valid HTML">
+  <img  src="../common/ValidHTML401.png" alt="Valid HTML 4.01" 
+    height="31" width="88">
+  </a>
+</div>
+<script>
+  window.addEventListener('pageshow', function(event){
+    // set language menu to correct language
+    var menu = document.getElementById('language_menu');
+    if (menu) {
+      menu.selectedIndex = 0;
+    }
+  }, /*capturing=*/false);
+</script>
+</body>
+</html>
