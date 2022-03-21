@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.sims.experimental.BikeTimerApp</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<h1>sims.experimental.BikeTimerApp </h1>
+#HEADER_BAR
+
+  <div id="sim_applet">
+  </div>
+
+  <form id="sim_control">
+    <input type="button" value="reset" id="reset_button">
+    <input type="button" value="stop" id="stop_button">
+    <input type="button" value="start" id="start_button">
+    <label>start:
+    <input type="text" value="0.0" id="start_field">
+    </label>
+    <label>period:
+    <input type="text" value="0.0" id="period_field">
+    </label>
+  </form>
+
+<script src="BikeTimerApp-en.js"></script>
+  <script>
+    // Sound is from http://soundbible.com/1598-Electronic-Chime.html
+    // Uploaded: 11.04.10 | License: Public Domain | Recorded by KevanGC
+    makeBikeTimerApp("images/Electronic_Chime-KevanGC-495939803.mp3");
+  </script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+</div>
+</body>
+</html>

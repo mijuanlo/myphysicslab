@@ -40,6 +40,15 @@ if [ -z "$target" ] ; then
 	echo "$0 ERROR: no target file specified"
 	exit 1
 fi
+REDO=1
+source2=${source%%.js}.bak
+if [ -n "$REDO" -a -f "${source2}" ];then
+	cp ${source2} ${source}
+fi
+if [ ! -f "${source2}" ];then
+	cp ${source} ${source2}
+fi
+sed -i -r 's@([^/]this.addURLScriptButton\(\).*)@\/\/\1@g' $source
 
 # Find locale from suffix of target:  foo-en.js is "en";  bar-de.js is "de"
 # ${variable##pattern} Trim the longest match from the beginning
@@ -228,6 +237,11 @@ java -jar "$CLOSURE_COMPILER" \
 $wrapper \
 > $target
 result=$?
+
+if [ -f "${source2}" ];then
+	mv ${source2} ${source}
+fi
+
 set +x
 
 # for simple-compile apps, do a search/replace to make shorter names

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.test.TestViewerApp</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<h1>test.TestViewerApp </h1>
+
+#HEADER_BAR
+
+<div class="control_container">
+  <div id="sim_applet">
+  </div>
+  <form id="show_hide_form"  style="margin: 5px 0px 5px 0px;">
+    <label><input type="checkbox" id="show_controls">controls</label>
+    <label><input type="checkbox" id="show_graph">graph</label>
+    
+    <label id="label_terminal">
+      <input type="checkbox" id="show_terminal">terminal
+    </label>
+  </form>
+  <form id="sim_controls" onsubmit="return false;" style="margin: 5px 0px 5px 0px;">
+    <label>damping <input type="text" id="damping_control"></label>
+    <label>gravity <input type="text" id="gravity_control"></label>
+  </form>
+  <div id="div_graph" style="margin: 0px;">
+    <form id="graph_controls" onsubmit="return false;">
+    </form>
+  </div>
+  <form id="form_terminal" onsubmit="return false;" style="margin: 0px;">
+    <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea>
+    <label>command:<input type="text" id="term_input" size="80"></label>
+  </form>
+</div>
+
+<p>Interactively runs a test from the Engine2DTests suite of tests. This lets us see
+what a test is doing.
+</p>
+
+<p>NOTE: This will only work on
+<a href="https://www.myphysicslab.com/develop/docs/Building.html#advancedvs.simplecompile">simple-compiled versions</a>
+of this app; advanced-compiled versions cannot execute JavaScript.
+</p>
+
+
+
+
+<script src="TestViewerApp-de.js"></script>
+
+<script>
+  (function build() {
+    
+    var elem_ids = { term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      show_graph: 'show_graph',
+      sim_controls: 'sim_controls',
+      show_controls: 'show_controls',
+      form_terminal: 'form_terminal',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_hide_form: 'show_hide_form',
+      images_dir: 'images'
+    };
+    app = makeTestViewerApp(elem_ids);
+    app.defineNames('app');
+    window.addEventListener('pageshow', function(event){
+      // set language menu and compiled menus in case of back-button 
+      var menu = document.getElementById('language_menu');
+      if (menu) { menu.selectedIndex = 1; }
+      menu = document.getElementById('compiled_menu');
+      if (menu) { menu.selectedIndex = 1; }
+    }, /*capturing=*/false);
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+
+<script>var app; if (app) app.setup();</script>
+<script>var app; if (app) app.start();</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+</div>
+</body>
+</html>

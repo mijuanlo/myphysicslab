@@ -12,10 +12,12 @@
 #comment
 #comment Ordering in this file corresponds to order of usage on typical web page.
 
-#define #IMAGES_DIR #TOP_DIR/images
+#comment #define #IMAGES_DIR ../../images
+#define #IMAGES_DIR images
 
 #define #DOC_TYPE <!DOCTYPE html>
 
+#comment #define #STYLE_SHEET ../../stylesheet.css
 #define #STYLE_SHEET stylesheet.css
 
 #define #MYPHYSICSLAB_URL https://www.myphysicslab.com
@@ -28,7 +30,7 @@
 #define #META_TAGS \
 <meta charset="UTF-8">\
 <meta name="viewport" content="width=device-width, initial-scale=1">\
-<link rel="stylesheet" type="text/css" href="#TOP_DIR/#STYLE_SHEET">\
+<link rel="stylesheet" type="text/css" href="#STYLE_SHEET">\
 <link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">\
 <title>myphysicslab.#APP_PATH</title>
 
@@ -58,10 +60,11 @@
   document.getElementsByTagName("html")[0].style.visibility = "visible";\
 </script>
 
-#define #SITE_LOGO \
-<a id="logo" href="#TOP_DIR/index-#LOCALE.html">\
-  <img src="#IMAGES_DIR/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">\
-</a>
+#define #SITE_LOGO 
+#comment \
+#comment <a id="logo" href="#TOP_DIR/index-#LOCALE.html">\
+#comment   <img src="#IMAGES_DIR/myphysicslogo.png" width="162" height="32" alt="my physics lab logo">\
+#comment </a>
 
 
 #define #LANGUAGE ##LOCALE#_LANGUAGE
@@ -114,30 +117,30 @@
 #define #de_PREVIOUS vorherig
 #define #es_PREVIOUS anterior
 
-#define #LANGUAGE_MENU \
-  <select id="language_menu"\
-    onchange="location = this.options[this.selectedIndex].value;">\
-    <option value="#FILE_NAME#-en.html" #I18N_ENGLISH_SELECTED>#I18N_ENGLISH</option>\
-    <option value="#FILE_NAME#-de.html" #I18N_GERMAN_SELECTED>#I18N_GERMAN</option>\
-    <option value="#FILE_NAME#-es.html" #I18N_SPANISH_SELECTED>#I18N_SPANISH</option>\
-  </select>
+#comment #define #LANGUAGE_MENU \
+#comment   <select id="language_menu"\
+#comment     onchange="location = this.options[this.selectedIndex].value;">\
+#comment     <option value="#FILE_NAME#-en.html" #I18N_ENGLISH_SELECTED>#I18N_ENGLISH</option>\
+#comment     <option value="#FILE_NAME#-de.html" #I18N_GERMAN_SELECTED>#I18N_GERMAN</option>\
+#comment     <option value="#FILE_NAME#-es.html" #I18N_SPANISH_SELECTED>#I18N_SPANISH</option>\
+#comment   </select>
 
-#define #PREV_ANCHOR_TAG <a class="nav_link" \
-   href="#TOP_DIR/#PREV_LINK#-#LOCALE.html">#I18N_PREVIOUS</a>
+#comment #define #PREV_ANCHOR_TAG <a class="nav_link" \
+#comment    href="#TOP_DIR/#PREV_LINK#-#LOCALE.html">#I18N_PREVIOUS</a>
 
-#define #NEXT_ANCHOR_TAG <a class="nav_link" \
-   href="#TOP_DIR/#NEXT_LINK#-#LOCALE.html">#I18N_NEXT</a>
+#comment #define #NEXT_ANCHOR_TAG <a class="nav_link" \
+#comment    href="#TOP_DIR/#NEXT_LINK#-#LOCALE.html">#I18N_NEXT</a>
 
 #comment #HEADER_BAR holds the language menu, navigation links, and optionally can
 #comment have tab items for the tabbed interface.
 
-#define #HEADER_BAR <div id="header_nav">\
-#LANGUAGE_MENU\
-#PREV_ANCHOR_TAG\
-#NEXT_ANCHOR_TAG\
-</div>\
-<ul id="header_bar">\
-</ul>
+#comment #define #HEADER_BAR <div id="header_nav">\
+#comment #LANGUAGE_MENU\
+#comment #PREV_ANCHOR_TAG\
+#comment #NEXT_ANCHOR_TAG\
+#comment </div>\
+#comment <ul id="header_bar">\
+#comment </ul>
 
 #comment #FILE_PATH will be whatever #APP_PATH is, modified by the regexp
 #defineFrom #FILE_PATH {#APP_PATH} s~\.~/~g
@@ -147,22 +150,25 @@
 #defineFrom #APP_NAME {#APP_PATH} s~.*\.~~g
 
 #comment "compiled" menu lets user select between "simple" and "advanced" versions.
-#define #COMPILED_MENU ##COMPILE_LEVEL#_COMPILED_MENU
+#define #COMPILED_MENU 
+#comment ##COMPILE_LEVEL#_COMPILED_MENU
 #define #debug_COMPILED_MENU
-#define #simple_COMPILED_MENU <label>compiled: \
-  <select id="compiled_menu"\
-    onchange="location = this.options[this.selectedIndex].value;">\
-    <option value="#FILE_NAME#-#LOCALE#.html" selected>simple</option>\
-    <option value="#TOP_DIR/../adv-build/#FILE_PATH#-#LOCALE#.html">advanced</option>\
-  </select>\
-  </label>
-#define #advanced_COMPILED_MENU <label>compiled: \
-  <select id="compiled_menu"\
-    onchange="location = this.options[this.selectedIndex].value;">\
-    <option value="#TOP_DIR/../build/#FILE_PATH#-#LOCALE#.html">simple</option>\
-    <option value="#FILE_NAME#-#LOCALE#.html" selected>advanced</option>\
-  </select>\
-  </label>
+#define #simple_COMPILED_MENU 
+#comment <label>compiled: \
+#comment   <select id="compiled_menu"\
+#comment     onchange="location = this.options[this.selectedIndex].value;">\
+#comment     <option value="#FILE_NAME#-#LOCALE#.html" selected>simple</option>\
+#comment     <option value="#TOP_DIR/../adv-build/#FILE_PATH#-#LOCALE#.html">advanced</option>\
+#comment   </select>\
+#comment   </label>
+#define #advanced_COMPILED_MENU 
+#comment <label>compiled: \
+#comment   <select id="compiled_menu"\
+#comment     onchange="location = this.options[this.selectedIndex].value;">\
+#comment     <option value="#TOP_DIR/../build/#FILE_PATH#-#LOCALE#.html">simple</option>\
+#comment     <option value="#FILE_NAME#-#LOCALE#.html" selected>advanced</option>\
+#comment   </select>\
+#comment   </label>
 
 
 #comment Set MYPHYSICSLAB_DIR to relative URL for testing on local machine
@@ -171,25 +177,32 @@
 #comment #MYPHYSICSLAB_DIR https://www.myphysicslab.com
 
 #define #PAGE_INFO ##LOCALE#_PAGE_INFO
-#define #en_PAGE_INFO <p style="clear: both;">This page is for testing and development\
-please see <a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> for the published\
-version of this simulation.</p>
+#define #en_PAGE_INFO 
+#comment <p style="clear: both;">This page is for testing and development\
+#comment please see <a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> for the published\
+#comment version of this simulation.</p>
 
-#define #de_PAGE_INFO <p style="clear: both;">Dies ist eine\
-<em>Test Web Seite f&uuml;r Entwicklung</em>, bitte nutzen Sie\
-<a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> f&uuml; die\
-ver&ouml;ffentlichte Version dieser Simulation.</p>
+#define #de_PAGE_INFO 
+#comment <p style="clear: both;">Dies ist eine\
+#comment <em>Test Web Seite f&uuml;r Entwicklung</em>, bitte nutzen Sie\
+#comment <a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> f&uuml; die\
+#comment ver&ouml;ffentlichte Version dieser Simulation.</p>
 
-#define #es_PAGE_INFO <p style="clear: both;">Esta página es para pruebas y desarrollo\
-ver <a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> para la versión publicada\
-de esta simulation.</p>
+#define #es_PAGE_INFO 
+#comment <p style="clear: both;">Esta página es para pruebas y desarrollo\
+#comment ver <a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> para la versión publicada\
+#comment de esta simulation.</p>
 
 #define #TEST_PAGE ##LOCALE#_TEST_PAGE
-#rule s~#en_TEST_PAGE\{(.+?)}~<p style="clear: both;">This is a <em>test page for development</em>, please see the <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">published version of this simulation</a>.</p>~g
+#comment #rule s~#en_TEST_PAGE\{(.+?)}~<p style="clear: both;">This is a <em>test page for development</em>, please see the <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">published version of this simulation</a>.</p>~g
+#rule s~#en_TEST_PAGE\{(.+?)}~~g
+#comment #rule s~#de_TEST_PAGE\{(.+?)}~<p style="clear: both;">Dies ist eine <em>Test Web Seite f&uuml;r Entwicklung</em>, bitte nutzen Sie die <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">ver&ouml;ffentlichte Version dieser Simulation</a> um das vollst&auml;ndige Experiment zu sehen.</p>~g
+#rule s~#de_TEST_PAGE\{(.+?)}~~g
+#comment #rule s~#es_TEST_PAGE\{(.+?)}~<p style="clear: both;">Esto es una <em>p&aacute;gina de desarrollo</em>, ver la <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">versi&oacute;n publicada de esta simulaci&oacute;n</a>.</p>~g
+#rule s~#es_TEST_PAGE\{(.+?)}~~g
 
-#rule s~#de_TEST_PAGE\{(.+?)}~<p style="clear: both;">Dies ist eine <em>Test Web Seite f&uuml;r Entwicklung</em>, bitte nutzen Sie die <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">ver&ouml;ffentlichte Version dieser Simulation</a> um das vollst&auml;ndige Experiment zu sehen.</p>~g
-
-#rule s~#es_TEST_PAGE\{(.+?)}~<p style="clear: both;">Esto es una <em>p&aacute;gina de desarrollo</em>, ver la <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">versi&oacute;n publicada de esta simulaci&oacute;n</a>.</p>~g
+#comment #rule s@(this.addControl\(CommonControls.makeURLScriptButton)@\/\/\1@g
+#comment #rule s@(this.addURLScriptButton\(\).*)@\/\/\1@g
 
 #define #LOAD_APP ##COMPILE_LEVEL#_LOAD_APP
 
@@ -286,13 +299,13 @@ de esta simulation.</p>
     title="copyright 2020 Erik Neumann">\
     Erik Neumann</a> 2020, available under\
     <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>\
-    <br><span id="revised_date">revised #DATE_TIME</span>\
-  </div>\
-  <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"\
-      title="check if this page is valid HTML">\
-  <img  src="#IMAGES_DIR/ValidHTML401.png" alt="Valid HTML 4.01" \
-      height="31" width="88">\
-  </a>\
+#comment     <br><span id="revised_date">revised #DATE_TIME</span>\
+#comment   </div>\
+#comment   <a id="valid_html" href="https://validator.w3.org/check?uri=referer;outline=1;"\
+#comment       title="check if this page is valid HTML">\
+#comment   <img  src="#IMAGES_DIR/ValidHTML401.png" alt="Valid HTML 4.01" \
+#comment       height="31" width="88">\
+#comment   </a>\
 </div>
 
 #comment "Lorem ipsum" text is used to test scrolling of the web page.

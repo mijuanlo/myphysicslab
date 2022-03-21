@@ -1,0 +1,174 @@
+<ul id="header_bar" class="horiz_tabs">
+   
+  <li class="sim selected">Sim</li>
+  <li class="graph ">Graph</li>
+  <li class="time_graph">Zeit Graph</li>
+  <li class="multi_graph">Multi Graphen</li>
+</ul>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.sims.engine2D.BlankApp</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<h1>sims.engine2D.BlankApp </h1>
+
+
+<div id="container" class="control_container">
+  <div id="div_graph" >
+  </div>
+  <div id="div_time_graph" >
+  </div>
+  <div id="sim_applet" >
+  </div>
+  <div id="sim_controls" class="control_group">
+  </div>
+  <div id="graph_controls" class="control_group">
+  </div>
+  <div id="time_graph_controls" class="control_group">
+  </div>
+  <p>
+  <label id="label_show_sim">
+    <input type="checkbox" id="show_sim">show sim
+  </label>
+   <label id="label_terminal">
+    <input type="checkbox" id="show_terminal">terminal
+   </label>
+   <div id="div_terminal">
+     <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea> <br>
+     <label style="display:inline-block">command &gt;
+       <input type="text" id="term_input" size="80">
+     </label>
+   </div>
+</div>
+
+
+<p>BlankApp lets you experiment building a rigid body simulation via scripting.
+It has a ContactSim, LabCanvas, SimView, Terminal and other objects already created.
+Below is a sample script to try by entering in Terminal.</p>
+
+<p>NOTE: This will only work on
+<a href="https://www.myphysicslab.com/develop/docs/Building.html#advancedvs.simplecompile">simple-compiled versions</a>
+of this app; advanced-compiled versions cannot execute JavaScript.
+</p>
+
+<pre>
+ELASTICITY=0.9;
+SHOW_CLOCK=true;
+Walls.make(sim,12,12,0.01);
+var p=Shapes.makeBall(0.2,'fast_ball');
+p.setMass(0.1);
+p.setPosition(new Vector(-5, 0));
+p.setVelocity(new Vector(200, 153));
+p.setElasticity(0.9);
+sim.addBody(p);
+displayList.findShape(p).setFillStyle('green');
+sim.saveInitialState();
+app.addStandardControls();
+</pre>
+
+<p>A script can be provided in the
+<a href="https://en.wikipedia.org/wiki/Query_string">query string</a>
+of the URL (after the question mark)
+for this page. For example, the following URL contains the above script.
+</p>
+
+<p>
+<a href="https://www.myphysicslab.com/develop/build/sims/engine2D/BlankApp-en.html?ELASTICITY=0.9;SHOW_CLOCK=true;Walls.make(sim,12,12,0.01);var%20p=Shapes.makeBall(0.2,'fast_ball');p.setMass(0.1);p.setPosition(new%20Vector(-5,0));p.setVelocity(new%20Vector(200,153));p.setElasticity(0.9);sim.addBody(p);displayList.findShape(p).setFillStyle('green');sim.saveInitialState();app.addStandardControls()">
+<code>
+https://www.myphysicslab.com/develop/build/sims/engine2D/BlankApp-en.html?ELASTICITY=0.9;<br>
+SHOW_CLOCK=true;Walls.make(sim,12,12,0.01);var%20p=Shapes.makeBall(0.2,'fast_ball');<br>
+p.setMass(0.1);p.setPosition(new Vector(-5,0));p.setVelocity(new Vector(200,153));<br>
+p.setElasticity(0.9);sim.addBody(p);displayList.findShape(p).setFillStyle('green');<br>
+sim.saveInitialState();app.addStandardControls();
+</code>
+</a>
+</p>
+
+<p>Because of
+<a href="https://en.wikipedia.org/wiki/Percent-encoding">percent-encoding</a>
+we must substitute in the URL:
+</p>
+<ul>
+  <li><code>%20</code> for space</li>
+  <li><code>%22</code> for double-quote</li>
+  <li><code>%27</code> for single-quote</li>
+</ul>
+
+<p>See this
+<a href="https://perishablepress.com/stop-using-unsafe-characters-in-urls/">character
+encoding chart</a> to learn which other characters must be percent-encoded.
+</p>
+
+
+
+<script src="BlankApp-de.js"></script>
+
+<script>
+  (function build() {
+    var elem_ids = {
+      tab_list: 'header_bar',
+      container: 'container',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      sim_controls: 'sim_controls',
+      div_terminal: 'div_terminal',
+      div_time_graph: 'div_time_graph',
+      time_graph_controls: 'time_graph_controls',
+      div_multi_graph: 'div_multi_graph',
+      multi_graph_controls: 'multi_graph_controls',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_sim: 'show_sim',
+      images_dir: 'images'
+    };
+    app = makeBlankApp(elem_ids);
+    app.defineNames('app');
+    window.addEventListener('pageshow', function(event){
+      // set language menu and compiled menus in case of back-button 
+      var menu = document.getElementById('language_menu');
+      if (menu) { menu.selectedIndex = 1; }
+      menu = document.getElementById('compiled_menu');
+      if (menu) { menu.selectedIndex = 1; }
+    }, /*capturing=*/false);
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+
+<script>var app; if (app) app.setup();</script>
+<script>var app; if (app) app.start();</script>
+<script>
+  app.eval('TAB_LAYOUT.SHOW_TERMINAL=true;');
+</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+</div>
+</body>
+</html>

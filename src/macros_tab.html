@@ -25,13 +25,17 @@
   <li class="time_graph">#TIME_GRAPH</li>\
   <li class="multi_graph">#MULTI_GRAPH</li>
 
-#define #HEADER_BAR <div id="header_nav">\
-#LANGUAGE_MENU\
-#PREV_ANCHOR_TAG\
-#NEXT_ANCHOR_TAG\
-</div>\
-<ul id="header_bar" class="horiz_tabs">\
-  #TAB_ITEMS\
+#define #HEADER_BAR 
+#comment <div id="header_nav">\
+#comment #LANGUAGE_MENU\
+#comment #PREV_ANCHOR_TAG\
+#comment #NEXT_ANCHOR_TAG\
+#comment </div>
+#comment \
+<ul id="header_bar" class="horiz_tabs">
+#comment \
+   #TAB_ITEMS
+#comment \
 </ul>
 
 #comment TAB_LIST_ID allows specifying a second set of tabs via ELEM_IDS for 2nd app.
@@ -60,15 +64,15 @@
   <label id="label_show_sim#APP_NUM">\
     <input type="checkbox" id="show_sim#APP_NUM">show sim\
   </label>\
-  <label id="label_terminal#APP_NUM">\
+   <label id="label_terminal#APP_NUM">\
     <input type="checkbox" id="show_terminal#APP_NUM">terminal\
-  </label>\
-  <div id="div_terminal#APP_NUM">\
-    <textarea id="term_output#APP_NUM" cols=80 rows=20 wrap="soft"></textarea> <br>\
-    <label style="display:inline-block">command &gt;\
-      <input type="text" id="term_input#APP_NUM" size="80">\
-    </label>\
-  </div>\
+   </label>\
+   <div id="div_terminal#APP_NUM">\
+     <textarea id="term_output#APP_NUM" cols=80 rows=20 wrap="soft"></textarea> <br>\
+     <label style="display:inline-block">command &gt;\
+       <input type="text" id="term_input#APP_NUM" size="80">\
+     </label>\
+   </div>\
 </div>
 
 #comment #ELEM_IDS communicates to the layout the various ID's of the UI elements.

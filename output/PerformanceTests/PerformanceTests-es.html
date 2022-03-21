@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+* Runs performance tests of engine2D.
+* Test results are printed on this page as they occur.
+* Tests are scheduled to run with a setTimeout() command so that the HTML page can
+* update/refresh after each test finishes.
+*
+* Performance test results are defined in test/ExpectedPerf.js.
+*
+* The machine name is gotten from a global variable defined in MachineName.js
+* which is NOT checked in to the source repository because it is different on
+* each machine.
+-->
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.test.PerformanceTests</title>
+
+  <style type="text/css">
+    p {
+      font-family: sans-serif;
+      font-size: 12;
+    }
+    span.error {
+      color: red;
+      font-size: 14;
+    }
+    span.warning {
+      color: DarkOrange;
+    }
+  </style>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<h1>test.PerformanceTests </h1>
+#HEADER_BAR
+
+
+  <p id="test_results">Test results:<br></p>
+
+<script src="PerformanceTests-es.js"></script>
+<!-- Have a small delay so that web page can update before test starts -->
+<script>setTimeout(runTests, 10);</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+</div>
+</body>
+</html>

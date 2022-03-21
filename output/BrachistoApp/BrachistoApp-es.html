@@ -1,0 +1,147 @@
+<ul id="header_bar" class="horiz_tabs">
+   
+  <li class="sim selected">Sim</li>
+  <li class="graph ">Graph</li>
+  <li class="time_graph">Gr&aacute;fico de tiempo</li>
+  <li class="multi_graph">Gr&aacute;fico m&uacute;ltiple</li>
+</ul>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.sims.roller.BrachistoApp</title>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<h1>sims.roller.BrachistoApp </h1>
+
+
+<div id="container" class="control_container">
+  <div id="div_graph" >
+  </div>
+  <div id="div_time_graph" >
+  </div>
+  <div id="sim_applet" >
+  </div>
+  <div id="sim_controls" class="control_group">
+  </div>
+  <div id="graph_controls" class="control_group">
+  </div>
+  <div id="time_graph_controls" class="control_group">
+  </div>
+  <p>
+  <label id="label_show_sim">
+    <input type="checkbox" id="show_sim">show sim
+  </label>
+   <label id="label_terminal">
+    <input type="checkbox" id="show_terminal">terminal
+   </label>
+   <div id="div_terminal">
+     <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea> <br>
+     <label style="display:inline-block">command &gt;
+       <input type="text" id="term_input" size="80">
+     </label>
+   </div>
+</div>
+
+
+<p>Test macros for
+x<sub>1</sub>, x<sub>2</sub>, y<sub>1</sub>, y<sub>2</sub>
+whereas these should not be changed: x_1, x_2, y_1, y_2.  Here is an inline
+version:  <span class="inline-math">
+y<sub>2</sub> = y<sub>1</sub> + f1(x<sub>1</sub>) + f2(x<sub>2</sub>)
+</span> of a math equation.
+And again  these should not be changed: x_1, x_2, y_1, y_2. </p>
+
+<p> Here is an example of using the eqn_start macro:</p>
+
+<p class="display-equation">
+y<sub>2</sub> = y<sub>1</sub> + f1(x<sub>1</sub>) + f2(x<sub>2</sub>)
+</p> 
+<p>Here is a MathJax version \(y_1 + f1(x_1) + f2(x_2)\) which is inline within text.</p>
+
+<h2>The Euler-Lagrange Equation</h2>
+
+The Euler-Lagrange equation is a differential equation that \(y(x)\) must satisfy in
+order to minimize (or possibly maximize) an integral of the form
+
+$$ I = \int_{x_1}^{x_2} f(x, y, y') dx $$
+
+where also \(y(x)\) must pass through the two fixed end points \(y(x_1) = y_1\) and
+\(y(x_2) = y_2\).  Through reasoning about families of curves that include the
+minimizing curve \(y(x)\), we can get the Euler-Lagrange equation:
+
+$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 $$
+
+
+
+
+<script src="BrachistoApp-es.js"></script>
+
+<script>
+  (function build() {
+    var elem_ids = {
+      tab_list: 'header_bar',
+      container: 'container',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      sim_controls: 'sim_controls',
+      div_terminal: 'div_terminal',
+      div_time_graph: 'div_time_graph',
+      time_graph_controls: 'time_graph_controls',
+      div_multi_graph: 'div_multi_graph',
+      multi_graph_controls: 'multi_graph_controls',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_sim: 'show_sim',
+      images_dir: 'images'
+    };
+    app = makeBrachistoApp(elem_ids);
+    app.defineNames('app');
+    window.addEventListener('pageshow', function(event){
+      // set language menu and compiled menus in case of back-button 
+      var menu = document.getElementById('language_menu');
+      if (menu) { menu.selectedIndex = 2; }
+      menu = document.getElementById('compiled_menu');
+      if (menu) { menu.selectedIndex = 1; }
+    }, /*capturing=*/false);
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+
+<script>var app; if (app) app.setup();</script>
+<script>var app; if (app) app.start();</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+</div>
+</body>
+</html>
