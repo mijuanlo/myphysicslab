@@ -4,7 +4,7 @@ import os
 import re
 
 OUTPUT_DIR="./output"
-LANGS=["es","en"]
+LANGS=["es","en","ca"]
 
 def get_name(filename):
     if os.path.isfile(filename):
