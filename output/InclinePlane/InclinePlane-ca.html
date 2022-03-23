@@ -1,0 +1,154 @@
+<ul id="header_bar" class="horiz_tabs">
+   
+  <li class="sim selected">Sim</li>
+  <li class="graph ">Graph</li>
+  <li class="time_graph">Gr&agrave;fic de temps</li>
+  <li class="multi_graph">Gr&agrave;fic m&uacute;ltiple</li>
+</ul>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.sims.engine2D.CreateApp</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<h1>sims.engine2D.InclinePlane </h1>
+
+
+<div id="container" class="control_container">
+  <div id="div_graph" >
+  </div>
+  <div id="div_time_graph" >
+  </div>
+  <div id="sim_applet" >
+  </div>
+  <div id="sim_controls" class="control_group">
+  </div>
+  <div id="graph_controls" class="control_group">
+  </div>
+  <div id="time_graph_controls" class="control_group">
+  </div>
+  <p>
+  <label id="label_show_sim">
+    <input type="checkbox" id="show_sim">show sim
+  </label>
+   <label id="label_terminal">
+    <input type="checkbox" id="show_terminal">terminal
+   </label>
+   <div id="div_terminal">
+     <textarea id="term_output" cols=80 rows=20 wrap="soft"></textarea> <br>
+     <label style="display:inline-block">command &gt;
+       <input type="text" id="term_input" size="80">
+     </label>
+   </div>
+</div>
+
+<textarea id="editor" cols=80 rows=20 wrap="soft">
+// makes fixed inclined plane with a block on it
+var once;
+if (once===undefined) {
+  app.addPlaybackControls();
+  app.addStandardControls(); 
+  once=true;
+}
+sim.cleanSlate();
+simView.setWidth(25);
+axes.setXAxisAlignment('CENTER');
+axes.setYAxisAlignment('CENTER');
+SHOW_FORCES=true;
+// create inclined plane
+var p = Shapes.makeBlock(26, 1, 'plane');
+p.setMass(Infinity);
+sim.addBody(p);
+var a = Math.PI/6;
+p.setAngle(a);
+// so that top of incline goes thru origin
+p.setPosition(new Vector(0.5*Math.sin(a), -0.5*Math.cos(a)))
+displayList.findShape(p).setFillStyle('LightGray');
+
+// create block
+var b = Shapes.makeBlock(3, 2, 'block');
+b.setMass(1);
+sim.addBody(b);
+b.setAngle(a);
+var bp = new Vector(-1.005*Math.sin(a), 1.005*Math.cos(a));
+b.setPosition(bp.add(new Vector(10*Math.cos(a), 10*Math.sin(a))));
+displayList.findShape(b).setFillStyle('darkGray');
+
+
+var g=new GravityLaw(10, simList);
+sim.addForceLaw(g);
+sim.saveInitialState();
+//simRun.resume();
+</textarea> <br>
+<button type="button" id="execute_button">Execute</button>
+
+<script src="CreateApp-ca.js"></script>
+
+<script>
+  (function build() {
+    var elem_ids = {
+      tab_list: 'header_bar',
+      container: 'container',
+      term_output: 'term_output',
+      term_input: 'term_input',
+      sim_applet: 'sim_applet',
+      div_graph: 'div_graph',
+      graph_controls: 'graph_controls',
+      sim_controls: 'sim_controls',
+      div_terminal: 'div_terminal',
+      div_time_graph: 'div_time_graph',
+      time_graph_controls: 'time_graph_controls',
+      div_multi_graph: 'div_multi_graph',
+      multi_graph_controls: 'multi_graph_controls',
+      label_terminal: 'label_terminal',
+      show_terminal: 'show_terminal',
+      show_sim: 'show_sim',
+      images_dir: 'images'
+    };
+    app = makeCreateApp(elem_ids);
+    app.defineNames('app');
+    window.addEventListener('pageshow', function(event){
+      // set language menu and compiled menus in case of back-button 
+      var menu = document.getElementById('language_menu');
+      if (menu) { menu.selectedIndex = 3; }
+      menu = document.getElementById('compiled_menu');
+      if (menu) { menu.selectedIndex = 1; }
+    }, /*capturing=*/false);
+    window.addEventListener('blur', function(event){
+      app.eval('FIRING=false;', /*output=*/false);
+    }, /*capturing=*/false);
+    window.addEventListener('focus', function(event){
+      app.eval('FIRING=true;', /*output=*/false);
+    }, /*capturing=*/false);
+  }());
+</script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+
+<script>var app; if (app) app.setup();</script>
+<script>var app; if (app) app.start();</script>
+<!--script>
+  app.eval('TAB_LAYOUT.SHOW_TERMINAL=true;');
+</script-->
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+</div>
+</body>
+</html>

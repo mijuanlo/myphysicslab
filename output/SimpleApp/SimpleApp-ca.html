@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" sizes="32x32" type="image/png" href="https://www.myphysicslab.com/common/myphysicsicon.png">
+<title>myphysicslab.sims.experimental.SimpleApp</title>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "hidden";
+</script>
+</head>
+<body>
+
+<h1>sims.experimental.SimpleApp </h1>
+#HEADER_BAR
+
+<div id="canvas_div"></div>
+<p>SimpleApp is a demonstration of using a minimal set of myPhysicsLab classes.</p>
+
+<p>This displays something like the SingleSpringSim simulation, but it uses a very
+simple math routine to move the objects instead of a differential equation. There are
+no DiffEqSolver or Simulation classes involved. This sets up the LabCanvas and
+DisplayObjects and defines the callback that drives the animation.</p>
+
+
+
+<script src="SimpleApp-ca.js"></script>
+  <script>
+    makeSimpleApp();
+  </script>
+
+<script>
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+</script>
+<div id="footer2" >
+  <div id="copyright">
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    title="copyright 2020 Erik Neumann">
+    Erik Neumann</a> 2020, available under
+    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
+</div>
+</body>
+</html>
