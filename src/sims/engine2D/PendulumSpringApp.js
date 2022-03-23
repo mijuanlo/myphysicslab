@@ -295,6 +295,17 @@ PendulumSpringApp.es_strings = {
   PENDULUM: 'Péndulo'
 };
 
+/**
+@private
+@type {PendulumSpringApp.i18n_strings}
+*/
+PendulumSpringApp.ca_strings = {
+  SPRING_LENGTH: 'Longitud del moll',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  BLOCK: 'Bloc',
+  PENDULUM: 'Pèndol'
+};
+
 /** Set of internationalized strings.
 @type {PendulumSpringApp.i18n_strings}
 */
@@ -305,6 +316,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     PendulumSpringApp.i18n = PendulumSpringApp.es_strings;
+    break;
+  case 'ca':
+    PendulumSpringApp.i18n = PendulumSpringApp.ca_strings;
     break;
   default:
     PendulumSpringApp.i18n = PendulumSpringApp.en;

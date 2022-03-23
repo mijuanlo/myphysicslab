@@ -270,6 +270,19 @@ BrachistoPaths.es_strings = {
   PARABOLA_UP: 'Parábola-superior'
 };
 
+/**
+@private
+@type {BrachistoPaths.i18n_strings}
+*/
+BrachistoPaths.ca_strings = {
+  BRACH_PATH: 'braquistòcrona',
+  BRACH_SQUARED: 'braquistòcrona quadrada',
+  CIRCLE_ARC: 'Cercle',
+  LINEAR_PATH: 'Lineal',
+  PARABOLA_DOWN: 'Paràbola-inferior',
+  PARABOLA_UP: 'Paràbola-superior'
+};
+
 /** Set of internationalized strings.
 @type {BrachistoPaths.i18n_strings}
 */
@@ -280,6 +293,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     BrachistoPaths.i18n = BrachistoPaths.es_strings;
+    break;
+  case 'ca':
+    BrachistoPaths.i18n = BrachistoPaths.ca_strings;
     break;
   default:
     BrachistoPaths.i18n = BrachistoPaths.en;

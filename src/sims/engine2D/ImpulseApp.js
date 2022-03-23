@@ -309,6 +309,17 @@ ImpulseApp.es_strings = {
   MASS1: 'Masa del bloque1'
 };
 
+/**
+@private
+@type {ImpulseApp.i18n_strings}
+*/
+ImpulseApp.ca_strings = {
+  NUM_BODIES: 'Nombre d\'objectes',
+  THRUST: 'Empenyiment',
+  BLOCK: 'Bloc',
+  MASS1: 'Massa del bloc1'
+};
+
 /** Set of internationalized strings.
 @type {ImpulseApp.i18n_strings}
 */
@@ -319,6 +330,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ImpulseApp.i18n = ImpulseApp.es_strings;
+    break;
+  case 'ca':
+    ImpulseApp.i18n = ImpulseApp.ca_strings;
     break;
   default:
     ImpulseApp.i18n = ImpulseApp.en;

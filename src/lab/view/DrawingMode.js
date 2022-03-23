@@ -121,6 +121,15 @@ DrawingMode.es_strings = {
   LINES: 'Líneas'
 };
 
+/**
+@private
+@type {DrawingMode.i18n_strings}
+*/
+DrawingMode.ca_strings = {
+  DOTS: 'Punts',
+  LINES: 'Línies'
+};
+
 /** Set of internationalized strings.
 @type {DrawingMode.i18n_strings}
 */
@@ -131,6 +140,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DrawingMode.i18n = DrawingMode.es_strings;
+    break;
+  case 'ca':
+    DrawingMode.i18n = DrawingMode.ca_strings;
     break;
   default:
     DrawingMode.i18n = DrawingMode.en;

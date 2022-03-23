@@ -341,6 +341,20 @@ BilliardsApp.es_strings = {
   BALL: 'Bola'
 };
 
+
+/**
+@private
+@type {BilliardsApp.i18n_strings}
+*/
+BilliardsApp.ca_strings = {
+  FORMATION: 'Formació',
+  ONE_HITS_THREE: 'un colpeja tres',
+  ONE_HITS_SIX: 'un colpeja sis',
+  OFFSET: 'Desplaçament',
+  SPEED: 'Velocitat',
+  BALL: 'Bola'
+};
+
 /** Set of internationalized strings.
 @type {BilliardsApp.i18n_strings}
 */
@@ -351,6 +365,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     BilliardsApp.i18n = BilliardsApp.es_strings;
+    break;
+  case 'ca':
+    BilliardsApp.i18n = BilliardsApp.ca_strings;
     break;
   default:
     BilliardsApp.i18n = BilliardsApp.en;

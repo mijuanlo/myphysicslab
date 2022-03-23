@@ -935,13 +935,34 @@ Molecule6App.es_strings = {
   SHOW_SPRINGS: 'mostrar muelles',
   KE_HIGH_PCT: 'mayor percentil cinético',
   SHOW_KE_HIGH: 'mostrar mayor percentil cinético',
-  SHOW_NAMES: 'mostrat nombres',
+  SHOW_NAMES: 'mostrar nombres',
   ATTRACT_FORCE: 'fuerza de atracción',
   WALL_SIZE: 'Tamaño del muro',
   LINEAR: 'lineal',
   NON_LINEAR: 'no lineal',
   PSEUDO_GRAVITY: 'pseudo-gravedad',
   SPRING_TYPE: 'tipo de muelle'
+};
+
+/**
+@private
+@type {Molecule6App.i18n_strings}
+*/
+Molecule6App.ca_strings = {
+  MASS: 'Massa',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidesa',
+  NUM_ATOMS: 'nombre d\'àtoms',
+  SHOW_SPRINGS: 'mostrar molls',
+  KE_HIGH_PCT: 'major percentil cinètic',
+  SHOW_KE_HIGH: 'mostrar major percentil cinètic',
+  SHOW_NAMES: 'mostrar noms',
+  ATTRACT_FORCE: 'força d\'atracció',
+  WALL_SIZE: 'Grandària del mur',
+  LINEAR: 'lineal',
+  NON_LINEAR: 'no lineal',
+  PSEUDO_GRAVITY: 'pseudo-gravetat',
+  SPRING_TYPE: 'tipus de moll'
 };
 
 /** Set of internationalized strings.
@@ -954,6 +975,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Molecule6App.i18n = Molecule6App.es_strings;
+    break;
+  case 'ca':
+    Molecule6App.i18n = Molecule6App.ca_strings;
     break;
   default:
     Molecule6App.i18n = Molecule6App.en;

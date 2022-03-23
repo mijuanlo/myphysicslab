@@ -614,6 +614,15 @@ CompareDoublePendulumApp.es_strings = {
   SHOW_ENERGY_2: 'Mostrar energía 2'
 };
 
+/**
+@private
+@type {CompareDoublePendulumApp.i18n_strings}
+*/
+CompareDoublePendulumApp.ca_strings = {
+  SEPARATION: 'Separació',
+  SHOW_ENERGY_2: 'Mostrar energia 2'
+};
+
 /** Set of internationalized strings.
 @type {CompareDoublePendulumApp.i18n_strings}
 */
@@ -624,6 +633,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CompareDoublePendulumApp.i18n = CompareDoublePendulumApp.es_strings;
+    break;
+  case 'ca':
+    CompareDoublePendulumApp.i18n = CompareDoublePendulumApp.ca_strings;
     break;
   default:
     CompareDoublePendulumApp.i18n = CompareDoublePendulumApp.en;

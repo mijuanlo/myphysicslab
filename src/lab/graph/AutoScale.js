@@ -636,6 +636,17 @@ AutoScale.es_strings = {
   ENABLED: 'activado'
 };
 
+/**
+@private
+@type {AutoScale.i18n_strings}
+*/
+AutoScale.ca_strings = {
+  AXIS: 'Eix',
+  TIME_WINDOW: 'Finestra de temps',
+  ACTIVE: 'actiu',
+  ENABLED: 'activat'
+};
+
 /** Set of internationalized strings.
 @type {AutoScale.i18n_strings}
 */
@@ -646,6 +657,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     AutoScale.i18n = AutoScale.es_strings;
+    break;
+  case 'ca':
+    AutoScale.i18n = AutoScale.ca_strings;
     break;
   default:
     AutoScale.i18n = AutoScale.en;

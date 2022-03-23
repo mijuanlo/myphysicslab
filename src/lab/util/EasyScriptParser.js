@@ -716,6 +716,16 @@ EasyScriptParser.es_strings = {
   WARN_URL_2048: 'Atención: La URL tiene mas de 2048 carácteres.'
 };
 
+/**
+@private
+@type {EasyScriptParser.i18n_strings}
+*/
+EasyScriptParser.ca_strings = {
+  URL_SCRIPT: 'compartir',
+  PROMPT_URL: 'Prémer control-c per a copiar la URL al portapapers per a replicar aquesta simulació amb els paràmetres actuals.',
+  WARN_URL_2048: 'Atenció: La URL té mes de 2048 caràcters.'
+};
+
 /** Set of internationalized strings.
 @type {EasyScriptParser.i18n_strings}
 */
@@ -726,6 +736,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     EasyScriptParser.i18n = EasyScriptParser.es_strings;
+    break;
+  case 'ca':
+    EasyScriptParser.i18n = EasyScriptParser.ca_strings;
     break;
   default:
     EasyScriptParser.i18n = EasyScriptParser.en;

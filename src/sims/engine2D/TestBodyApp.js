@@ -184,6 +184,14 @@ TestBodyApp.es_strings = {
   BLOCK: 'Bloque'
 };
 
+/**
+@private
+@type {TestBodyApp.i18n_strings}
+*/
+TestBodyApp.ca_strings = {
+  BLOCK: 'Bloc'
+};
+
 /** Set of internationalized strings.
 @type {TestBodyApp.i18n_strings}
 */
@@ -194,6 +202,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     TestBodyApp.i18n = TestBodyApp.es_strings;
+    break;
+  case 'ca':
+    TestBodyApp.i18n = TestBodyApp.ca_strings;
     break;
   default:
     TestBodyApp.i18n = TestBodyApp.en;

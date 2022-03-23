@@ -246,6 +246,15 @@ MutualAttractApp.es_strings = {
   OBJECTS: 'Cuerpos'
 };
 
+/**
+@private
+@type {MutualAttractApp.i18n_strings}
+*/
+MutualAttractApp.ca_strings = {
+  NUMBER_BODIES: 'Nombre de cossos',
+  OBJECTS: 'Cossos'
+};
+
 /** Set of internationalized strings.
 @type {MutualAttractApp.i18n_strings}
 */
@@ -256,6 +265,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     MutualAttractApp.i18n = MutualAttractApp.es_strings;
+    break;
+  case 'ca':
+    MutualAttractApp.i18n = MutualAttractApp.ca_strings;
     break;
   default:
     MutualAttractApp.i18n = MutualAttractApp.en;

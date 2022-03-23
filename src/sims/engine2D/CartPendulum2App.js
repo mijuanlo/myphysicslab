@@ -334,7 +334,20 @@ CartPendulum2App.es_strings = {
   SPRING_DAMPING: 'Amortiguación del muelle',
   STIFFNESS: 'Rigidez del muelle',
   CART: 'Carro',
-  PENDULUM: 'Pendulo'
+  PENDULUM: 'Péndulo'
+};
+
+
+/**
+@private
+@type {CartPendulum2App.i18n_strings}
+*/
+CartPendulum2App.ca_strings = {
+  LENGTH: 'Longitud del moll',
+  SPRING_DAMPING: 'Amortiment del moll',
+  STIFFNESS: 'Rigidesa del moll',
+  CART: 'Carro',
+  PENDULUM: 'Pèndol'
 };
 
 /** Set of internationalized strings.
@@ -347,6 +360,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CartPendulum2App.i18n = CartPendulum2App.es_strings;
+    break;
+  case 'ca':
+    CartPendulum2App.i18n = CartPendulum2App.ca_strings;
     break;
   default:
     CartPendulum2App.i18n = CartPendulum2App.en;

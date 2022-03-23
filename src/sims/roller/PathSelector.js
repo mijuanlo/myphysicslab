@@ -164,6 +164,14 @@ PathSelector.es_strings = {
   PATH: 'Recorrido'
 };
 
+/**
+@private
+@type {PathSelector.i18n_strings}
+*/
+PathSelector.ca_strings = {
+  PATH: 'Recorregut'
+};
+
 /** Set of internationalized strings.
 @type {PathSelector.i18n_strings}
 */
@@ -174,6 +182,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     PathSelector.i18n = PathSelector.es_strings;
+    break;
+  case 'ca':
+    PathSelector.i18n = PathSelector.ca_strings;
     break;
   default:
     PathSelector.i18n = PathSelector.en;

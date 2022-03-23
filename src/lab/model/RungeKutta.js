@@ -178,6 +178,14 @@ RungeKutta.es_strings = {
   NAME: 'Runge-Kutta'
 };
 
+/**
+@private
+@type {RungeKutta.i18n_strings}
+*/
+RungeKutta.ca_strings = {
+  NAME: 'Runge-Kutta'
+};
+
 /** Set of internationalized strings.
 @type {RungeKutta.i18n_strings}
 */
@@ -188,6 +196,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RungeKutta.i18n = RungeKutta.es_strings;
+    break;
+  case 'ca':
+    RungeKutta.i18n = RungeKutta.ca_strings;
     break;
   default:
     RungeKutta.i18n = RungeKutta.en;

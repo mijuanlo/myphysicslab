@@ -386,6 +386,15 @@ RigidBodyEventHandler.es_strings = {
   DRAG: 'arrastrar'
 };
 
+/**
+@private
+@type {RigidBodyEventHandler.i18n_strings}
+*/
+RigidBodyEventHandler.ca_strings = {
+  CLICK: 'clic',
+  DRAG: 'arrossegar'
+};
+
 /** Set of internationalized strings.
 @type {RigidBodyEventHandler.i18n_strings}
 */
@@ -396,6 +405,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RigidBodyEventHandler.i18n = RigidBodyEventHandler.es_strings;
+    break;
+  case 'ca':
+    RigidBodyEventHandler.i18n = RigidBodyEventHandler.ca_strings;
     break;
   default:
     RigidBodyEventHandler.i18n = RigidBodyEventHandler.en;

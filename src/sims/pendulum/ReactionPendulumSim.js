@@ -509,6 +509,26 @@ ReactionPendulumSim.es_strings = {
   RADIUS: 'Radio'
 };
 
+/**
+@private
+@type {ReactionPendulumSim.i18n_strings}
+*/
+ReactionPendulumSim.ca_strings = {
+  X_POSITION: 'Posició X',
+  Y_POSITION: 'Posició Y',
+  X_VELOCITY: 'Velocitat X',
+  Y_VELOCITY: 'Velocitat Y',
+  ANGLE: 'Angle',
+  ANGULAR_VELOCITY: 'Velocitat angular',
+  START_ANGLE: 'angle d\'inici',
+  DAMPING: 'Amortiment',
+  GRAVITY: 'Gravetat',
+  LENGTH: 'Longitud',
+  MASS: 'Massa',
+  TIME: 'Temps',
+  RADIUS: 'Radio'
+};
+
 /** Set of internationalized strings.
 @type {ReactionPendulumSim.i18n_strings}
 */
@@ -519,6 +539,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ReactionPendulumSim.i18n = ReactionPendulumSim.es_strings;
+    break;
+  case 'ca':
+    ReactionPendulumSim.i18n = ReactionPendulumSim.ca_strings;
     break;
   default:
     ReactionPendulumSim.i18n = ReactionPendulumSim.en;

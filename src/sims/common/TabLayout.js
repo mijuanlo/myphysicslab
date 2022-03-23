@@ -997,6 +997,18 @@ TabLayout.es_strings = {
   SHOW_TERMINAL: 'mostrar terminal'
 };
 
+/**
+@private
+@type {TabLayout.i18n_strings}
+*/
+TabLayout.ca_strings = {
+  SIM_WIDTH: 'Ample del simulador',
+  GRAPH_WIDTH: 'Ample del gràfic',
+  TIME_GRAPH_WIDTH: 'Ample del gràfic de temps',
+  LAYOUT: 'disposició',
+  SHOW_TERMINAL: 'mostrar terminal'
+};
+
 /** Set of internationalized strings.
 @type {TabLayout.i18n_strings}
 */
@@ -1007,6 +1019,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     TabLayout.i18n = TabLayout.es_strings;
+    break;
+  case 'ca':
+    TabLayout.i18n = TabLayout.ca_strings;
     break;
   default:
     TabLayout.i18n = TabLayout.en;

@@ -619,6 +619,24 @@ GraphLine.es_strings = {
   CLEAR_GRAPH: 'Limpiar gráfico',
   NONE: '-nada-'
 };
+
+/**
+@private
+@type {GraphLine.i18n_strings}
+*/
+GraphLine.ca_strings = {
+  DRAWING_MODE: 'Manera de dibuixat',
+  GRAPH_COLOR: 'Color de gràfic',
+  GRAPH_DRAW_MODE: 'Manera de dibuixat del gràfic',
+  GRAPH_POINTS: 'Punts del gràfic',
+  LINE_WIDTH: 'Ample de línia',
+  X_VARIABLE: 'Variable X',
+  Y_VARIABLE: 'Variable Y',
+  CLEAR_GRAPH: 'Netejar gràfic',
+  NONE: '-res-'
+};
+
+
 /** Set of internationalized strings.
 @type {GraphLine.i18n_strings}
 */
@@ -629,6 +647,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     GraphLine.i18n = GraphLine.es_strings;
+    break;
+  case 'ca':
+    GraphLine.i18n = GraphLine.ca_strings;
     break;
   default:
     GraphLine.i18n = GraphLine.en;

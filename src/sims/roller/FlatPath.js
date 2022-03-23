@@ -83,6 +83,14 @@ FlatPath.es_strings = {
   NAME: 'Horizontal'
 };
 
+/**
+@private
+@type {FlatPath.i18n_strings}
+*/
+FlatPath.ca_strings = {
+  NAME: 'Horizontal'
+};
+
 /** Set of internationalized strings.
 @type {FlatPath.i18n_strings}
 */
@@ -93,6 +101,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     FlatPath.i18n = FlatPath.es_strings;
+    break;
+  case 'ca':
+    FlatPath.i18n = FlatPath.ca_strings;
     break;
   default:
     FlatPath.i18n = FlatPath.en;

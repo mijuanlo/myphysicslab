@@ -841,9 +841,9 @@ MoveableDoublePendulumSim.de_strings = {
 MoveableDoublePendulumSim.es_strings = {
   DRIVE_AMPLITUDE: 'Amplitud de accionamiento',
   ANGLE_1: 'Ángulo 1',
-  ANGULAR_VELOCITY_1: 'Velocidad ángular 1',
+  ANGULAR_VELOCITY_1: 'Velocidad angular 1',
   ANGLE_2: 'Ángulo 2',
-  ANGULAR_VELOCITY_2: 'Velocidad ángular 2',
+  ANGULAR_VELOCITY_2: 'Velocidad angular 2',
   DAMPING: 'Amortiguación',
   DRIVE_FREQUENCY: 'Frecuencia de accionamiento',
   GRAVITY: 'Gravedad',
@@ -859,6 +859,31 @@ MoveableDoublePendulumSim.es_strings = {
   ANCHOR_Y_VELOCITY: 'Velocidad ancla Y'
 };
 
+/**
+@private
+@type {MoveableDoublePendulumSim.i18n_strings}
+*/
+MoveableDoublePendulumSim.ca_strings = {
+  DRIVE_AMPLITUDE: 'Amplitud d\'accionament',
+  ANGLE_1: 'Angle 1',
+  ANGULAR_VELOCITY_1: 'Velocitat angular 1',
+  ANGLE_2: 'Angle 2',
+  ANGULAR_VELOCITY_2: 'Velocitat angular 2',
+  DAMPING: 'Amortiment',
+  DRIVE_FREQUENCY: 'Freqüència d\'accionament',
+  GRAVITY: 'Gravetat',
+  LENGTH_1: 'Longitud 1',
+  LENGTH_2: 'Longitud 2',
+  MASS_1: 'Massa 1',
+  MASS_2: 'Massa 2',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  ANCHOR_DAMPING: 'Amortiment de l\'ancora',
+  ANCHOR_X: 'Ancora X',
+  ANCHOR_X_VELOCITY: 'Velocitat ancora X',
+  ANCHOR_Y: 'Ancora Y',
+  ANCHOR_Y_VELOCITY: 'Velocitat ancora Y'
+};
+
 /** Set of internationalized strings.
 @type {MoveableDoublePendulumSim.i18n_strings}
 */
@@ -869,6 +894,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     MoveableDoublePendulumSim.i18n = MoveableDoublePendulumSim.es_strings;
+    break;
+  case 'ca':
+    MoveableDoublePendulumSim.i18n = MoveableDoublePendulumSim.ca_strings;
     break;
   default:
     MoveableDoublePendulumSim.i18n = MoveableDoublePendulumSim.en;

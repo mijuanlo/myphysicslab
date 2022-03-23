@@ -696,6 +696,26 @@ CollideBlocksSim.es_strings = {
   VELOCITY_1: 'Velocidad 1',
   VELOCITY_2: 'Velocidad 2'
 };
+
+/**
+@private
+@type {CollideBlocksSim.i18n_strings}
+*/
+CollideBlocksSim.ca_strings = {
+  ACCELERATION: 'Acceleració',
+  DAMPING: 'Amortiment',
+  MASS_1: 'Massa 1',
+  MASS_2: 'Massa 2',
+  POSITION_1: 'Posició 1',
+  POSITION_2: 'Posició 2',
+  LENGTH_1: 'Longitud del moll 1',
+  STIFFNESS_1: 'Rigidesa del moll 1',
+  LENGTH_2: 'Longitud del moll 2',
+  STIFFNESS_2: 'Rigidesa del moll 2',
+  VELOCITY_1: 'Velocitat 1',
+  VELOCITY_2: 'Velocitat 2'
+};
+
 /** Set of internationalized strings.
 @type {CollideBlocksSim.i18n_strings}
 */
@@ -706,6 +726,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CollideBlocksSim.i18n = CollideBlocksSim.es_strings;
+    break;
+  case 'ca':
+    CollideBlocksSim.i18n = CollideBlocksSim.ca_strings;
     break;
   default:
     CollideBlocksSim.i18n = CollideBlocksSim.en;

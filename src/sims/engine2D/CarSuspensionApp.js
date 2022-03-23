@@ -383,6 +383,23 @@ CarSuspensionApp.es_strings = {
   CAR: 'Coche'
 };
 
+/**
+@private
+@type {CarSuspensionApp.i18n_strings}
+*/
+CarSuspensionApp.ca_strings = {
+  CAR_MASS: 'Massa del cotxe',
+  FORMATION: 'Formació',
+  LENGTH: 'Longitud del moll',
+  ROD_SPRING: 'Barra i moll',
+  SPRING_DAMPING: 'Amortiment del moll',
+  STIFFNESS: 'Rigidesa del moll',
+  TWO_SPRINGS: 'dos molls',
+  WHEEL_MASS: 'Massa de la roda',
+  WHEEL: 'Roda',
+  CAR: 'Cotxe'
+};
+
 /** Set of internationalized strings.
 @type {CarSuspensionApp.i18n_strings}
 */
@@ -393,6 +410,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CarSuspensionApp.i18n = CarSuspensionApp.es_strings;
+    break;
+  case 'ca':
+    CarSuspensionApp.i18n = CarSuspensionApp.ca_strings;
     break;
   default:
     CarSuspensionApp.i18n = CarSuspensionApp.en;

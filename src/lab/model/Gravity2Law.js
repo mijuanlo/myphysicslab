@@ -327,6 +327,14 @@ Gravity2Law.es_strings = {
   GRAVITY: 'Gravedad'
 };
 
+/**
+@private
+@type {Gravity2Law.i18n_strings}
+*/
+Gravity2Law.ca_strings = {
+  GRAVITY: 'Gravetat'
+};
+
 /** Set of internationalized strings.
 @type {Gravity2Law.i18n_strings}
 */
@@ -337,6 +345,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Gravity2Law.i18n = Gravity2Law.es_strings;
+    break;
+  case 'ca':
+    Gravity2Law.i18n = Gravity2Law.ca_strings;
     break;
   default:
     Gravity2Law.i18n = Gravity2Law.en;

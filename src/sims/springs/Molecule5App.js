@@ -763,6 +763,22 @@ Molecule5App.es_strings = {
   SHOW_NAMES: 'mostrar nombres'
 };
 
+/**
+@private
+@type {Molecule5App.i18n_strings}
+*/
+Molecule5App.ca_strings = {
+  MASS: 'Massa',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidesa del moll',
+  NUM_ATOMS: 'nombre d\'àtoms',
+  SHOW_SPRINGS: 'mostrar molls',
+  NON_LINEAR_SPRINGS: 'molls no lineals',
+  KE_HIGH_PCT: 'Major percentil cinètic',
+  SHOW_KE_HIGH: 'mostrar major percentil cinètic',
+  SHOW_NAMES: 'mostrar noms'
+};
+
 /** Set of internationalized strings.
 @type {Molecule5App.i18n_strings}
 */
@@ -773,6 +789,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Molecule5App.i18n = Molecule5App.es_strings;
+    break;
+  case 'ca':
+    Molecule5App.i18n = Molecule5App.ca_strings;
     break;
   default:
     Molecule5App.i18n = Molecule5App.en;

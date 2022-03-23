@@ -474,6 +474,14 @@ ComparePendulumApp.es_strings = {
   ANGLE_DELTA: 'Diferencia de ángulo'
 };
 
+/**
+@private
+@type {ComparePendulumApp.i18n_strings}
+*/
+ComparePendulumApp.ca_strings = {
+  ANGLE_DELTA: 'Diferència d\'angle'
+};
+
 /** Set of internationalized strings.
 @type {ComparePendulumApp.i18n_strings}
 */
@@ -484,6 +492,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ComparePendulumApp.i18n = ComparePendulumApp.es_strings;
+    break;
+  case 'ca':
+    ComparePendulumApp.i18n = ComparePendulumApp.ca_strings;
     break;
   default:
     ComparePendulumApp.i18n = ComparePendulumApp.en;

@@ -172,6 +172,18 @@ GearsConfig.es_strings = {
   TWO_GEARS: 'dos engranajes'
 };
 
+/**
+@private
+@type {GearsConfig.i18n_strings}
+*/
+GearsConfig.ca_strings = {
+  LEFT_GEAR: 'Engranatge esquerre',
+  RIGHT_GEAR: 'Engranatge dret',
+  PINNED_GEARS: 'Engranatges fixos',
+  TURNING_FORCE: 'Força de gir',
+  TWO_GEARS: 'dos engranatges'
+};
+
 /** Set of internationalized strings.
 @type {GearsConfig.i18n_strings}
 */
@@ -182,6 +194,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     GearsConfig.i18n = GearsConfig.es_strings;
+    break;
+  case 'ca':
+    GearsConfig.i18n = GearsConfig.ca_strings;
     break;
   default:
     GearsConfig.i18n = GearsConfig.en;

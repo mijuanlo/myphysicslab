@@ -649,11 +649,36 @@ ChainOfSpringsSim.es_strings = {
   DAMPING: 'Amortiguación',
   SPRING_DAMPING: 'Amortiguación del muelle',
   GRAVITY: 'Gravedad',
-  MASS: 'Massa',
+  MASS: 'Masa',
   LENGTH: 'Longitud',
   STIFFNESS: 'Rigidez',
   STRAIGHT_LINE: 'Línea recta',
   ATTACH_RIGHT: 'Adjuntar a la derecha'
+};
+
+/**
+@private
+@type {ChainOfSpringsSim.i18n_strings}
+*/
+ChainOfSpringsSim.ca_strings = {
+  BALL: 'Bola',
+  ANCHOR1_X: 'Ancora X',
+  ANCHOR1_Y: 'Ancora Y',
+  ANCHOR2_X: 'Ancora X',
+  ANCHOR2_Y: 'Ancora2 Y',
+  NUM_LINKS: 'Nombre d\'enllaços',
+  X_POSITION: 'Posició X',
+  Y_POSITION: 'Posició Y',
+  X_VELOCITY: 'Velocitat X',
+  Y_VELOCITY: 'Velocitat Y',
+  DAMPING: 'Amortiment',
+  SPRING_DAMPING: 'Amortiment del moll',
+  GRAVITY: 'Gravetat',
+  MASS: 'Massa',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidesa',
+  STRAIGHT_LINE: 'Línia recta',
+  ATTACH_RIGHT: 'Adjuntar a la dreta'
 };
 
 /** Set of internationalized strings.
@@ -666,6 +691,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ChainOfSpringsSim.i18n = ChainOfSpringsSim.es_strings;
+    break;
+  case 'ca':
+    ChainOfSpringsSim.i18n = ChainOfSpringsSim.ca_strings;
     break;
   default:
     ChainOfSpringsSim.i18n = ChainOfSpringsSim.en;

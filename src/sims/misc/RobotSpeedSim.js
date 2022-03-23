@@ -539,11 +539,31 @@ RobotSpeedSim.es_strings = {
   MASS: 'Masa',
   ROBOT: 'Robot',
   SLOPE: 'Pendiente',
-  DIAMETER: 'Diametro de la rueda',
+  DIAMETER: 'Diámetro de la rueda',
   ENGINE_FORCE: 'Fuerza del motor',
   GRAVITY_FORCE: 'Fuerza de gravedad',
   COEF_FRICTION: 'Coeficiente de fricción',
   CENTER_OF_MASS: 'Centro de masas'
+};
+
+/**
+@private
+@type {RobotSpeedSim.i18n_strings}
+*/
+RobotSpeedSim.ca_strings = {
+  POSITION: 'Posició',
+  VELOCITY: 'Velocitat',
+  RPM: 'RPM',
+  TORQUE: 'parell de parada',
+  FREE_SPEED: 'velocitat lliure',
+  MASS: 'Massa',
+  ROBOT: 'Robot',
+  SLOPE: 'Pendent',
+  DIAMETER: 'Diàmetre de la roda',
+  ENGINE_FORCE: 'Força del motor',
+  GRAVITY_FORCE: 'Força de gravetat',
+  COEF_FRICTION: 'Coeficient de fricció',
+  CENTER_OF_MASS: 'Centre de masses'
 };
 
 /** Set of internationalized strings.
@@ -556,6 +576,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RobotSpeedSim.i18n = RobotSpeedSim.es_strings;
+    break;
+  case 'ca':
+    RobotSpeedSim.i18n = RobotSpeedSim.ca_strings;
     break;
   default:
     RobotSpeedSim.i18n = RobotSpeedSim.en;

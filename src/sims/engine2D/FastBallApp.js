@@ -99,6 +99,14 @@ FastBallApp.es_strings = {
   FAST_BALL: 'bola rápida'
 };
 
+/**
+@private
+@type {FastBallApp.i18n_strings}
+*/
+FastBallApp.ca_strings = {
+  FAST_BALL: 'bola ràpida'
+};
+
 /** Set of internationalized strings.
 @type {FastBallApp.i18n_strings}
 */
@@ -109,6 +117,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     FastBallApp.i18n = FastBallApp.es_strings;
+    break;
+  case 'ca':
+    FastBallApp.i18n = FastBallApp.ca_strings;
     break;
   default:
     FastBallApp.i18n = FastBallApp.en;

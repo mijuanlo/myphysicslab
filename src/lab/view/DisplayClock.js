@@ -416,6 +416,14 @@ DisplayClock.es_strings = {
   SHOW_CLOCK: 'Mostrar reloj'
 };
 
+/**
+@private
+@type {DisplayClock.i18n_strings}
+*/
+DisplayClock.ca_strings = {
+  SHOW_CLOCK: 'Mostrar rellotge'
+};
+
 /** Set of internationalized strings.
 @type {DisplayClock.i18n_strings}
 */
@@ -426,6 +434,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DisplayClock.i18n = DisplayClock.es_strings;
+    break;
+  case 'ca':
+    DisplayClock.i18n = DisplayClock.ca_strings;
     break;
   default:
     DisplayClock.i18n = DisplayClock.en;

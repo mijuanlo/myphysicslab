@@ -159,6 +159,14 @@ ElasticitySetter.es_strings = {
   ELASTICITY : 'Elasticidad'
 };
 
+/**
+@private
+@type {ElasticitySetter.i18n_strings}
+*/
+ElasticitySetter.ca_strings = {
+  ELASTICITY : 'Elasticitat'
+};
+
 /** Set of internationalized strings.
 @type {ElasticitySetter.i18n_strings}
 */
@@ -169,6 +177,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ElasticitySetter.i18n = ElasticitySetter.es_strings;
+    break;
+  case 'ca':
+    ElasticitySetter.i18n = ElasticitySetter.ca_strings;
     break;
   default:
     ElasticitySetter.i18n = ElasticitySetter.en;

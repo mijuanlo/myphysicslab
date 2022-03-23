@@ -558,6 +558,20 @@ Molecule3App.es_strings = {
   NUM_ATOMS: 'número de átomos'
 };
 
+/**
+@private
+@type {Molecule3App.i18n_strings}
+*/
+Molecule3App.ca_strings = {
+  MASS: 'Massa',
+  MASS_SPECIAL: 'Massa roja',
+  LENGTH: 'Longitud del moll',
+  LENGTH_SPECIAL: 'Longitud del moll roig',
+  STIFFNESS: 'Rigidesa',
+  STIFFNESS_SPECIAL: 'Rigidesa del moll roig',
+  NUM_ATOMS: 'nombre d\'àtoms'
+};
+
 /** Set of internationalized strings.
 @type {Molecule3App.i18n_strings}
 */
@@ -568,6 +582,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Molecule3App.i18n = Molecule3App.es_strings;
+    break;
+  case 'ca':
+    Molecule3App.i18n = Molecule3App.ca_strings;
     break;
   default:
     Molecule3App.i18n = Molecule3App.en;

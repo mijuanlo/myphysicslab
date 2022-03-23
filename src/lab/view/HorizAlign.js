@@ -122,6 +122,18 @@ HorizAlign.es_strings = {
   VALUE: 'valor'
 };
 
+/**
+@private
+@type {HorizAlign.i18n_strings}
+*/
+HorizAlign.ca_strings = {
+  LEFT: 'esquerra',
+  MIDDLE: 'centrat',
+  RIGHT: 'dreta',
+  FULL: 'complet',
+  VALUE: 'valor'
+};
+
 /** Set of internationalized strings.
 @type {HorizAlign.i18n_strings}
 */
@@ -132,6 +144,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     HorizAlign.i18n = HorizAlign.es_strings;
+    break;
+  case 'ca':
+    HorizAlign.i18n = HorizAlign.ca_strings;
     break;
   default:
     HorizAlign.i18n = HorizAlign.en;

@@ -143,6 +143,14 @@ ModifiedEuler.es_strings = {
   NAME: 'Euler Modificado'
 };
 
+/**
+@private
+@type {ModifiedEuler.i18n_strings}
+*/
+ModifiedEuler.ca_strings = {
+  NAME: 'Euler Modificat'
+};
+
 /** Set of internationalized strings.
 @type {ModifiedEuler.i18n_strings}
 */
@@ -153,6 +161,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ModifiedEuler.i18n = ModifiedEuler.es_strings;
+    break;
+  case 'ca':
+    ModifiedEuler.i18n = ModifiedEuler.ca_strings;
     break;
   default:
     ModifiedEuler.i18n = ModifiedEuler.en;

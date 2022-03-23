@@ -687,6 +687,23 @@ SimRunner.es_strings = {
   STUCK: 'La simulación está atrancada; presiona Reset y Play para continuar.'
 };
 
+/**
+@private
+@type {SimRunner.i18n_strings}
+*/
+SimRunner.ca_strings = {
+  TIME_STEP: 'Pas de temps',
+  DISPLAY_PERIOD: 'Període de refresc',
+  RESTART: 'Reiniciar',
+  RUNNING: 'en marxa',
+  FIRING: 'disparant',
+  PAUSE: 'pausa',
+  RESUME: 'continuar',
+  NON_STOP: 'no parar',
+  STEP: 'pas',
+  STUCK: 'La simulació está embossada; presiona Reset i Play per a continuar.'
+};
+
 /** Set of internationalized strings.
 @type {SimRunner.i18n_strings}
 */
@@ -697,6 +714,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     SimRunner.i18n = SimRunner.es_strings;
+    break;
+  case 'ca':
+    SimRunner.i18n = SimRunner.ca_strings;
     break;
   default:
     SimRunner.i18n = SimRunner.en;

@@ -443,6 +443,18 @@ BrachistoSim.es_strings = {
   VELOCITY: 'Velocidad'
 };
 
+/**
+@private
+@type {BrachistoSim.i18n_strings}
+*/
+BrachistoSim.ca_strings = {
+  DAMPING: 'Amortiment',
+  GRAVITY: 'Gravetat',
+  MASS: 'Massa',
+  POSITION: 'Posició',
+  VELOCITY: 'Velocitat'
+};
+
 /** Set of internationalized strings.
 @type {BrachistoSim.i18n_strings}
 */
@@ -453,6 +465,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     BrachistoSim.i18n = BrachistoSim.es_strings;
+    break;
+  case 'ca':
+    BrachistoSim.i18n = BrachistoSim.ca_strings;
     break;
   default:
     BrachistoSim.i18n = BrachistoSim.en;

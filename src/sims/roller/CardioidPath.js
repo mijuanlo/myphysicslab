@@ -115,6 +115,14 @@ CardioidPath.es_strings = {
   NAME: 'Cardioide'
 };
 
+/**
+@private
+@type {CardioidPath.i18n_strings}
+*/
+CardioidPath.ca_strings = {
+  NAME: 'Cardioide'
+};
+
 /** Set of internationalized strings.
 @type {CardioidPath.i18n_strings}
 */
@@ -125,6 +133,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CardioidPath.i18n = CardioidPath.es_strings;
+    break;
+  case 'ca':
+    CardioidPath.i18n = CardioidPath.ca_strings;
     break;
   default:
     CardioidPath.i18n = CardioidPath.en;

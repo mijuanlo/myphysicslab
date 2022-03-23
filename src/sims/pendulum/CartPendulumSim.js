@@ -597,7 +597,7 @@ CartPendulumSim.es_strings = {
   CART_POSITION: 'Posición del carro',
   PENDULUM_ANGLE: 'Ángulo del péndulo',
   CART_VELOCITY: 'Velocidad del carro',
-  PENDULUM_ANGLE_VELOCITY: 'Velocidad del ángulo del pendulo',
+  PENDULUM_ANGLE_VELOCITY: 'Velocidad del ángulo del péndulo',
   CART_DAMPING: 'Amortiguación del carro',
   PENDULUM_DAMPING: 'Amortiguación del péndulo',
   GRAVITY: 'Gravedad',
@@ -606,6 +606,25 @@ CartPendulumSim.es_strings = {
   PENDULUM_LENGTH: 'Longitud del péndulo',
   SPRING_STIFFNESS: 'Rigidez del muelle',
   WORK_FROM_DAMPING: 'Trabajo de amortiguación'
+};
+
+/**
+@private
+@type {CartPendulumSim.i18n_strings}
+*/
+CartPendulumSim.ca_strings = {
+  CART_POSITION: 'Posició del carro',
+  PENDULUM_ANGLE: 'Angle del pèndol',
+  CART_VELOCITY: 'Velocitat del carro',
+  PENDULUM_ANGLE_VELOCITY: 'Velocitat de l\'angle del pèndol',
+  CART_DAMPING: 'Amortiment del carro',
+  PENDULUM_DAMPING: 'Amortiment del pèndol',
+  GRAVITY: 'Gravetat',
+  CART_MASS: 'Massa del carro',
+  PENDULUM_MASS: 'Massa del pèndol',
+  PENDULUM_LENGTH: 'Longitud del pèndol',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  WORK_FROM_DAMPING: 'Treball d\'amortiment'
 };
 
 /** Set of internationalized strings.
@@ -618,6 +637,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CartPendulumSim.i18n = CartPendulumSim.es_strings;
+    break;
+  case 'ca':
+    CartPendulumSim.i18n = CartPendulumSim.ca_strings;
     break;
   default:
     CartPendulumSim.i18n = CartPendulumSim.en;

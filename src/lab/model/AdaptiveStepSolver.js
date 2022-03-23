@@ -266,6 +266,14 @@ AdaptiveStepSolver.es_strings = {
   NAME: 'Paso adaptativo'
 };
 
+/**
+@private
+@type {AdaptiveStepSolver.i18n_strings}
+*/
+AdaptiveStepSolver.ca_strings = {
+  NAME: 'Pas adaptatiu'
+};
+
 /** Set of internationalized strings.
 @type {AdaptiveStepSolver.i18n_strings}
 */
@@ -276,6 +284,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     AdaptiveStepSolver.i18n = AdaptiveStepSolver.es_strings;
+    break;
+  case 'ca':
+    AdaptiveStepSolver.i18n = AdaptiveStepSolver.ca_strings;
     break;
   default:
     AdaptiveStepSolver.i18n = AdaptiveStepSolver.en;

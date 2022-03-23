@@ -170,8 +170,20 @@ ExtraAccel.es_strings = {
   NONE: 'ninguno',
   VELOCITY: 'Velocidad',
   VELOCITY_AND_DISTANCE: 'Velocidad y distancia',
-  VELOCITY_JOINTS: 'Velocidad (tambien articulaciones)',
-  VELOCITY_AND_DISTANCE_JOINTS: 'Velocidad y distancia (tambien articulaciones)'
+  VELOCITY_JOINTS: 'Velocidad (también articulaciones)',
+  VELOCITY_AND_DISTANCE_JOINTS: 'Velocidad y distancia (también articulaciones)'
+};
+
+/**
+@private
+@type {ExtraAccel.i18n_strings}
+*/
+ExtraAccel.ca_strings = {
+  NONE: 'cap',
+  VELOCITY: 'Velocitat',
+  VELOCITY_AND_DISTANCE: 'Velocitat i distància',
+  VELOCITY_JOINTS: 'Velocitat (també articulacions)',
+  VELOCITY_AND_DISTANCE_JOINTS: 'Velocitat i distància (també articulacions)'
 };
 
 /** Set of internationalized strings.
@@ -184,6 +196,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ExtraAccel.i18n = ExtraAccel.es_strings;
+    break;
+  case 'ca':
+    ExtraAccel.i18n = ExtraAccel.ca_strings;
     break;
   default:
     ExtraAccel.i18n = ExtraAccel.en;

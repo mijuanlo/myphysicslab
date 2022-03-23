@@ -243,8 +243,18 @@ BrachistoObserver.de_strings = {
 */
 BrachistoObserver.es_strings = {
   PATH: 'Ruta',
-  QUESTION: '¿Que camino es más rápido para bajar deslizandose? Clic sobre un camino para comenzar.',
+  QUESTION: '¿Que camino es más rápido para bajar deslizándose? Clic sobre un camino para comenzar.',
   YOU_PICKED: 'Has elegido el'
+};
+
+/**
+@private
+@type {BrachistoObserver.i18n_strings}
+*/
+BrachistoObserver.ca_strings = {
+  PATH: 'Ruta',
+  QUESTION: '¿Que camí és més ràpid per a baixar lliscant-se? Clic sobre un camí per a començar.',
+  YOU_PICKED: 'Has triat el'
 };
 
 /** Set of internationalized strings.
@@ -257,6 +267,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     BrachistoObserver.i18n = BrachistoObserver.es_strings;
+    break;
+  case 'ca':
+    BrachistoObserver.i18n = BrachistoObserver.ca_strings;
     break;
   default:
     BrachistoObserver.i18n = BrachistoObserver.en;

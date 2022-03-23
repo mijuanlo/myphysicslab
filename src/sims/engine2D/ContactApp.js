@@ -319,6 +319,17 @@ ContactApp.es_strings = {
   MASS1: 'Masa del bloque 1'
 };
 
+/**
+@private
+@type {ContactApp.i18n_strings}
+*/
+ContactApp.ca_strings = {
+  NUM_BODIES: 'Nombre d\'objectes',
+  THRUST: 'Empenyiment',
+  BLOCK: 'Bloc',
+  MASS1: 'Massa del bloc 1'
+};
+
 /** Set of internationalized strings.
 @type {ContactApp.i18n_strings}
 */
@@ -329,6 +340,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ContactApp.i18n = ContactApp.es_strings;
+    break;
+  case 'ca':
+    ContactApp.i18n = ContactApp.ca_strings;
     break;
   default:
     ContactApp.i18n = ContactApp.en;

@@ -622,6 +622,23 @@ DoubleSpringSim.es_strings = {
   THIRD_SPRING: 'tercer muelle'
 };
 
+/**
+@private
+@type {DoubleSpringSim.i18n_strings}
+*/
+DoubleSpringSim.ca_strings = {
+  ACCELERATION: 'Acceleració',
+  DAMPING: 'Amortiment',
+  MASS1: 'Massa 1',
+  MASS2: 'Massa 2',
+  POSITION: 'Posició',
+  LENGTH: 'Longitud',
+  STIFFNESS: 'Rigidesa',
+  VELOCITY: 'Velocitat',
+  REST_STATE: 'estat de repòs',
+  THIRD_SPRING: 'tercer moll'
+};
+
 /** Set of internationalized strings.
 @type {DoubleSpringSim.i18n_strings}
 */
@@ -632,6 +649,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DoubleSpringSim.i18n = DoubleSpringSim.es_strings;
+    break;
+  case 'ca':
+    DoubleSpringSim.i18n = DoubleSpringSim.ca_strings;
     break;
   default:
     DoubleSpringSim.i18n = DoubleSpringSim.en;

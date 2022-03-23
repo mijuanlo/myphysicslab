@@ -574,6 +574,24 @@ DoublePendulumSim.es_strings = {
   ROD_2_LENGTH: 'Longitud Palo-2'
 };
 
+/** Set of internationalized strings.
+@private
+@type {DoublePendulumSim.i18n_strings}
+*/
+DoublePendulumSim.ca_strings = {
+  ACCELERATION_1: 'Acceleració-1',
+  ACCELERATION_2: 'Acceleració-2',
+  ANGLE_1: 'Angle-1',
+  ANGLE_1_VELOCITY: 'Velocitat Angle-1',
+  ANGLE_2: 'Angle-2',
+  ANGLE_2_VELOCITY: 'Velocitat Angle-2',
+  GRAVITY: 'Gravetat',
+  MASS_1: 'Massa-1',
+  MASS_2: 'Massa-2',
+  ROD_1_LENGTH: 'Longitud Pal-1',
+  ROD_2_LENGTH: 'Longitud Pal-2'
+};
+
 /**
 @type {DoublePendulumSim.i18n_strings}
 */
@@ -585,6 +603,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DoublePendulumSim.i18n = DoublePendulumSim.es_strings;
+    break;
+  case 'ca':
+    DoublePendulumSim.i18n = DoublePendulumSim.ca_strings;
     break;
   default:
     DoublePendulumSim.i18n = DoublePendulumSim.en;

@@ -344,6 +344,23 @@ PolygonTestApp.es_strings = {
   BALL_IN_BOX: 'Bola en caja'
 };
 
+/**
+@private
+@type {PolygonTestApp.i18n_strings}
+*/
+PolygonTestApp.ca_strings = {
+  NUM_BODIES: 'Nombre de cossos',
+  THRUST: 'Empenyiment',
+  ROUND_CORNER: 'Cantonada arredonida',
+  PIE_WEDGE: 'Tascó de pastís',
+  HEXAGON: 'Hexàgon',
+  L_SHAPE: 'Forma-L',
+  BALL: 'Bola',
+  BLOCK: 'Bloc',
+  HOLLOW_BOX: 'Caixa buida',
+  BALL_IN_BOX: 'Bola en caixa'
+};
+
 /** Set of internationalized strings.
 @type {PolygonTestApp.i18n_strings}
 */
@@ -354,6 +371,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     PolygonTestApp.i18n = PolygonTestApp.es_strings;
+    break;
+  case 'ca':
+    PolygonTestApp.i18n = PolygonTestApp.ca_strings;
     break;
   default:
     PolygonTestApp.i18n = PolygonTestApp.en;

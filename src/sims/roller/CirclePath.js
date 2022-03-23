@@ -98,6 +98,14 @@ CirclePath.es_strings = {
   NAME: 'Círculo'
 };
 
+/**
+@private
+@type {CirclePath.i18n_strings}
+*/
+CirclePath.ca_strings = {
+  NAME: 'Cercle'
+};
+
 /** Set of internationalized strings.
 @type {CirclePath.i18n_strings}
 */
@@ -108,6 +116,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CirclePath.i18n = CirclePath.es_strings;
+    break;
+  case 'ca':
+    CirclePath.i18n = CirclePath.ca_strings;
     break;
   default:
     CirclePath.i18n = CirclePath.en;

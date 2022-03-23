@@ -497,6 +497,22 @@ SingleSpringSim.es_strings = {
   FIXED_POINT: 'Punto fijo'
 };
 
+/**
+@private
+@type {SingleSpringSim.i18n_strings}
+*/
+SingleSpringSim.ca_strings = {
+  ACCELERATION: 'Acceleració',
+  DAMPING: 'Amortiment',
+  MASS: 'Massa',
+  POSITION: 'Posició',
+  SPRING_LENGTH: 'Longitud del moll',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  VELOCITY: 'Velocitat',
+  WORK_FROM_DAMPING: 'Treball d\'amortiment',
+  FIXED_POINT: 'Punt fix'
+};
+
 /** Set of internationalized strings.
 @type {SingleSpringSim.i18n_strings}
 */
@@ -507,6 +523,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     SingleSpringSim.i18n = SingleSpringSim.es_strings;
+    break;
+  case 'ca':
+    SingleSpringSim.i18n = SingleSpringSim.ca_strings;
     break;
   default:
     SingleSpringSim.i18n = SingleSpringSim.en;

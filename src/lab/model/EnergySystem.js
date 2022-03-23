@@ -104,7 +104,21 @@ EnergySystem.es_strings = {
   ROTATIONAL_ENERGY: 'Energía rotacional',
   TOTAL: 'total',
   TOTAL_ENERGY: 'Energía total',
-  PE_OFFSET: 'Desplazamiento del energía potencial'
+  PE_OFFSET: 'Desplazamiento de energía potencial'
+};
+
+/**
+@private
+@type {EnergySystem.i18n_strings}
+*/
+EnergySystem.ca_strings = {
+  POTENTIAL_ENERGY: 'Energia potencial',
+  TRANSLATIONAL_ENERGY: 'Energia translacional',
+  KINETIC_ENERGY: 'Energia cinètica',
+  ROTATIONAL_ENERGY: 'Energia rotacional',
+  TOTAL: 'total',
+  TOTAL_ENERGY: 'Energia total',
+  PE_OFFSET: 'Desplaçament d\'energia potencial'
 };
 
 /** Set of internationalized strings.
@@ -117,6 +131,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     EnergySystem.i18n = EnergySystem.es_strings;
+    break;
+  case 'ca':
+    EnergySystem.i18n = EnergySystem.ca_strings;
     break;
   default:
     EnergySystem.i18n = EnergySystem.en;

@@ -88,6 +88,14 @@ HumpPath.es_strings = {
   NAME: 'Montículo'
 };
 
+/**
+@private
+@type {HumpPath.i18n_strings}
+*/
+HumpPath.ca_strings = {
+  NAME: 'Monticle'
+};
+
 /** Set of internationalized strings.
 @type {HumpPath.i18n_strings}
 */
@@ -98,6 +106,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     HumpPath.i18n = HumpPath.es_strings;
+    break;
+  case 'ca':
+    HumpPath.i18n = HumpPath.ca_strings;
     break;
   default:
     HumpPath.i18n = HumpPath.en;

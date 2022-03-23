@@ -163,6 +163,14 @@ OvalPath.es_strings = {
   NAME: 'Oval'
 };
 
+/**
+@private
+@type {OvalPath.i18n_strings}
+*/
+OvalPath.ca_strings = {
+  NAME: 'Oval'
+};
+
 /** Set of internationalized strings.
 @type {OvalPath.i18n_strings}
 */
@@ -173,6 +181,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     OvalPath.i18n = OvalPath.es_strings;
+    break;
+  case 'ca':
+    OvalPath.i18n = OvalPath.ca_strings;
     break;
   default:
     OvalPath.i18n = OvalPath.en;

@@ -1575,6 +1575,15 @@ Terminal.es_strings = {
   FORGET: 'olvidar'
 };
 
+/**
+@private
+@type {Terminal.i18n_strings}
+*/
+Terminal.ca_strings = {
+  REMEMBER: 'recordar',
+  FORGET: 'oblidar'
+};
+
 /** Set of internationalized strings.
 @type {Terminal.i18n_strings}
 */
@@ -1585,6 +1594,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Terminal.i18n = Terminal.es_strings;
+    break;
+  case 'ca':
+    Terminal.i18n = Terminal.ca_strings;
     break;
   default:
     Terminal.i18n = Terminal.en;

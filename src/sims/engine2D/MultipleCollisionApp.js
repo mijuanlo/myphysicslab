@@ -750,6 +750,37 @@ MultipleCollisionApp.es_strings = {
   MASS: 'Masa'
 };
 
+/**
+@private
+@type {MultipleCollisionApp.i18n_strings}
+*/
+MultipleCollisionApp.ca_strings = {
+  FORMATION: 'Formació',
+  ONE_HITS_THREE: 'un colpeja tres',
+  ONE_HITS_TWO: 'un colpeja dos',
+  TWO_HIT_ONE: 'dos colpegen un',
+  ONE_HITS_ONE_ON_WALL: 'un colpeja un en el mur',
+  ONE_HITS_TWO_ON_WALL: 'un colpeja dos en el mur',
+  ONE_HITS_TWO_SEPARATE: 'un colpeja dos separats',
+  TWO_HIT_ONE_ASYMMETRIC: 'dos colpegen un asimètricament',
+  ONE_HITS_ONE: 'un colpeja un',
+  ONE_HITS_ONE_ASYMMETRIC: 'un colpeja un asimètricament',
+  ONE_HITS_WALL: 'un colpeja en el mur',
+  ONE_HITS_CHAIN: 'un colpeja en cadena',
+  ONE_HITS_CHAIN_PLUS_ONE: 'un colpeja en cadena més altre',
+  TWO_IN_BOX: 'dos en caixa',
+  ONE_HITS_TWO_IN_BOX: 'un colpeja dos en caixa',
+  TWO_ON_WALL: 'dos en mur',
+  ANGLE: 'Angle',
+  SHAPE: 'Forma',
+  CIRCLE: 'Cercle',
+  SQUARE: 'Quadrat',
+  OFFSET: 'Desplaçament',
+  PUCK_TYPE: 'Tipus de disc',
+  SPEED: 'Velocitat',
+  MASS: 'Massa'
+};
+
 /** Set of internationalized strings.
 @type {MultipleCollisionApp.i18n_strings}
 */
@@ -761,6 +792,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     MultipleCollisionApp.i18n = MultipleCollisionApp.es_strings;
+    break;
+  case 'ca':
+    MultipleCollisionApp.i18n = MultipleCollisionApp.ca_strings;
     break;
   default:
     MultipleCollisionApp.i18n = MultipleCollisionApp.en;

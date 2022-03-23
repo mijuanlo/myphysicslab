@@ -549,6 +549,25 @@ RollerSingleSim.es_strings = {
   Y_POSITION: 'Posición y'
 };
 
+/**
+@private
+@type {RollerSingleSim.i18n_strings}
+*/
+RollerSingleSim.ca_strings = {
+  ANCHOR_X: 'Ancora X',
+  ANCHOR_Y: 'Ancora Y',
+  DAMPING: 'Amortiment',
+  GRAVITY: 'Gravetat',
+  MASS: 'Massa',
+  SPRING_DAMPING: 'Amortiment del moll',
+  SPRING_LENGTH: 'Longitud del moll',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  POSITION: 'Posició',
+  VELOCITY: 'Velocitat',
+  X_POSITION: 'Posició x',
+  Y_POSITION: 'Posició y'
+};
+
 /** Set of internationalized strings.
 @type {RollerSingleSim.i18n_strings}
 */
@@ -559,6 +578,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RollerSingleSim.i18n = RollerSingleSim.es_strings;
+    break;
+  case 'ca':
+    RollerSingleSim.i18n = RollerSingleSim.ca_strings;
     break;
   default:
     RollerSingleSim.i18n = RollerSingleSim.en;

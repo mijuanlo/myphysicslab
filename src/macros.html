@@ -71,51 +71,73 @@
 #define #en_LANGUAGE English
 #define #de_LANGUAGE Deutsch
 #define #es_LANGUAGE Spanish
+#define #ca_LANGUAGE Valencian
 
 #define #I18N_LOCALE ##LOCALE#_LOCALE
 #define #en_LOCALE English
 #define #de_LOCALE Deutsch
 #define #es_LOCALE Spanish
+#define #ca_LOCALE Valencian
 
 #define #I18N_ENGLISH ##LOCALE#_ENGLISH
 #define #en_ENGLISH English
 #define #de_ENGLISH Englisch
 #define #es_ENGLISH Ingl&eacute;s
+#define #ca_ENGLISH Angl&eacute;s
 
 #define #I18N_GERMAN ##LOCALE#_GERMAN
 #define #en_GERMAN German
 #define #de_GERMAN Deutsch
 #define #es_GERMAN Alem&aacute;n
+#define #ca_GERMAN Alem&agrave;
 
 #define #I18N_SPANISH ##LOCALE#_SPANISH
 #define #en_SPANISH Spanish
 #define #de_SPANISH Spanisch
 #define #es_SPANISH Espa&ntilde;ol
+#define #ca_SPANISH Espanyol
+
+#define #I18N_VALENCIAN ##LOCALE#_VALENCIAN
+#define #en_VALENCIAN Valencian
+#define #de_VALENCIAN Valencian
+#define #es_VALENCIAN Valenciano
+#define #ca_VALENCIAN Valenci&agrave;
 
 #define #I18N_ENGLISH_SELECTED ##LOCALE#_ENGLISH_SELECTED
 #define #en_ENGLISH_SELECTED selected
 #define #de_ENGLISH_SELECTED
 #define #es_ENGLISH_SELECTED
+#define #ca_ENGLISH_SELECTED
 
 #define #I18N_GERMAN_SELECTED ##LOCALE#_GERMAN_SELECTED
 #define #en_GERMAN_SELECTED
 #define #de_GERMAN_SELECTED selected
 #define #es_GERMAN_SELECTED
+#define #ca_GERMAN_SELECTED
 
 #define #I18N_SPANISH_SELECTED ##LOCALE#_SPANISH_SELECTED
 #define #en_SPANISH_SELECTED
 #define #de_SPANISH_SELECTED
 #define #es_SPANISH_SELECTED selected
+#define #ca_SPANISH_SELECTED
+
+#define #I18N_VALENCIAN_SELECTED ##LOCALE#_VALENCIAN_SELECTED
+#define #en_VALENCIAN_SELECTED
+#define #de_VALENCIAN_SELECTED
+#define #es_VALENCIAN_SELECTED
+#define #ca_VALENCIAN_SELECTED selected
 
 #define #I18N_NEXT ##LOCALE#_NEXT
 #define #en_NEXT next
 #define #de_NEXT n&auml;chste
 #define #es_NEXT siguiente
+#define #ca_NEXT seguent
 
 #define #I18N_PREVIOUS ##LOCALE#_PREVIOUS
 #define #en_PREVIOUS previous
 #define #de_PREVIOUS vorherig
 #define #es_PREVIOUS anterior
+#define #ca_PREVIOUS anterior
 
 #comment #define #LANGUAGE_MENU \
 #comment   <select id="language_menu"\
@@ -123,6 +145,7 @@
 #comment     <option value="#FILE_NAME#-en.html" #I18N_ENGLISH_SELECTED>#I18N_ENGLISH</option>\
 #comment     <option value="#FILE_NAME#-de.html" #I18N_GERMAN_SELECTED>#I18N_GERMAN</option>\
 #comment     <option value="#FILE_NAME#-es.html" #I18N_SPANISH_SELECTED>#I18N_SPANISH</option>\
+#comment     <option value="#FILE_NAME#-ca.html" #I18N_VALENCIAN_SELECTED>#I18N_VALENCIAN</option>\
 #comment   </select>
 
 #comment #define #PREV_ANCHOR_TAG <a class="nav_link" \
@@ -193,6 +216,11 @@
 #comment ver <a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> para la versión publicada\
 #comment de esta simulation.</p>
 
+#define #ca_PAGE_INFO 
+#comment <p style="clear: both;">Aquesta pàgina es per a probes i desenvolupament\
+#comment mireu <a href="#MYPHYSICSLAB_URL">myPhysicsLab</a> per la versió publicada\
+#comment d'aquesta simulació.</p>
+
 #define #TEST_PAGE ##LOCALE#_TEST_PAGE
 #comment #rule s~#en_TEST_PAGE\{(.+?)}~<p style="clear: both;">This is a <em>test page for development</em>, please see the <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">published version of this simulation</a>.</p>~g
 #rule s~#en_TEST_PAGE\{(.+?)}~~g
@@ -200,6 +228,8 @@
 #rule s~#de_TEST_PAGE\{(.+?)}~~g
 #comment #rule s~#es_TEST_PAGE\{(.+?)}~<p style="clear: both;">Esto es una <em>p&aacute;gina de desarrollo</em>, ver la <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">versi&oacute;n publicada de esta simulaci&oacute;n</a>.</p>~g
 #rule s~#es_TEST_PAGE\{(.+?)}~~g
+#comment #rule s~#ca_TEST_PAGE\{(.+?)}~<p style="clear: both;">Aço es una <em>p&agrave;gina de desenvolupament</em>, mireu la <a href="#MYPHYSICSLAB_DIR/$1-#LOCALE#.html">versi&oacute; publicada d'aquesta simulaci&oacute;</a>.</p>~g
+#rule s~#ca_TEST_PAGE\{(.+?)}~~g
 
 #comment #rule s@(this.addControl\(CommonControls.makeURLScriptButton)@\/\/\1@g
 #comment #rule s@(this.addURLScriptButton\(\).*)@\/\/\1@g
@@ -243,6 +273,7 @@
 #define #en_LANG_MENU_IDX 0
 #define #de_LANG_MENU_IDX 1
 #define #es_LANG_MENU_IDX 2
+#define #ca_LANG_MENU_IDX 3
 
 #define #INSTANTIATE_APP app = make#APP_NAME(elem_ids);
 

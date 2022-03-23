@@ -370,6 +370,14 @@ MagnetWheel.es_strings = {
   MAGNET_WHEEL: 'Rueda Magnética'
 };
 
+/**
+@private
+@type {MagnetWheel.i18n_strings}
+*/
+MagnetWheel.ca_strings = {
+  MAGNET_WHEEL: 'Roda Magnètica'
+};
+
 /** Set of internationalized strings.
 @type {MagnetWheel.i18n_strings}
 */
@@ -380,6 +388,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     MagnetWheel.i18n = MagnetWheel.es_strings;
+    break;
+  case 'ca':
+    MagnetWheel.i18n = MagnetWheel.ca_strings;
     break;
   default:
     MagnetWheel.i18n = MagnetWheel.en;

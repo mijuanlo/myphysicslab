@@ -133,7 +133,15 @@ LemniscatePath.de_strings = {
 @type {LemniscatePath.i18n_strings}
 */
 LemniscatePath.es_strings = {
-  NAME: 'Lemniscate'
+  NAME: 'Lemniscata'
+};
+
+/**
+@private
+@type {LemniscatePath.i18n_strings}
+*/
+LemniscatePath.ca_strings = {
+  NAME: 'Lemniscata'
 };
 
 /** Set of internationalized strings.
@@ -146,6 +154,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     LemniscatePath.i18n = LemniscatePath.es_strings;
+    break;
+  case 'ca':
+    LemniscatePath.i18n = LemniscatePath.ca_strings;
     break;
   default:
     LemniscatePath.i18n = LemniscatePath.en;

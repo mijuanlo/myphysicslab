@@ -367,6 +367,20 @@ DoNothingApp.es_strings = {
   FIXED_BLOCK: 'Bloque fijo'
 };
 
+/**
+@private
+@type {DoNothingApp.i18n_strings}
+*/
+DoNothingApp.ca_strings = {
+  HANDLE_FORCE: 'Força d\'agarre',
+  ROTATE_RATE: 'Taxa de força de rotació',
+  TIGHT_FIT: 'Ajust exacte',
+  EXTRA_BLOCK: 'Bloc addicional',
+  HANDLE: 'Agarre',
+  SHUTTLE: 'Llançador',
+  FIXED_BLOCK: 'Bloc fix'
+};
+
 /** Set of internationalized strings.
 @type {DoNothingApp.i18n_strings}
 */
@@ -377,6 +391,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DoNothingApp.i18n = DoNothingApp.es_strings;
+    break;
+  case 'ca':
+    DoNothingApp.i18n = DoNothingApp.ca_strings;
     break;
   default:
     DoNothingApp.i18n = DoNothingApp.en;

@@ -607,6 +607,19 @@ StringSim.es_strings = {
   TIME_STEP: 'Tiempo de paso'
 };
 
+/**
+@private
+@type {StringSim.i18n_strings}
+*/
+StringSim.ca_strings = {
+  DAMPING: 'Amortiment',
+  DENSITY: 'Densitat',
+  TENSION: 'Tensió',
+  SHAPE: 'Forma',
+  NUM_POINTS: 'Nombre de punts',
+  TIME_STEP: 'Temps de pas'
+};
+
 /** Set of internationalized strings.
 @type {StringSim.i18n_strings}
 */
@@ -617,6 +630,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     StringSim.i18n = StringSim.es_strings;
+    break;
+  case 'ca':
+    StringSim.i18n = StringSim.ca_strings;
     break;
   default:
     StringSim.i18n = StringSim.en;

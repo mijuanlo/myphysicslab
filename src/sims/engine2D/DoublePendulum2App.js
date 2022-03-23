@@ -247,6 +247,14 @@ DoublePendulum2App.es_strings = {
   BLOCK: 'Bloque'
 };
 
+/**
+@private
+@type {DoublePendulum2App.i18n_strings}
+*/
+DoublePendulum2App.ca_strings = {
+  BLOCK: 'Bloc'
+};
+
 /** Set of internationalized strings.
 @type {DoublePendulum2App.i18n_strings}
 */
@@ -257,6 +265,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DoublePendulum2App.i18n = DoublePendulum2App.es_strings;
+    break;
+  case 'ca':
+    DoublePendulum2App.i18n = DoublePendulum2App.ca_strings;
     break;
   default:
     DoublePendulum2App.i18n = DoublePendulum2App.en;

@@ -594,6 +594,24 @@ RollerDoubleSim.es_strings = {
   VELOCITY_2: 'Velocidad 2'
 };
 
+/**
+@private
+@type {RollerDoubleSim.i18n_strings}
+*/
+RollerDoubleSim.ca_strings = {
+  DAMPING: 'Amortiment',
+  GRAVITY: 'Gravetat',
+  MASS_1: 'Massa 1',
+  MASS_2: 'Massa 2',
+  POSITION_1: 'Posició 1',
+  POSITION_2: 'Posició 2',
+  SPRING_DAMPING: 'Amortiment del moll',
+  SPRING_LENGTH: 'Longitud del moll',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  VELOCITY_1: 'Velocitat 1',
+  VELOCITY_2: 'Velocitat 2'
+};
+
 /** Set of internationalized strings.
 @type {RollerDoubleSim.i18n_strings}
 */
@@ -604,6 +622,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RollerDoubleSim.i18n = RollerDoubleSim.es_strings;
+    break;
+  case 'ca':
+    RollerDoubleSim.i18n = RollerDoubleSim.ca_strings;
     break;
   default:
     RollerDoubleSim.i18n = RollerDoubleSim.en;

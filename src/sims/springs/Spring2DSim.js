@@ -516,6 +516,25 @@ Spring2DSim.es_strings = {
   REST_STATE: 'estado de reposo'
 };
 
+/**
+@private
+@type {Spring2DSim.i18n_strings}
+*/
+Spring2DSim.ca_strings = {
+  ANCHOR_X: 'Ancora X',
+  ANCHOR_Y: 'Ancora Y',
+  X_POSITION: 'Posició X',
+  Y_POSITION: 'Posició Y',
+  X_VELOCITY: 'Velocitat X',
+  Y_VELOCITY: 'Velocitat Y',
+  DAMPING: 'Amortiment',
+  GRAVITY: 'Gravetat',
+  MASS: 'Massa',
+  SPRING_LENGTH: 'Longitud del moll',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  REST_STATE: 'estat de repòs'
+};
+
 /** Set of internationalized strings.
 @type {Spring2DSim.i18n_strings}
 */
@@ -526,6 +545,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Spring2DSim.i18n = Spring2DSim.es_strings;
+    break;
+  case 'ca':
+    Spring2DSim.i18n = Spring2DSim.ca_strings;
     break;
   default:
     Spring2DSim.i18n = Spring2DSim.en;

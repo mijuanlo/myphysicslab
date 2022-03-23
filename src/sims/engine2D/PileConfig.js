@@ -359,6 +359,25 @@ PileConfig.es_strings = {
   SQUARE_BLOCKS: 'bloques cuadrados'
 };
 
+/**
+@private
+@type {PileConfig.i18n_strings}
+*/
+PileConfig.ca_strings = {
+  NUM_BLOCKS: 'Nombre de blocs',
+  ADD_BLOCK: 'Afegir bloc',
+  REBUILD: 'reconstruir',
+  TWO_PILES: 'dos munts',
+  CONNECTED_BLOCKS: 'blocs connectats',
+  ENDLESS_LOOP: 'bucle infinit',
+  LOOP_TIME: 'temps de repetició',
+  RANDOM_SEED: 'Llavor aleatòria',
+  WALL: 'Mur',
+  LEFT: 'esquerra',
+  RIGHT: 'dreta',
+  SQUARE_BLOCKS: 'blocs quadrats'
+};
+
 /** Set of internationalized strings.
 @type {PileConfig.i18n_strings}
 */
@@ -369,6 +388,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     PileConfig.i18n = PileConfig.es_strings;
+    break;
+  case 'ca':
+    PileConfig.i18n = PileConfig.ca_strings;
     break;
   default:
     PileConfig.i18n = PileConfig.en;

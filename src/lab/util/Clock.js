@@ -538,6 +538,14 @@ Clock.es_strings = {
   TIME_RATE: 'Tasa de tiempo'
 };
 
+/**
+@private
+@type {Clock.i18n_strings}
+*/
+Clock.ca_strings = {
+  TIME_RATE: 'Taxa de temps'
+};
+
 /** Set of internationalized strings.
 @type {Clock.i18n_strings}
 */
@@ -548,6 +556,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Clock.i18n = Clock.es_strings;
+    break;
+  case 'ca':
+    Clock.i18n = Clock.ca_strings;
     break;
   default:
     Clock.i18n = Clock.en;

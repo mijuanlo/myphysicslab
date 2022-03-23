@@ -174,6 +174,25 @@ ChainConfig.es_strings = {
   CHAIN: 'Cadena',
   WALL_WIDTH: 'Ancho del muro'
 };
+
+/**
+@private
+@type {ChainConfig.i18n_strings}
+*/
+ChainConfig.ca_strings = {
+  NUM_LINKS: 'Enllaços de cadena',
+  WALLS: 'Murs',
+  EXTRA_BODY: 'cos extra',
+  FIXED_LEFT: 'Punt fix esquerre',
+  FIXED_RIGHT: 'Punt fix dret',
+  FIXED_LEFT_X: 'Punt fix enllaços X',
+  FIXED_LEFT_Y: 'Punt fix enllaços Y',
+  BLOCK_LENGTH: 'Longitud del bloc',
+  BLOCK_WIDTH: 'Ample del bloc',
+  CHAIN: 'Cadena',
+  WALL_WIDTH: 'Ample del mur'
+};
+
 /** Set of internationalized strings.
 @type {ChainConfig.i18n_strings}
 */
@@ -184,6 +203,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ChainConfig.i18n = ChainConfig.es_strings;
+    break;
+  case 'ca':
+    ChainConfig.i18n = ChainConfig.ca_strings;
     break;
   default:
     ChainConfig.i18n = ChainConfig.en;

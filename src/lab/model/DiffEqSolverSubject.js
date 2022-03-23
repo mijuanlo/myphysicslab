@@ -165,6 +165,14 @@ DiffEqSolverSubject.es_strings = {
   DIFF_EQ_SOLVER: 'Solucionador de ec. diferenciales'
 };
 
+/**
+@private
+@type {DiffEqSolverSubject.i18n_strings}
+*/
+DiffEqSolverSubject.ca_strings = {
+  DIFF_EQ_SOLVER: 'Solucionador d\'ec. diferencials'
+};
+
 /** Set of internationalized strings.
 @type {DiffEqSolverSubject.i18n_strings}
 */
@@ -175,6 +183,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DiffEqSolverSubject.i18n = DiffEqSolverSubject.es_strings;
+    break;
+  case 'ca':
+    DiffEqSolverSubject.i18n = DiffEqSolverSubject.ca_strings;
     break;
   default:
     DiffEqSolverSubject.i18n = DiffEqSolverSubject.en;

@@ -159,6 +159,14 @@ CustomPath.es_strings = {
   NAME: 'Personalizado'
 };
 
+/**
+@private
+@type {CustomPath.i18n_strings}
+*/
+CustomPath.ca_strings = {
+  NAME: 'Personalitzat'
+};
+
 /** Set of internationalized strings.
 @type {CustomPath.i18n_strings}
 */
@@ -169,6 +177,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CustomPath.i18n = CustomPath.es_strings;
+    break;
+  case 'ca':
+    CustomPath.i18n = CustomPath.ca_strings;
     break;
   default:
     CustomPath.i18n = CustomPath.en;

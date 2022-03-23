@@ -832,6 +832,16 @@ TestViewerApp.es_strings = {
   START_ON_LOAD: 'comenzar al cargar'
 };
 
+/**
+@private
+@type {TestViewerApp.i18n_strings}
+*/
+TestViewerApp.ca_strings = {
+  GROUP: 'Grup',
+  TEST: 'Prova',
+  START_ON_LOAD: 'començar en carregar'
+};
+
 /** Set of internationalized strings.
 @type {TestViewerApp.i18n_strings}
 */
@@ -842,6 +852,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     TestViewerApp.i18n = TestViewerApp.es_strings;
+    break;
+  case 'ca':
+    TestViewerApp.i18n = TestViewerApp.ca_strings;
     break;
   default:
     TestViewerApp.i18n = TestViewerApp.en;

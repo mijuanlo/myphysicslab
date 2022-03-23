@@ -317,10 +317,22 @@ NewtonsCradleApp.de_strings = {
 */
 NewtonsCradleApp.es_strings = {
   GAP_DISTANCE: 'Espaciado',
-  PENDULUM: 'Pendulo',
-  NUM_BODIES: 'Número de pendulos',
-  LENGTH: 'Longitud de pendulo',
+  PENDULUM: 'Péndulo',
+  NUM_BODIES: 'Número de péndulos',
+  LENGTH: 'Longitud de péndulo',
   RADIUS: 'Radio'
+};
+
+/**
+@private
+@type {NewtonsCradleApp.i18n_strings}
+*/
+NewtonsCradleApp.ca_strings = {
+  GAP_DISTANCE: 'Espaiat',
+  PENDULUM: 'Pèndol',
+  NUM_BODIES: 'Nombre de pèndols',
+  LENGTH: 'Longitud de pèndol',
+  RADIUS: 'Ràdio'
 };
 
 /** Set of internationalized strings.
@@ -333,6 +345,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     NewtonsCradleApp.i18n = NewtonsCradleApp.es_strings;
+    break;
+  case 'ca':
+    NewtonsCradleApp.i18n = NewtonsCradleApp.ca_strings;
     break;
   default:
     NewtonsCradleApp.i18n = NewtonsCradleApp.en;

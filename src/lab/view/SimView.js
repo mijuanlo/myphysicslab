@@ -671,6 +671,21 @@ SimView.es_strings = {
   ASPECT_RATIO: 'Relación de aspecto'
 };
 
+/**
+@private
+@type {SimView.i18n_strings}
+*/
+SimView.ca_strings = {
+  SCALE_TOGETHER: 'Escalar X-Y junts',
+  WIDTH: 'Ample',
+  HEIGHT: 'Alt',
+  CENTER_X: 'Centrat en X',
+  CENTER_Y: 'Centrat en Y',
+  VERTICAL_ALIGN: 'Alineament vertical',
+  HORIZONTAL_ALIGN: 'Alineament horizontal',
+  ASPECT_RATIO: 'Relació d\'aspecte'
+};
+
 /** Set of internationalized strings.
 @type {SimView.i18n_strings}
 */
@@ -681,6 +696,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     SimView.i18n = SimView.es_strings;
+    break;
+  case 'ca':
+    SimView.i18n = SimView.ca_strings;
     break;
   default:
     SimView.i18n = SimView.en;

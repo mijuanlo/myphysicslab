@@ -339,6 +339,16 @@ RigidBodyRollerApp.es_strings = {
   PATH_VELOCITY: 'Velocidad del recorrido'
 };
 
+/**
+@private
+@type {RigidBodyRollerApp.i18n_strings}
+*/
+RigidBodyRollerApp.ca_strings = {
+  BLOCK: 'Bloc',
+  PATH_POSITION: 'Posició del recorregut',
+  PATH_VELOCITY: 'Velocitat del recorregut'
+};
+
 /** Set of internationalized strings.
 @type {RigidBodyRollerApp.i18n_strings}
 */
@@ -349,6 +359,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RigidBodyRollerApp.i18n = RigidBodyRollerApp.es_strings;
+    break;
+  case 'ca':
+    RigidBodyRollerApp.i18n = RigidBodyRollerApp.ca_strings;
     break;
   default:
     RigidBodyRollerApp.i18n = RigidBodyRollerApp.en;

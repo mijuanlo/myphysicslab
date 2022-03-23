@@ -215,6 +215,14 @@ BrachistoApp.es_strings = {
   REPEAT_TIME: 'Tiempo de repetición'
 };
 
+/**
+@private
+@type {BrachistoApp.i18n_strings}
+*/
+BrachistoApp.ca_strings = {
+  REPEAT_TIME: 'Temps de repetició'
+};
+
 /** Set of internationalized strings.
 @type {BrachistoApp.i18n_strings}
 */
@@ -225,6 +233,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     BrachistoApp.i18n = BrachistoApp.es_strings;
+    break;
+  case 'ca':
+    BrachistoApp.i18n = BrachistoApp.ca_strings;
     break;
   default:
     BrachistoApp.i18n = BrachistoApp.en;

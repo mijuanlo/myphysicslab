@@ -1066,6 +1066,27 @@ Molecule4Sim.es_strings = {
   FORCE: 'Fuerza'
 };
 
+/**
+@private
+@type {Molecule4Sim.i18n_strings}
+*/
+Molecule4Sim.ca_strings = {
+  X_POSITION: 'Posició X',
+  Y_POSITION: 'Posició Y',
+  X_VELOCITY: 'Velocitat X',
+  Y_VELOCITY: 'Velocitat Y',
+  DAMPING: 'Amortiment',
+  ELASTICITY: 'Elasticitat',
+  GRAVITY: 'Gravetat',
+  MASS: 'Massa',
+  MASS_SPECIAL: 'Massa roja',
+  LENGTH: 'Longitud del moll',
+  LENGTH_SPECIAL: 'Longitud del moll roig',
+  STIFFNESS: 'Rigidesa',
+  STIFFNESS_SPECIAL: 'Rigidesa del moll roig',
+  FORCE: 'Força'
+};
+
 /** Set of internationalized strings.
 @type {Molecule4Sim.i18n_strings}
 */
@@ -1076,6 +1097,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Molecule4Sim.i18n = Molecule4Sim.es_strings;
+    break;
+  case 'ca':
+    Molecule4Sim.i18n = Molecule4Sim.ca_strings;
     break;
   default:
     Molecule4Sim.i18n = Molecule4Sim.en;

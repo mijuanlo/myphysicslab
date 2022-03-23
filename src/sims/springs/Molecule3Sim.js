@@ -822,6 +822,19 @@ Molecule3Sim.es_strings = {
   FORCE: 'Fuerza'
 };
 
+/**
+@private
+@type {Molecule3Sim.i18n_strings}
+*/
+Molecule3Sim.ca_strings = {
+  DAMPING: 'Amortiment',
+  ELASTICITY: 'Elasticitat',
+  GRAVITY: 'Gravetat',
+  POSITION: 'Posició',
+  VELOCITY: 'Velocitat',
+  FORCE: 'Força'
+};
+
 /** Set of internationalized strings.
 @type {Molecule3Sim.i18n_strings}
 */
@@ -832,6 +845,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Molecule3Sim.i18n = Molecule3Sim.es_strings;
+    break;
+  case 'ca':
+    Molecule3Sim.i18n = Molecule3Sim.ca_strings;
     break;
   default:
     Molecule3Sim.i18n = Molecule3Sim.en;

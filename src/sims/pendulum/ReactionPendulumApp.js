@@ -704,6 +704,15 @@ ReactionPendulumApp.es_strings = {
   SHOW_ENERGY_2: 'Mostrar energía 2'
 };
 
+/**
+@private
+@type {ReactionPendulumApp.i18n_strings}
+*/
+ReactionPendulumApp.ca_strings = {
+  SEPARATION: 'Separació',
+  SHOW_ENERGY_2: 'Mostrar energia 2'
+};
+
 /** Set of internationalized strings.
 @type {ReactionPendulumApp.i18n_strings}
 */
@@ -715,6 +724,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     ReactionPendulumApp.i18n = ReactionPendulumApp.es_strings;
+    break;
+  case 'ca':
+    ReactionPendulumApp.i18n = ReactionPendulumApp.ca_strings;
     break;
   default:
     ReactionPendulumApp.i18n = ReactionPendulumApp.en;

@@ -317,8 +317,22 @@ StringShapes.es_strings = {
   HALF_SINE_PULSE: 'Pulso medio seno',
   SINE_PULSE: 'Pulso seno',
   SQUARE_PULSE: 'Pulso cuadrado',
-  TRIANGLE: 'Trianguar',
+  TRIANGLE: 'Triangular',
   TRIANGLE_PULSE: 'Pulso triangular'
+};
+
+/**
+@private
+@type {StringShapes.i18n_strings}
+*/
+StringShapes.ca_strings = {
+  FLAT: 'Pla',
+  MULTI_SINE: 'Si múltiple',
+  HALF_SINE_PULSE: 'Pols mig si',
+  SINE_PULSE: 'Pols si',
+  SQUARE_PULSE: 'Pols quadrat',
+  TRIANGLE: 'Triangular',
+  TRIANGLE_PULSE: 'Pols triangular'
 };
 
 /** Set of internationalized strings.
@@ -331,6 +345,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     StringShapes.i18n = StringShapes.es_strings;
+    break;
+  case 'ca':
+    StringShapes.i18n = StringShapes.ca_strings;
     break;
   default:
     StringShapes.i18n = StringShapes.en;

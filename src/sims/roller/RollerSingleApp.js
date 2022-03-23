@@ -312,6 +312,17 @@ RollerSingleApp.es_strings = {
   FINISH_T_VALUE: 'final-t'
 };
 
+/**
+@private
+@type {RollerSingleApp.i18n_strings}
+*/
+RollerSingleApp.ca_strings = {
+  EQUATION_X: 'Ecuació X',
+  EQUATION_Y: 'Ecuació Y',
+  START_T_VALUE: 'inici-t',
+  FINISH_T_VALUE: 'final-t'
+};
+
 /** Set of internationalized strings.
 @type {RollerSingleApp.i18n_strings}
 */
@@ -322,6 +333,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RollerSingleApp.i18n = RollerSingleApp.es_strings;
+    break;
+  case 'ca':
+    RollerSingleApp.i18n = RollerSingleApp.ca_strings;
     break;
   default:
     RollerSingleApp.i18n = RollerSingleApp.en;

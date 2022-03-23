@@ -140,6 +140,14 @@ LoopTheLoopPath.es_strings = {
   NAME: 'Bucle'
 };
 
+/**
+@private
+@type {LoopTheLoopPath.i18n_strings}
+*/
+LoopTheLoopPath.ca_strings = {
+  NAME: 'Bucle'
+};
+
 /** Set of internationalized strings.
 @type {LoopTheLoopPath.i18n_strings}
 */
@@ -150,6 +158,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     LoopTheLoopPath.i18n = LoopTheLoopPath.es_strings;
+    break;
+  case 'ca':
+    LoopTheLoopPath.i18n = LoopTheLoopPath.ca_strings;
     break;
   default:
     LoopTheLoopPath.i18n = LoopTheLoopPath.en;

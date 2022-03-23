@@ -418,6 +418,19 @@ RigidBodyApp.es_strings = {
   MASS1: 'Masa del bloque 1'
 };
 
+/**
+@private
+@type {RigidBodyApp.i18n_strings}
+*/
+RigidBodyApp.ca_strings = {
+  NUM_BODIES: 'Nombre d\'objectes',
+  SPRING_LENGTH: 'Longitud del moll',
+  SPRING_STIFFNESS: 'Rigidesa del moll',
+  THRUST: 'Empenyiment',
+  BLOCK: 'Bloc',
+  MASS1: 'Massa del bloc 1'
+};
+
 /** Set of internationalized strings.
 @type {RigidBodyApp.i18n_strings}
 */
@@ -428,6 +441,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     RigidBodyApp.i18n = RigidBodyApp.es_strings;
+    break;
+  case 'ca':
+    RigidBodyApp.i18n = RigidBodyApp.ca_strings;
     break;
   default:
     RigidBodyApp.i18n = RigidBodyApp.en;

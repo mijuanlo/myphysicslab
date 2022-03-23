@@ -660,6 +660,17 @@ LabCanvas.es_strings = {
   BACKGROUND: 'Fondo'
 };
 
+/**
+@private
+@type {LabCanvas.i18n_strings}
+*/
+LabCanvas.ca_strings = {
+  WIDTH: 'Ample',
+  HEIGHT: 'Alt',
+  ALPHA: 'transparència',
+  BACKGROUND: 'Fons'
+};
+
 /** Set of internationalized strings.
 @type {LabCanvas.i18n_strings}
 */
@@ -670,6 +681,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     LabCanvas.i18n = LabCanvas.es_strings;
+    break;
+  case 'ca':
+    LabCanvas.i18n = LabCanvas.ca_strings;
     break;
   default:
     LabCanvas.i18n = LabCanvas.en;

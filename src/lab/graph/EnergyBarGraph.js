@@ -973,6 +973,19 @@ EnergyBarGraph.es_strings = {
   TOTAL: 'total'
 };
 
+/**
+@private
+@type {EnergyBarGraph.i18n_strings}
+*/
+EnergyBarGraph.ca_strings = {
+  SHOW_ENERGY: 'Mostrar energia',
+  POTENTIAL_ENERGY: 'potencial',
+  TRANSLATIONAL_ENERGY: 'translacional',
+  KINETIC_ENERGY: 'cinètica',
+  ROTATIONAL_ENERGY: 'rotació',
+  TOTAL: 'total'
+};
+
 /** Set of internationalized strings.
 @type {EnergyBarGraph.i18n_strings}
 */
@@ -983,6 +996,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     EnergyBarGraph.i18n = EnergyBarGraph.es_strings;
+    break;
+  case 'ca':
+    EnergyBarGraph.i18n = EnergyBarGraph.ca_strings;
     break;
   default:
     EnergyBarGraph.i18n = EnergyBarGraph.en;

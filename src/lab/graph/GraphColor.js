@@ -190,6 +190,30 @@ GraphColor.es_strings = {
   YELLOW: 'Amarillo'
 };
 
+/**
+@private
+@type {GraphColor.i18n_strings}
+*/
+GraphColor.ca_strings = {
+  AQUA: 'Aiguamarina',
+  BLACK: 'Negre',
+  BLUE: 'Blau',
+  FUCHSIA: 'Fúcsia',
+  GRAY: 'Gris',
+  GREEN: 'Verd',
+  LIME: 'Llima',
+  MAROON: 'Granat',
+  NAVY: 'Blau marí',
+  OLIVE: 'Oliva',
+  PURPLE: 'Porpra',
+  RED: 'Roig',
+  SILVER: 'Plata',
+  TEAL: 'Verd blavós',
+  WHITE: 'Blanc',
+  YELLOW: 'Groc'
+};
+
+
 /** Set of internationalized strings.
 @type {GraphColor.i18n_strings}
 */
@@ -200,6 +224,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     GraphColor.i18n = GraphColor.es_strings;
+    break;
+  case 'ca':
+    GraphColor.i18n = GraphColor.ca_strings;
     break;
   default:
     GraphColor.i18n = GraphColor.en;

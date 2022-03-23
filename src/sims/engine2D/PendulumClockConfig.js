@@ -304,6 +304,20 @@ PendulumClockConfig.es_strings = {
   GEAR: 'Engranaje'
 };
 
+/**
+@private
+@type {PendulumClockConfig.i18n_strings}
+*/
+PendulumClockConfig.ca_strings = {
+  ANCHOR: 'Ancora',
+  ESCAPE_WHEEL: 'Engranatge de fuita',
+  EXTRA_BODY: 'cos addicional',
+  PENDULUM_LENGTH: 'Longitud del pèndol',
+  TURNING_FORCE: 'Força de gir',
+  WITH_GEARS: 'amb engranatges',
+  GEAR: 'Engranatge'
+};
+
 /** Set of internationalized strings.
 @type {PendulumClockConfig.i18n_strings}
 */
@@ -314,6 +328,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     PendulumClockConfig.i18n = PendulumClockConfig.es_strings;
+    break;
+  case 'ca':
+    PendulumClockConfig.i18n = PendulumClockConfig.ca_strings;
     break;
   default:
     PendulumClockConfig.i18n = PendulumClockConfig.en;

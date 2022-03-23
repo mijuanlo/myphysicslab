@@ -650,6 +650,24 @@ PendulumSim.es_strings = {
   TIME: 'Tiempo'
 };
 
+/**
+@private
+@type {PendulumSim.i18n_strings}
+*/
+PendulumSim.ca_strings = {
+  DRIVE_AMPLITUDE: 'Amplitud de l\'accionament',
+  ANGLE: 'Angle',
+  ANGULAR_ACCEL: 'Acceleració angular',
+  ANGULAR_VELOCITY: 'Velocitat angular',
+  DAMPING: 'Amortiment',
+  DRIVE_FREQUENCY: 'Freqüència de l\'accionament',
+  GRAVITY: 'Gravetat',
+  LENGTH: 'Longitud',
+  LIMIT_ANGLE: 'Angle límit',
+  MASS: 'Massa',
+  TIME: 'Temps'
+};
+
 /** Set of internationalized strings.
 @type {PendulumSim.i18n_strings}
 */
@@ -661,6 +679,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     PendulumSim.i18n = PendulumSim.es_strings;
+    break;
+  case 'ca':
+    PendulumSim.i18n = PendulumSim.ca_strings;
     break;
   default:
     PendulumSim.i18n = PendulumSim.en;

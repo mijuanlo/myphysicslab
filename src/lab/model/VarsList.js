@@ -608,6 +608,14 @@ VarsList.es_strings = {
   TIME: 'Tiempo'
 };
 
+/**
+@private
+@type {VarsList.i18n_strings}
+*/
+VarsList.ca_strings = {
+  TIME: 'Temps'
+};
+
 /** Set of internationalized strings.
 @type {VarsList.i18n_strings}
 */
@@ -618,6 +626,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     VarsList.i18n = VarsList.es_strings;
+    break;
+  case 'ca':
+    VarsList.i18n = VarsList.ca_strings;
     break;
   default:
     VarsList.i18n = VarsList.en;

@@ -156,6 +156,17 @@ Walls.es_strings = {
   WALL_TOP: 'Cabecera del muro'
 };
 
+/**
+@private
+@type {Walls.i18n_strings}
+*/
+Walls.ca_strings = {
+  WALL_BOTTOM: 'Fons del mur',
+  WALL_RIGHT: 'Dreta del mur',
+  WALL_LEFT: 'Esquerra del mur',
+  WALL_TOP: 'Capçalera del mur'
+};
+
 /** Set of internationalized strings.
 @type {Walls.i18n_strings}
 */
@@ -166,6 +177,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Walls.i18n = Walls.es_strings;
+    break;
+  case 'ca':
+    Walls.i18n = Walls.ca_strings;
     break;
   default:
     Walls.i18n = Walls.en;

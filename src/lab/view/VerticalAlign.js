@@ -121,6 +121,18 @@ VerticalAlign.es_strings = {
   VALUE: 'valor'
 };
 
+/**
+@private
+@type {VerticalAlign.i18n_strings}
+*/
+VerticalAlign.ca_strings = {
+  TOP: 'superior',
+  MIDDLE: 'mitjà',
+  BOTTOM: 'fons',
+  FULL: 'complet',
+  VALUE: 'valor'
+};
+
 /** Set of internationalized strings.
 @type {VerticalAlign.i18n_strings}
 */
@@ -131,6 +143,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     VerticalAlign.i18n = VerticalAlign.es_strings;
+    break;
+  case 'ca':
+    VerticalAlign.i18n = VerticalAlign.ca_strings;
     break;
   default:
     VerticalAlign.i18n = VerticalAlign.en;

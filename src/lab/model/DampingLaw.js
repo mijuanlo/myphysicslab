@@ -284,6 +284,16 @@ DampingLaw.es_strings = {
   ROTATE_RATIO: 'Relación de rotación'
 };
 
+/**
+@private
+@type {DampingLaw.i18n_strings}
+*/
+DampingLaw.ca_strings = {
+  DAMPING: 'Amortiment',
+  ROTATE_RATIO: 'Relació de rotació'
+};
+
+
 /** Set of internationalized strings.
 @type {DampingLaw.i18n_strings}
 */
@@ -294,6 +304,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     DampingLaw.i18n = DampingLaw.es_strings;
+    break;
+  case 'ca':
+    DampingLaw.i18n = DampingLaw.ca_strings;
     break;
   default:
     DampingLaw.i18n = DampingLaw.en;

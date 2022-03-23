@@ -272,6 +272,15 @@ TimeGraph2.es_strings = {
   RED: 'rojo'
 };
 
+/**
+@private
+@type {TimeGraph2.i18n_strings}
+*/
+TimeGraph2.ca_strings = {
+  LIME: 'llima',
+  RED: 'roig'
+};
+
 /** Set of internationalized strings.
 @type {TimeGraph2.i18n_strings}
 */
@@ -282,6 +291,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     TimeGraph2.i18n = TimeGraph2.es_strings;
+    break;
+  case 'ca':
+    TimeGraph2.i18n = TimeGraph2.ca_strings;
     break;
   default:
     TimeGraph2.i18n = TimeGraph2.en;

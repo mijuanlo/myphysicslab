@@ -143,6 +143,14 @@ EulersMethod.es_strings = {
   NAME: 'Método de Euler'
 };
 
+/**
+@private
+@type {EulersMethod.i18n_strings}
+*/
+EulersMethod.ca_strings = {
+  NAME: 'Mètode d\'Euler'
+};
+
 /** Set of internationalized strings.
 @type {EulersMethod.i18n_strings}
 */
@@ -153,6 +161,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     EulersMethod.i18n = EulersMethod.es_strings;
+    break;
+  case 'ca':
+    EulersMethod.i18n = EulersMethod.ca_strings;
     break;
   default:
     EulersMethod.i18n = EulersMethod.en;

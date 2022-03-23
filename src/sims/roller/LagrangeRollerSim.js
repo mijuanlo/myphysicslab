@@ -477,6 +477,21 @@ LagrangeRollerSim.es_strings = {
   Y_VELOCITY: 'Velocidad Y'
 };
 
+/**
+@private
+@type {LagrangeRollerSim.i18n_strings}
+*/
+LagrangeRollerSim.ca_strings = {
+  GRAVITY: 'Gravetat',
+  MASS: 'Massa',
+  POSITION: 'Posició',
+  VELOCITY: 'Valocitat',
+  X_POSITION: 'Posició X',
+  Y_POSITION: 'Posició Y',
+  X_VELOCITY: 'Velocitat X',
+  Y_VELOCITY: 'Velocitat Y'
+};
+
 /** Set of internationalized strings.
 @type {LagrangeRollerSim.i18n_strings}
 */
@@ -487,6 +502,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     LagrangeRollerSim.i18n = LagrangeRollerSim.es_strings;
+    break;
+  case 'ca':
+    LagrangeRollerSim.i18n = LagrangeRollerSim.ca_strings;
     break;
   default:
     LagrangeRollerSim.i18n = LagrangeRollerSim.en;

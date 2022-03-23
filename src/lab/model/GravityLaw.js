@@ -281,6 +281,15 @@ GravityLaw.es_strings = {
   ZERO_ENERGY: 'Nivel de energía nula'
 };
 
+/**
+@private
+@type {GravityLaw.i18n_strings}
+*/
+GravityLaw.ca_strings = {
+  GRAVITY: 'Gravetat',
+  ZERO_ENERGY: 'Nivell d\'energia nul·la'
+};
+
 /** Set of internationalized strings.
 @type {GravityLaw.i18n_strings}
 */
@@ -291,6 +300,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     GravityLaw.i18n = GravityLaw.es_strings;
+    break;
+  case 'ca':
+    GravityLaw.i18n = GravityLaw.ca_strings;
     break;
   default:
     GravityLaw.i18n = GravityLaw.en;

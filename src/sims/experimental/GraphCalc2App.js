@@ -398,6 +398,14 @@ GraphCalc2App.es_strings = {
   B_PARAM: 'b'
 };
 
+/**
+@private
+@type {GraphCalc2App.i18n_strings}
+*/
+GraphCalc2App.ca_strings = {
+  B_PARAM: 'b'
+};
+
 /** Set of internationalized strings.
 @type {GraphCalc2App.i18n_strings}
 */
@@ -408,6 +416,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     GraphCalc2App.i18n = GraphCalc2App.es_strings;
+    break;
+  case 'ca':
+    GraphCalc2App.i18n = GraphCalc2App.ca_strings;
     break;
   default:
     GraphCalc2App.i18n = GraphCalc2App.en;

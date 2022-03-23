@@ -1303,11 +1303,23 @@ Polygon.de_strings = {
 @type {Polygon.i18n_strings}
 */
 Polygon.es_strings = {
-  POLYGON: 'Poligono',
+  POLYGON: 'Polígono',
   ANGLE: 'Ángulo',
   ANGULAR_VELOCITY: 'Velocidad angular',
   POSITION: 'Posición',
   VELOCITY: 'Velocidad'
+};
+
+/**
+@private
+@type {Polygon.i18n_strings}
+*/
+Polygon.ca_strings = {
+  POLYGON: 'Polígon',
+  ANGLE: 'Angle',
+  ANGULAR_VELOCITY: 'Velocitat angular',
+  POSITION: 'Posició',
+  VELOCITY: 'Velocitat'
 };
 
 /** Set of internationalized strings.
@@ -1320,6 +1332,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     Polygon.i18n = Polygon.es_strings;
+    break;
+  case 'ca':
+    Polygon.i18n = Polygon.ca_strings;
     break;
   default:
     Polygon.i18n = Polygon.en;

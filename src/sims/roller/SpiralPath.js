@@ -217,6 +217,14 @@ SpiralPath.es_strings = {
   NAME: 'Espiral'
 };
 
+/**
+@private
+@type {SpiralPath.i18n_strings}
+*/
+SpiralPath.ca_strings = {
+  NAME: 'Espiral'
+};
+
 /** Set of internationalized strings.
 @type {SpiralPath.i18n_strings}
 */
@@ -227,6 +235,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     SpiralPath.i18n = SpiralPath.es_strings;
+    break;
+  case 'ca':
+    SpiralPath.i18n = SpiralPath.ca_strings;
     break;
   default:
     SpiralPath.i18n = SpiralPath.en;

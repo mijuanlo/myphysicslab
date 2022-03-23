@@ -340,6 +340,20 @@ CurvedTestApp.es_strings = {
   FIX_BLOCK: 'Bloque fijo'
 };
 
+
+/**
+@private
+@type {CurvedTestApp.i18n_strings}
+*/
+CurvedTestApp.ca_strings = {
+  NUM_BODIES: 'Nombre d\'objectes',
+  THRUST: 'Empenyiment',
+  BALL: 'Bola',
+  BLOCK: 'Bloc',
+  FIX_BALL: 'Bola fixa',
+  FIX_BLOCK: 'Bloc fix'
+};
+
 /** Set of internationalized strings.
 @type {CurvedTestApp.i18n_strings}
 */
@@ -350,6 +364,9 @@ switch(goog.LOCALE) {
     break;
   case 'es':
     CurvedTestApp.i18n = CurvedTestApp.es_strings;
+    break;
+  case 'ca':
+    CurvedTestApp.i18n = CurvedTestApp.ca_strings;
     break;
   default:
     CurvedTestApp.i18n = CurvedTestApp.en;
