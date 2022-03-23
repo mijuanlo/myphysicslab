@@ -185,7 +185,7 @@ endif
 
 # if LOCALE is not specified, then build all locale versions
 ifndef LOCALE
-    LOCALE := ca en es
+    LOCALE := de ca en es
 endif
 
 biketimer: $(foreach loc,$(LOCALE),$(BUILD_DIR)/sims/experimental/BikeTimerApp-$(loc).html )
@@ -693,7 +693,7 @@ $(BUILD_DIR)/%-de.html : src/%.html src/index_order.txt $(macros_req) | settings
 $(BUILD_DIR)/%-es.html : src/%.html src/index_order.txt $(macros_req) | settings $(BUILD_DIR)/%-es.js $(build_images) $(bld_css)
 	./prep_html.pl $< $@ src/index_order.txt $(COMPILE_LEVEL)
 
-$(BUILD_DIR)/%-ca.html : src/%.html src/index_order.txt $(macros_req) | settings $(BUILD_DIR)/%-es.js $(build_images) $(bld_css)
+$(BUILD_DIR)/%-ca.html : src/%.html src/index_order.txt $(macros_req) | settings $(BUILD_DIR)/%-ca.js $(build_images) $(bld_css)
 	./prep_html.pl $< $@ src/index_order.txt $(COMPILE_LEVEL)
 
 endif
