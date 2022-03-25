@@ -1,0 +1,10 @@
+# ( for x in $(cat www.myphysicslab.com/informacion.txt |grep -v INFOPAGE|awk '{print $3}'|sort); do n=$(grep -o $x www.myphysicslab.com/informacion.txt|wc -l); [ $n -gt 1 ] && echo $x $n ;  done; )|sort|uniq
+ComparePendulumApp-en.js 2
+DoublePendulumApp-en.js 6
+# DoubleSpringApp-en.js 2
+Molecule3App-en.js 4
+MoveableDoublePendulumApp-en.js 2
+MoveablePendulumApp-en.js 2
+PendulumApp-en.js 16
+# SingleSpringApp-en.js 2
+# VectorGraphPendulumApp-en.js 2
