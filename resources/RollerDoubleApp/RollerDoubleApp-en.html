@@ -14,6 +14,7 @@
 </head>
 <body>
 
+  <h1>Roller Coaster with Two Balls</h1>
 <ul id="header_bar" class="horiz_tabs">
   <li class="sim selected">Sim</li>
   <li class="graph ">Graph</li>
@@ -21,7 +22,6 @@
   <li class="multi_graph">Multi Graph</li>
 </ul>
 
-<h1>Roller Coaster with Two Balls</h1>
 
 
 <div id="container" class="control_container">
@@ -63,7 +63,7 @@ spring.
 You can change the track shape by clicking a button below. You can drag either ball
 with your mouse to change the starting position. Try changing gravity, damping or
 spring stiffness.
-</p>  
+</p>
 
 <p>The math behind the simulation is shown below.  Also available are:
 <a href="https://github.com/myphysicslab/myphysicslab/blob/master/src/sims/roller/RollerDoubleApp.js">open source code</a>,
@@ -121,15 +121,15 @@ replaced by the position of the other ball.</p>
 
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@myPhysicsLab.com"
     title="send comments to Erik Neumann">
     Erik Neumann</a>,  2004-2016<br>
     <span id="revised_date">revised Feb 6 2021</span>
   </div>
 </div>
 
-<!-- Call the app script after the body so that html entities are defined and 
-* the script can find them.--> 
+<!-- Call the app script after the body so that html entities are defined and
+* the script can find them.-->
 <script src="RollerDoubleApp-en.js"></script>
 
 <script>
@@ -156,7 +156,7 @@ replaced by the position of the other ball.</p>
     app = makeRollerDoubleApp(elem_ids);
     app.defineNames('app');
     window.addEventListener('pageshow', function(event){
-      // set language menu and compiled menus in case of back-button 
+      // set language menu and compiled menus in case of back-button
       var menu = document.getElementById('language_menu');
       if (menu) { menu.selectedIndex = 0; }
       menu = document.getElementById('compiled_menu');
@@ -179,7 +179,7 @@ replaced by the position of the other ball.</p>
 <script>var app; if (app) app.start();</script>
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com"
     title="copyright 2020 Erik Neumann">
     Erik Neumann</a> 2020, available under
     <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>

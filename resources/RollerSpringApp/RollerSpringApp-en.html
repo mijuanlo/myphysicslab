@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
-<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css">
 <title>Roller Coaster with Spring</title>
 
 <script>
@@ -14,6 +14,7 @@
 </head>
 <body>
 
+  <h1>Roller Coaster with Spring</h1>
 <ul id="header_bar" class="horiz_tabs">
   <li class="sim selected">Sim</li>
   <li class="graph ">Graph</li>
@@ -22,7 +23,6 @@
 </ul>
 
 
-<h1>Roller Coaster with Spring</h1>
 
 
 <div id="container" class="control_container">
@@ -61,9 +61,9 @@ the ball is also attached to a spring.
 </p>
 
 <p class="instructions">
-You can change the track shape by clicking a button below. 
-You can drag the spring anchor point or drag the ball to change the starting position.  
-Try modifying gravity, damping or spring stiffness.  
+You can change the track shape by clicking a button below.
+You can drag the spring anchor point or drag the ball to change the starting position.
+Try modifying gravity, damping or spring stiffness.
 </p>
 
 <p>The math behind the simulation is shown below.  Also available are:
@@ -110,7 +110,7 @@ the differential equation.
 </div>
 
 <div style="margin-left:175px; max-width: 40em;">
-  
+
 <p>Define the following variables:</p>
 
 <ul class="vars">
@@ -121,24 +121,24 @@ the differential equation.
 (<i>q<sub>x</sub></i>, <i>q<sub>y</sub></i>)
 </span> = fixed end of spring</li>
     <li><span class="html-math inline-math">
-<i>k</i> = 
+<i>k</i> =
 </span> slope of track at point <span class="html-math inline-math">
 P
 </span></li>
     <li><span class="html-math inline-math">
-<i>R</i> = 
+<i>R</i> =
 </span> rest length of spring</li>
     <li><span class="html-math inline-math">
-<i>c</i> = 
+<i>c</i> =
 </span> stiffness of spring (constant)</li>
     <li><span class="html-math inline-math">
-<i>&theta;</i> = 
+<i>&theta;</i> =
 </span> angle between the spring and tangent vector</li>
     <li><span class="html-math inline-math">
-<i>m</i> = 
+<i>m</i> =
 </span> mass</li>
     <li><span class="html-math inline-math">
-<i>g</i> = 
+<i>g</i> =
 </span> gravity constant</li>
 </ul>
 </div>
@@ -267,9 +267,9 @@ forces developed for the Simple Roller Coaster to get</p>
 </td><td class="equation-number">(2)</td></tr></table>
 
 <p>where <span class="html-math inline-math">
-<i>b</i> = 
+<i>b</i> =
 </span> damping constant and <span class="html-math inline-math">
-<i>v</i> = 
+<i>v</i> =
 </span> velocity. Keep in mind that
 the slope <span class="html-math inline-math">
 <i>k</i>
@@ -293,15 +293,15 @@ for more information on how the simulation is implemented.
 
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@myPhysicsLab.com"
     title="send comments to Erik Neumann">
     Erik Neumann</a>,  2004-2016<br>
     <span id="revised_date">revised Feb 6 2021</span>
   </div>
 </div>
 
-<!-- Call the app script after the body so that html entities are defined and 
-* the script can find them.--> 
+<!-- Call the app script after the body so that html entities are defined and
+* the script can find them.-->
 <script src="RollerSpringApp-en.js"></script>
 
 <script>
@@ -328,7 +328,7 @@ for more information on how the simulation is implemented.
     app = makeRollerSpringApp(elem_ids);
     app.defineNames('app');
     window.addEventListener('pageshow', function(event){
-      // set language menu and compiled menus in case of back-button 
+      // set language menu and compiled menus in case of back-button
       var menu = document.getElementById('language_menu');
       if (menu) { menu.selectedIndex = 0; }
       menu = document.getElementById('compiled_menu');
@@ -351,7 +351,7 @@ for more information on how the simulation is implemented.
 <script>var app; if (app) app.start();</script>
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com"
     title="copyright 2020 Erik Neumann">
     Erik Neumann</a> 2020, available under
     <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>

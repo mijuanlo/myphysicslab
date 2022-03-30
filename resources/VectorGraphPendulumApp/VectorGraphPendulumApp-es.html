@@ -13,15 +13,15 @@
 </script>
 </head>
 <body>
-
-<ul id="header_bar" class="horiz_tabs">   
+  <h1>Péndulo con Campo de Dirección</h1>
+<ul id="header_bar" class="horiz_tabs">
   <li class="sim selected">Simulador</li>
   <li class="graph ">Gráfico</li>
   <li class="time_graph">Gráfico tiempo</li>
   <li class="multi_graph">Gráfico múltiple</li>
 </ul>
 
-<h1>Péndulo con Campo de Dirección</h1>
+
 
 
 <div id="container" class="control_container">
@@ -133,7 +133,7 @@
     app.eval('TAB_LAYOUT.LAYOUT="sim+graph";');
     app.eval('DRIVE_AMPLITUDE=0;DAMPING=0.1;GRAVITY=9.8;ANGLE=1;ANGLE_VELOCITY=0;');
     window.addEventListener('pageshow', function(event){
-      // set language menu and compiled menus in case of back-button 
+      // set language menu and compiled menus in case of back-button
       var menu = document.getElementById('language_menu');
       if (menu) { menu.selectedIndex = 2; }
       menu = document.getElementById('compiled_menu');
@@ -156,7 +156,7 @@
 <script>var app; if (app) app.start();</script>
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com"
     title="copyright 2020 Erik Neumann">
     Erik Neumann</a> 2020, available under
     <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>

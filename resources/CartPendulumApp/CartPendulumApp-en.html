@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
-<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css">
 <title>Cart & Pendulum</title>
 
 <script>
@@ -14,15 +14,14 @@
 </head>
 <body>
 
+<h1>Cart & Pendulum</h1>
+
 <ul id="header_bar" class="horiz_tabs">
   <li class="sim selected">Sim</li>
   <li class="graph ">Graph</li>
   <li class="time_graph">Time Graph</li>
   <li class="multi_graph">Multi Graph</li>
 </ul>
-
-<h1>Cart & Pendulum</h1>
-
 
 <div id="container" class="control_container">
   <div id="div_graph" >
@@ -934,7 +933,7 @@ numerical solution of the system. </p>
 
 <!-- TO DO:
   Chaos is not possible here... explain why.
--->	
+-->
 
 <p id="page_history">
   This web page was first published September 2001.
@@ -942,15 +941,15 @@ numerical solution of the system. </p>
 
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@myPhysicsLab.com"
     title="send comments to Erik Neumann">
     Erik Neumann</a>,  2004-2016<br>
     <span id="revised_date">revised Feb 6 2021</span>
   </div>
 </div>
 
-<!-- Call the app script after the body so that html entities are defined and 
-* the script can find them.--> 
+<!-- Call the app script after the body so that html entities are defined and
+* the script can find them.-->
 <script src="CartPendulumApp-en.js"></script>
 
 <script>
@@ -977,7 +976,7 @@ numerical solution of the system. </p>
     app = makeCartPendulumApp(elem_ids);
     app.defineNames('app');
     window.addEventListener('pageshow', function(event){
-      // set language menu and compiled menus in case of back-button 
+      // set language menu and compiled menus in case of back-button
       var menu = document.getElementById('language_menu');
       if (menu) { menu.selectedIndex = 0; }
       menu = document.getElementById('compiled_menu');
@@ -1003,7 +1002,7 @@ numerical solution of the system. </p>
 </script>
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com"
     title="copyright 2020 Erik Neumann">
     Erik Neumann</a> 2020, available under
     <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
