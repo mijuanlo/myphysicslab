@@ -61,8 +61,6 @@ This simulation shows 4 masses connected by springs and free to move in 2 dimens
 You can change parameters in the simulation such as gravity, mass, spring stiffness, and friction (damping).  You can drag any mass with your mouse to change the starting position. The red springs can be set to have a different stiffness and length than the other springs.
 </p>  
 
-<p>This is an experimental version of the Molecule3 simulation. This uses a non-linear
-spring force.  Note that the spring length controls will have no effect.</p>
 
 <form name="form1" onsubmit="return false;">
     <input type="button" value="symmetric" onClick="setParams(3)">
@@ -107,7 +105,7 @@ which is more customizable.
   This web page was first published September 2001.
 </p>
 
-<script src="Molecule4App-en.js"></script>
+<script src="Molecule3App-en.js"></script>
 
 <script>
   (function build() {
@@ -130,7 +128,7 @@ which is more customizable.
       show_sim: 'show_sim',
       images_dir: '../common'
     };
-    app = makeMolecule4App(elem_ids, 4);
+    app = makeMolecule3App(elem_ids, 4);
     app.defineNames('app');
     window.addEventListener('pageshow', function(event){
       // set language menu and compiled menus in case of back-button 
