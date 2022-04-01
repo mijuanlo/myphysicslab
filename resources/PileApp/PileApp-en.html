@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
-<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css"> 
+<link rel="stylesheet" type="text/css" href="../common/stylesheet1.css">
 <title>Pile</title>
 
 <script>
@@ -51,8 +51,10 @@
    </div>
 </div>
 
+<h2>About</h2>
+
 <p class="introduction">
-Demonstration of a pile of objects falling into a corner 
+Demonstration of a pile of objects falling into a corner
 using the <a href="../explain/physics-engine-en.html">2D Rigid Body Physics Engine</a>.
 </p>
 
@@ -117,15 +119,15 @@ which is more customizable.
 
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@myPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@myPhysicsLab.com"
     title="send comments to Erik Neumann">
     Erik Neumann</a>,  2004-2016<br>
     <span id="revised_date">revised Feb 6 2021</span>
   </div>
 </div>
 
-<!-- Call the app script after the body so that html entities are defined and 
-* the script can find them.--> 
+<!-- Call the app script after the body so that html entities are defined and
+* the script can find them.-->
 <script src="PileApp-en.js"></script>
 
 <script>
@@ -152,7 +154,7 @@ which is more customizable.
     app = makePileApp(elem_ids);
     app.defineNames('app');
     window.addEventListener('pageshow', function(event){
-      // set language menu and compiled menus in case of back-button 
+      // set language menu and compiled menus in case of back-button
       var menu = document.getElementById('language_menu');
       if (menu) { menu.selectedIndex = 0; }
       menu = document.getElementById('compiled_menu');
@@ -176,7 +178,7 @@ which is more customizable.
 <script>var app; if (app) app.start();</script>
 <div id="footer2" >
   <div id="copyright">
-    &copy; <a href="mailto:erikn@MyPhysicsLab.com" 
+    &copy; <a href="mailto:erikn@MyPhysicsLab.com"
     title="copyright 2020 Erik Neumann">
     Erik Neumann</a> 2020, available under
     <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2</a>
